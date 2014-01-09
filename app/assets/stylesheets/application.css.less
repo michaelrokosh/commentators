@@ -1,0 +1,130 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require bootstrap/bootstrap
+ *= require custom
+ */
+
+@lightGrey: #999;
+
+header {
+  h1 {
+    font-size: 5em;
+    letter-spacing: -2px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+}
+
+.main {
+  width: 620px;
+  margin: 0 auto;
+}
+/*
+img {
+  max-width: 100% !important;
+}
+*/
+nav {
+  ul {
+    text-align: center;
+    list-style: none;
+    padding-left: 0px;
+    li {
+      display: inline;
+      margin-right: 15px;
+        &:last-of-type {
+          margin: 0;
+        }
+    }
+  }
+}
+.commentator {
+  .img-header {
+    width: 100%;
+    overflow: hidden;
+    .title {
+      float: left;
+      margin-top: 0;
+      margin-bottom: 3px;
+    }
+    .share {
+      float: right;
+      margin-top: 0;
+      margin-bottom: 3px;
+    }
+  }
+  .image {
+    margin: 0 auto;
+    text-align: center;
+  }
+  .top-comment {
+    background-color: silver;
+    width: 100%;
+    overflow:hidden;
+    h1 {
+      padding: 25px 10px 25px 10px;
+      margin: 0;
+      text-align: center;
+    }
+    h4 {
+      padding: 0px;
+      text-align: center;
+      margin: -10px 20px 20px 20px;
+    }
+  }
+}
+
+h4 {
+  font-size: 1.2em;
+  letter-spacing: -1px;
+  font-weight: normal;
+  color: @lightGrey;
+}
+
+.resize {
+  max-width: 620px;
+  height: auto;
+}
+
+.pagination {
+  width: 620px;
+  text-align: center;
+  padding: 1em;
+  cursor: default;
+  a, span {
+    padding: 0.2em 0.3em;
+  }
+  .disabled {
+    color: #aaaaaa;
+  }
+  .current {
+    font-style: normal;
+    font-weight: bold;
+    background-color: darken(#f1f1f1, 20);
+    display: inline-block;
+    width: 1.4em;
+    height: 1.4em;
+    -moz-border-radius: 1em;
+    -webkit-border-radius: 1em;
+    border-radius: 1em;
+    text-shadow: rgba(255, 255, 255, 0.8) 1px 1px 1px;
+    color: #333333;
+    font-size: 20px;
+  }
+  a {
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+    &:hover, &:focus {
+      text-decoration: underline;
+    }
+  }
+}

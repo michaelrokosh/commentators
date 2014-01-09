@@ -1,0 +1,7 @@
+%h1
+  = @user.username
+.comments
+  - @user.comments.each do |comment|
+    %h4.single-comment
+      = link_to("##{comment.image.id}", image_path(comment.image)) 
+      = comment.content

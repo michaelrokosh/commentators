@@ -2,6 +2,9 @@
   .img-header
     %h4.title
       = "##{@image.id}"
+      - if current_user.admin?
+        = link_to 'Редактировать', edit_image_path(@image)
+        = link_to 'Фтопку', image_path(@image), method: :delete
     %h4.share
       Поделиться
   .image

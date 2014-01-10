@@ -4,6 +4,8 @@
 %nav.navigation
   - if user_signed_in?
     %ul
+      - if current_user.admin?
+        %li= link_to 'Добавить фотку', new_image_path
       %li= link_to current_user.username, user_path(current_user), title: "Профиль"
       %li= link_to 'Выход', destroy_user_session_path, method: :delete, class: "fa fa-sign-out", title: "Выход"
   - else

@@ -13,6 +13,16 @@ class ImagesController < ApplicationController
     end
   end
 
+  def edit
+    @image = Image.find(params[:id])
+  end
+
+  def destroy
+    @image = Image.find(params[:id])
+    @image.destroy
+    redirect_to :root
+  end
+
   def show
     @image = Image.find(params[:id])
   end

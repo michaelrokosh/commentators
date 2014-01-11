@@ -2,9 +2,10 @@
   .img-header
     %h4.title
       = "##{@image.id}"
-      - if current_user.admin?
-        = link_to 'Редактировать', edit_image_path(@image)
-        = link_to 'Фтопку', image_path(@image), method: :delete
+      - if user_signed_in?
+        - if current_user.admin?
+          = link_to 'Редактировать', edit_image_path(@image)
+          = link_to 'Фтопку', image_path(@image), method: :delete
     %h4.share
       Поделиться
     = image_tag(@image.url, class: "resize")
@@ -27,7 +28,8 @@
       = link_to '-1', vote_down_image_comment_path(comment.image, comment), method: :post
       = link_to '+1', vote_up_image_comment_path(comment.image, comment), method: :post
       = "[#{comment.rating}]"
-      - if current_user.admin?
-        = link_to 'Фтопку', image_comment_path(comment.image, comment), method: :delete
+      - if user_signed_in?
+        - if current_user.admin?
+          = link_to 'Фтопку', image_comment_path(comment.image, comment), method: :delete
 %h1
 = render 'add_comment'

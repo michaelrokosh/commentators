@@ -25,7 +25,11 @@
     .single_comment
       = link_to comment.user.username, user_path(comment.user)
       = comment.content
-      - unless comment.user.id == current_user.id
+      - if user_signed_in?
+        - unless comment.user.id == current_user.id
+          = link_to '-1', vote_down_image_comment_path(comment.image, comment), method: :post
+          = link_to '+1', vote_up_image_comment_path(comment.image, comment), method: :post
+      - else
         = link_to '-1', vote_down_image_comment_path(comment.image, comment), method: :post
         = link_to '+1', vote_up_image_comment_path(comment.image, comment), method: :post
       = "[#{comment.rating}]"

@@ -7,7 +7,6 @@
         = link_to 'Фтопку', image_path(@image), method: :delete
     %h4.share
       Поделиться
-  .image
     = image_tag(@image.url, class: "resize")
   .top-comment
     - if @image.comments.any?
@@ -25,6 +24,9 @@
     .single_comment
       = link_to comment.user.username, user_path(comment.user)
       = comment.content
+      = link_to '-1', vote_down_image_comment_path(comment.image, comment), method: :post
+      = link_to '+1', vote_up_image_comment_path(comment.image, comment), method: :post
+      = "[#{comment.rating}]"
       - if current_user.admin?
         = link_to 'Фтопку', image_comment_path(comment.image, comment), method: :delete
 %h1

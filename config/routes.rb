@@ -3,6 +3,11 @@ Commentators::Application.routes.draw do
   root 'home#index'
   resources :users
   resources :images do
-  	resources :comments
+  	resources :comments do
+  		member do
+        post :vote_up
+        post :vote_down
+      end
+    end
   end
 end

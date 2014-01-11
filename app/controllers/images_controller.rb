@@ -23,6 +23,7 @@ class ImagesController < ApplicationController
       redirect_to @image
     else
       render 'edit'
+    end
   end
 
   def destroy

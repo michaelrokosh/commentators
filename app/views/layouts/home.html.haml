@@ -5,6 +5,7 @@
       Комментаторы
     = stylesheet_link_tag "application", media: "all"
     = javascript_include_tag "application"
+    %script{charset: "utf-8", src: "//yandex.st/share/share.js", type: "text/javascript"}
     = csrf_meta_tags
   %body
     = render 'layouts/header'

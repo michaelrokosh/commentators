@@ -10,14 +10,11 @@
       = render 'layouts/share'
     = image_tag(@image.url, class: "resize")
   .top-comment
+    %h1
+      = @top_comment
     - if @image.comments.any?
-      %h1
-        = @top_comment.content
       %h4
         = link_to(@top_comment.user.username, user_path(@image.comments.last.user))
-    - else
-      %h1
-        Еще нету комментариев
 %h1
   Комментарии:
 - @image.comments.each do |comment|

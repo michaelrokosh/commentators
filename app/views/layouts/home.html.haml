@@ -16,17 +16,18 @@
             %h4.title
               = link_to "##{image.id}", image_path(image)
             %h4.share
-              .yashare-auto-init{"data-yasharel10n" => "ru", "data-yasharequickservices" => "vkontakte,facebook,twitter,odnoklassniki,moimir", "data-yasharetheme" => "counter", "data-yashareType" => "small", "data-yashareLink" => "http://commentators.herokuapp.com/images/#{image.id}", "data-yashareTitle" => image.comments.order("rating DESC").first.content}
+              - if image.comments.any?
+                - @top_comment = image.comments.order("rating DESC").first.content
+              - else
+                - @top_comment = 'Комметариев пока нет'
+              .yashare-auto-init{"data-yasharel10n" => "ru", "data-yasharequickservices" => "vkontakte,facebook,twitter,odnoklassniki,moimir", "data-yasharetheme" => "counter", "data-yashareType" => "small", "data-yashareLink" => "http://commentators.herokuapp.com/images/#{image.id}", "data-yashareTitle" => @top_comment}
           .image
             = link_to(image_tag(image.url, class: "resize"), image_path(image))
           .top-comment
+            %h1
+              = @top_comment
             - if image.comments.any?
-              %h1
-                = image.comments.order("rating DESC").first.content
               %h4
                 = link_to(image.comments.order("rating DESC").first.user.username, user_path(image.comments.last.user))
-            - else
-              %h1
-                Еще нету комментариев
       = will_paginate @recent_images
      

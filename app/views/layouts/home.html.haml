@@ -6,10 +6,8 @@
     = stylesheet_link_tag "application", media: "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
-
   %body
     = render 'layouts/header'
-    
     .main
       - @recent_images.each do |image|
         .commentator
@@ -17,15 +15,15 @@
             %h4.title
               = link_to "##{image.id}", image_path(image)
             %h4.share
-              Поделиться
+              = render 'layouts/share'
           .image
             = link_to(image_tag(image.url, class: "resize"), image_path(image))
           .top-comment
             - if image.comments.any?
               %h1
-                = image.comments.last.content
+                = image.comments.order("rating DESC").first.content
               %h4
-                = link_to(image.comments.last.user.username, user_path(image.comments.last.user))
+                = link_to(image.comments.order("rating DESC").first.user.username, user_path(image.comments.last.user))
             - else
               %h1
                 Еще нету комментариев

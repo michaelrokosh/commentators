@@ -16,7 +16,7 @@
             %h4.title
               = link_to "##{image.id}", image_path(image)
             %h4.share
-              = render 'layouts/share'
+              .yashare-auto-init{"data-yasharel10n" => "ru", "data-yasharequickservices" => "vkontakte,facebook,twitter,odnoklassniki,moimir", "data-yasharetheme" => "counter", "data-yashareType" => "small", "data-yashareLink" => "http://commentators.herokuapp.com/images/#{image.id}", "data-yashareTitle" => image.comments.order("rating DESC").first.content}
           .image
             = link_to(image_tag(image.url, class: "resize"), image_path(image))
           .top-comment

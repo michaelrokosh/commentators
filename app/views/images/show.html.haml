@@ -19,19 +19,25 @@
       Комментарии:
     - @image.comments.each do |comment|
       %p.comments
-        .single_comment
-          = link_to comment.user.username, user_path(comment.user)
-          = comment.content
-          - if user_signed_in?
-            - unless comment.user.id == current_user.id
-              #vote#make-vote{ data: {:image_id => @image.id, :comment_id => comment.id} }  
-          - else
-            = link_to '-1', vote_down_image_comment_path(comment.image, comment), method: :post
-            = link_to '+1', vote_up_image_comment_path(comment.image, comment), method: :post
-          = "[#{comment.rating}]"
-          - if user_signed_in?
-            - if current_user.admin?
-              = link_to 'Фтопку', image_comment_path(comment.image, comment), method: :delete
+        .single-comment
+          .content
+            = link_to comment.user.username, user_path(comment.user)
+            = comment.content
+          .votes
+            - if user_signed_in?
+              - unless comment.user.id == current_user.id
+                #vote.make-vote
+                  #vote-against{ data: {:image_id => @image.id, :comment_id => comment.id} }
+                    = '-1'
+                  #vote-for{ data: {:image_id => @image.id, :comment_id => comment.id} }
+                    = '+1'
+            - else
+              = link_to '-1', vote_down_image_comment_path(comment.image, comment), method: :post
+              = link_to '+1', vote_up_image_comment_path(comment.image, comment), method: :post
+            = "[#{comment.rating}]"
+            - if user_signed_in?
+              - if current_user.admin?
+                = link_to 'Фтопку', image_comment_path(comment.image, comment), method: :delete
   - else
     .top-comment
       %h1

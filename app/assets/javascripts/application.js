@@ -19,7 +19,7 @@ $(function() {
     if ( $( "#vote" ).hasClass( "make-vote" ) ) {
       $.ajax({
         type: "POST",
-        url: '/images/' + $button.attr('data-image-id') + '/comments/' + $button.attr('data-comment-id' + 'vote_down'),
+        url: '/images/' + $button.attr('data-image-id') + '/comments/' + $button.attr('data-comment-id') + '/vote_down',
         success: function() {
           $button.removeClass('make-vote').addClass('vote-made').html("<span> Голос принят!</span>"); ; 
         }
@@ -34,7 +34,7 @@ $(function() {
     if ( $( "#vote" ).hasClass( "make-vote" ) ) {
       $.ajax({
         type: "POST",
-        url: '/images/' + $button.attr('data-image-id') + '/comments/' + $button.attr('data-comment-id' + 'vote_up'),
+        url: '/images/' + $button.attr('data-image-id') + '/comments/' + $button.attr('data-comment-id') + '/vote_up',
         success: function() {
           $button.removeClass('make-vote').addClass('vote-made').html("<span> Голос принят!</span>"); ; 
         }

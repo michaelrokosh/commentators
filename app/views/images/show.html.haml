@@ -9,32 +9,32 @@
     %h4.share
       = render 'layouts/share'
     = image_tag(@image.url, class: "resize")
-  .top-comment
-    %h1
-      = @top_comment
-    - if @image.comments.any?
+  - if @image.comments.any?
+    .top-comment
+      %h1
+        = @top_comment.content
       %h4
         = link_to(@top_comment.user.username, user_path(@image.comments.last.user))
-%h1
-  Комментарии:
-- @image.comments.each do |comment|
-  %p.comments
-    .single_comment
-      = link_to comment.user.username, user_path(comment.user)
-      = comment.content
-      - if user_signed_in?
-        - unless comment.user.id == current_user.id
-          #vote#make-vote{ data: {:image_id => @image.id, :comment_id => comment.id} }
-            #vote-against
-              = '-1'
-            #vote-for
-              = '+2'
-      - else
-        = link_to '-1', vote_down_image_comment_path(comment.image, comment), method: :post
-        = link_to '+1', vote_up_image_comment_path(comment.image, comment), method: :post
-      = "[#{comment.rating}]"
-      - if user_signed_in?
-        - if current_user.admin?
-          = link_to 'Фтопку', image_comment_path(comment.image, comment), method: :delete
+    %h1
+      Комментарии:
+    - @image.comments.each do |comment|
+      %p.comments
+        .single_comment
+          = link_to comment.user.username, user_path(comment.user)
+          = comment.content
+          - if user_signed_in?
+            - unless comment.user.id == current_user.id
+              #vote#make-vote{ data: {:image_id => @image.id, :comment_id => comment.id} }  
+          - else
+            = link_to '-1', vote_down_image_comment_path(comment.image, comment), method: :post
+            = link_to '+1', vote_up_image_comment_path(comment.image, comment), method: :post
+          = "[#{comment.rating}]"
+          - if user_signed_in?
+            - if current_user.admin?
+              = link_to 'Фтопку', image_comment_path(comment.image, comment), method: :delete
+  - else
+    .top-comment
+      %h1
+        Комметариев пока нет
 %h1
 = render 'add_comment'

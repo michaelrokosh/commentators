@@ -1,4 +1,7 @@
-.yashare-auto-init{"data-yasharel10n" => "ru", "data-yasharequickservices" => "vkontakte,facebook,twitter,odnoklassniki,moimir", "data-yasharetheme" => "counter", "data-yashareType" => "small", "data-yashareLink" => "http://commentators.herokuapp.com/images/#{@image.id}", "data-yashareTitle" => @top_comment}
+- if @image.comments.any?
+  .yashare-auto-init{"data-yasharel10n" => "ru", "data-yasharequickservices" => "vkontakte,facebook,twitter,odnoklassniki,moimir", "data-yasharetheme" => "counter", "data-yashareType" => "small", "data-yashareLink" => "http://commentators.herokuapp.com/images/#{@image.id}", "data-yashareTitle" => @top_comment.content}
+- else
+  .yashare-auto-init{"data-yasharel10n" => "ru", "data-yasharequickservices" => "vkontakte,facebook,twitter,odnoklassniki,moimir", "data-yasharetheme" => "counter", "data-yashareType" => "small", "data-yashareLink" => "http://commentators.herokuapp.com/images/#{@image.id}", "data-yashareTitle" => "Комментариев пока нет"}
 /
   = image_tag('/share/vkontakte.png')
   = image_tag('/share/facebook.png')

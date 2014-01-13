@@ -121,12 +121,55 @@ h4 {
 .single-comment {
   .content {
     float: left;
+    margin: 10px;
   }
-  .votes {
+  #votes {
     float: right;
+    display: inline;
+    line-height: 40px;
+    font-size: 40px;
+    #vote-for, #vote-against {
+      float: right;
+      margin-left: 5px;
+      cursor: pointer;
+    }
+    .separator {
+      float: right;
+      margin-left: 5px;
+    }
   }
 }
 
 #vote-made {
   display: none;
+}
+
+.bubble {
+  display: inline-block;
+  position: relative;
+  width: 80%;
+  max-height: 300px;
+  padding: 0px;
+  background: #c0c0c0;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+  &:after {
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 8px 13px 8px 0;
+    border-color: transparent #c0c0c0;
+    display: block;
+    width: 0;
+    z-index: 1;
+    left: -15px;
+    top: 0%;
+  }
+  #rating {
+    line-height: 40px;
+    float: right;
+    margin-right: 10px;
+    font-size: 20px;
+  }
 }

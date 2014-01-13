@@ -17,27 +17,33 @@
         = link_to(@top_comment.user.username, user_path(@image.comments.last.user))
     %h1
       Комментарии:
-    - @image.comments.each do |comment|
-      %p.comments
+    %p.comments
+      - @image.comments.each do |comment| 
         .single-comment
-          .content
+          .username
             = link_to comment.user.username, user_path(comment.user)
-            = comment.content
-          .votes
-            - if user_signed_in?
-              - unless comment.user.id == current_user.id
-                #vote.make-vote
-                  #vote-against{ data: {:image_id => @image.id, :comment_id => comment.id} }
-                    = '-1'
-                  #vote-for{ data: {:image_id => @image.id, :comment_id => comment.id} }
-                    = '+1'
-            - else
+          .bubble
+            .content
+              = comment.content
+            #rating
+              = "[#{comment.rating}]"
+          - if user_signed_in?
+            - unless comment.user.id == current_user.id
+              #votes.make-vote
+                #vote-against{ data: {:image_id => @image.id, :comment_id => comment.id} }
+                  = '-1'
+                .separator
+                  = '/'
+                #vote-for{ data: {:image_id => @image.id, :comment_id => comment.id} }
+                  = '+1'
+          - else
+            #votes
               = link_to '-1', vote_down_image_comment_path(comment.image, comment), method: :post
               = link_to '+1', vote_up_image_comment_path(comment.image, comment), method: :post
-            = "[#{comment.rating}]"
-            - if user_signed_in?
-              - if current_user.admin?
-                = link_to 'Фтопку', image_comment_path(comment.image, comment), method: :delete
+              = "[#{comment.rating}]"
+          - if user_signed_in?
+            - if current_user.admin?
+              = link_to 'Фтопку', image_comment_path(comment.image, comment), method: :delete
   - else
     .top-comment
       %h1

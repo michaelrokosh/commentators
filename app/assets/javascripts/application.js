@@ -16,7 +16,7 @@
 $(function() {
   $('#vote-against').click(function() {
     $button = $(this)
-    if ( $( "#vote" ).hasClass( "make-vote" ) ) {
+    if ( $( "#votes" ).hasClass( "make-vote" ) ) {
       $.ajax({
         type: "POST",
         url: '/images/' + $button.attr('data-image-id') + '/comments/' + $button.attr('data-comment-id') + '/vote_down',
@@ -31,7 +31,7 @@ $(function() {
 $(function() {
   $('#vote-for').click(function() {
     $button = $(this)
-    if ( $( "#vote" ).hasClass( "make-vote" ) ) {
+    if ( $( "#votes" ).hasClass( "make-vote" ) ) {
       $.ajax({
         type: "POST",
         url: '/images/' + $button.attr('data-image-id') + '/comments/' + $button.attr('data-comment-id') + '/vote_up',

@@ -38,9 +38,12 @@
                   = '+1'
           - else
             #votes
-              = link_to '-1', vote_down_image_comment_path(comment.image, comment), method: :post
-              = link_to '+1', vote_up_image_comment_path(comment.image, comment), method: :post
-              = "[#{comment.rating}]"
+              #vote-against
+                = link_to '-1', new_user_session_path
+              .separator
+                = '/'
+              #vote-for
+                = link_to '+1', new_user_session_path
           - if user_signed_in?
             - if current_user.admin?
               = link_to 'Фтопку', image_comment_path(comment.image, comment), method: :delete

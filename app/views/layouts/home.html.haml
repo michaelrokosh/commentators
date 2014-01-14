@@ -34,8 +34,5 @@
               %h4
                 = link_to(image.comments.order("rating DESC").first.user.username, user_path(image.comments.last.user))
       = will_paginate @recent_images
-    .sidebar
-      #vk_comments
-      :javascript
-        VK.Widgets.Comments("vk_comments", {limit: 10, width: "100%", attach: "graffiti,photo,video,audio"});
+    = render 'layouts/sidebar'
      

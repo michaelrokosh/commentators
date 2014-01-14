@@ -13,9 +13,9 @@
     %meta{content: "width=device-width, initial-scale=1, maximum-scale=1", name: "viewport", "user-scalable" => "no"}/
   %body
     = render 'layouts/header'
-    .main.col-md-9.col-xs-12
+    .main
       = yield
-    .sidebar.col-md-3.col-xs-12
+    .sidebar
       #vk_comments
       :javascript
         VK.Widgets.Comments("vk_comments", {limit: 10, width: "100%", attach: "graffiti,photo,video,audio"});

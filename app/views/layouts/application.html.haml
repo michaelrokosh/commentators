@@ -6,9 +6,16 @@
     = stylesheet_link_tag "application", media: "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
+    %script{type: "text/javascript", src: "//vk.com/js/api/openapi.js?105"}
+    :javascript
+      VK.init({apiId: 4119973, onlyWidgets: true});
     %script{charset: "utf-8", src: "//yandex.st/share/share.js", type: "text/javascript"}
     %meta{content: "width=device-width, initial-scale=1, maximum-scale=1", name: "viewport", "user-scalable" => "no"}/
   %body
     = render 'layouts/header'
-    .main
+    .main.col-md-9.col-xs-12
       = yield
+    .sidebar.col-md-3.col-xs-12
+      #vk_comments
+      :javascript
+        VK.Widgets.Comments("vk_comments", {limit: 10, width: "100%", attach: "graffiti,photo,video,audio"});

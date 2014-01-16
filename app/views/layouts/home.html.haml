@@ -15,7 +15,7 @@
     = render 'layouts/header'
     .main
       - @recent_images.each do |image|
-        .commentator
+        %article.commentator
           .img-header
             %h4.title
               = link_to "##{image.id}", image_path(image)

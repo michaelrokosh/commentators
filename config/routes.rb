@@ -1,9 +1,6 @@
 Commentators::Application.routes.draw do
   get "omniauth_callbacks/vkontakte"
   get "users/controller"
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
-  root 'home#index'
-  resources :users
   resources :images do
   	resources :comments do
   		member do
@@ -12,4 +9,8 @@ Commentators::Application.routes.draw do
       end
     end
   end
+
+  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
+  resources :users
+  root 'home#index'
 end

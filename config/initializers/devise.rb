@@ -5,7 +5,8 @@ Devise.setup do |config|
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
   config.secret_key = 'd12a948b9d5684219ed7c1badd402016a6ae80ed0634558865887d95ce8823cda89a9ed60b44fa6b4f0a1533f54ea01c3774177d48fd18b6817fc415bc49a7f7'
-
+  require "omniauth-vkontakte"
+  config.omniauth :vkontakte, ENV['APP_ID'], ENV['APP_SECRET']
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class

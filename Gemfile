@@ -37,6 +37,8 @@ gem "therubyracer"
 gem 'font-awesome-rails'
 gem 'will_paginate'
 gem "geocoder"
+gem 'omniauth'
+gem 'omniauth-vkontakte'
 
 group :production do
   gem 'rails_12factor'

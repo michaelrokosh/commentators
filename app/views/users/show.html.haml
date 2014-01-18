@@ -1,4 +1,6 @@
 %h1
+  = image_tag(@user.avatar_big)
+  = @user.nickname
   = @user.username
 .comments
   - @user.comments.each do |comment|

@@ -27,13 +27,13 @@
           .bubble-comment
             .content
               = comment.content
+            #rating
+              = comment.rating
           - if user_signed_in?
             - unless comment.user.id == current_user.id
               #votes.make-vote
-                #vote-for.fa.fa-sort-up{ data: {:image_id => @image.id, :comment_id => comment.id} }
-                #rating
-                  = comment.rating
-                #vote-against.fa.fa-sort-down{ data: {:image_id => @image.id, :comment_id => comment.id} }
+                #vote-for.fa.fa-thumbs-o-up{ data: {:image_id => @image.id, :comment_id => comment.id} }
+                #vote-against.fa.fa-thumbs-o-down{ data: {:image_id => @image.id, :comment_id => comment.id} }
                 
           - else
             #votes

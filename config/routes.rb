@@ -1,5 +1,6 @@
 Commentators::Application.routes.draw do
   get "omniauth_callbacks/vkontakte"
+  get "users/controller"
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   root 'home#index'
   resources :users

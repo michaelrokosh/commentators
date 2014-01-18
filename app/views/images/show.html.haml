@@ -23,12 +23,12 @@
           .username
             = link_to comment.user.username, user_path(comment.user)
           .avatar.img-circle
-            = image_tag(comment.user.avatar_url)
+            = image_tag(comment.user.avatar_url, class: 'img-circle')
           .bubble-comment
             .content
               = comment.content
-          #rating
-            = "[#{comment.rating}]"
+            #rating
+              = "[#{comment.rating}]"
           - if user_signed_in?
             - unless comment.user.id == current_user.id
               #votes.make-vote

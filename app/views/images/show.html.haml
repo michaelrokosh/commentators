@@ -32,8 +32,8 @@
           - if user_signed_in?
             - unless comment.user.id == current_user.id
               #votes.make-vote
-                #vote-for.fa.fa-thumbs-o-up{ data: {:image_id => @image.id, :comment_id => comment.id} }
-                #vote-against.fa.fa-thumbs-o-down{ data: {:image_id => @image.id, :comment_id => comment.id} }
+                %i#vote-for.fa.fa-thumbs-o-up{ data: {:image_id => @image.id, :comment_id => comment.id} }
+                %i#vote-against.fa.fa-thumbs-o-down{ data: {:image_id => @image.id, :comment_id => comment.id} }
                 
           - else
             #votes

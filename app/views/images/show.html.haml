@@ -28,7 +28,11 @@
             .content
               = comment.content
           - if user_signed_in?
-            - unless comment.user.id == current_user.id
+            - if comment.user.id == current_user.id
+              .votes
+                .rating
+                  = comment.rating
+            - else
               - if current_user.voted_for?(comment.id)
                 - if current_user.positive_vote?(comment.id)
                   .voted

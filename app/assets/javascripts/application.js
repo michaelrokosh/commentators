@@ -21,7 +21,7 @@ $(function() {
         type: "POST",
         url: '/images/' + $button.attr('data-image-id') + '/comments/' + $button.attr('data-comment-id') + '/vote_down',
         success: function() {
-          $button.removeClass('make-vote').addClass('vote-made').html("<span> Голос принят!</span>"); ; 
+          $button.removeClass('make-vote').addClass('vote-made').html("<span>OK!</span>"); ; 
         }
       })
     }
@@ -36,7 +36,7 @@ $(function() {
         type: "POST",
         url: '/images/' + $button.attr('data-image-id') + '/comments/' + $button.attr('data-comment-id') + '/vote_up',
         success: function() {
-          $button.removeClass('make-vote').addClass('vote-made').html("<span> Голос принят!</span>"); ; 
+          $button.removeClass('make-vote').addClass('vote-made').html("<span>OK!</span>"); ; 
         }
       })
     }

@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
     votes.where(voteable_id: voteable).first.present?
   end
 
-  def get_vote(voteable)
-    votes.where(voteable_id: voteable).first.rate
+  def positive_vote?(voteable)
+    votes.where(voteable_id: voteable).first.rate == 1
   end
 end

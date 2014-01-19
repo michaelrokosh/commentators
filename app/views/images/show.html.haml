@@ -35,9 +35,13 @@
                 - if current_user.get_vote(comment.id) == 1
                   .voted
                     %i.voted-for.fa.fa-thumbs-up.green
+                    .rating
+                      = comment.rating
                 - else 
                   .voted
                     %i.voted-against.fa.fa-thumbs-down.red
+                    .rating
+                      = comment.rating
               - else
                 .votes.make-vote
                   %i.vote-for.fa.fa-thumbs-o-up{ data: {:image_id => @image.id, :comment_id => comment.id} }
@@ -48,6 +52,8 @@
             .votes
               = link_to '', new_user_session_path, class: 'vote-for fa fa-thumbs-o-up'
               = link_to '', new_user_session_path, class: 'vote-against fa fa-thumbs-o-down'
+              .rating
+                = comment.rating
           - if user_signed_in?
             - if current_user.admin?
               = link_to 'Фтопку', image_comment_path(comment.image, comment), method: :delete

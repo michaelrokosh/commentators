@@ -16,6 +16,6 @@ class User < ActiveRecord::Base
   end
 
   def voted_for?(voteable)
-    votes.where(voteable: voteable_id).first.present?
+    votes.where(voteable_id: voteable).first.present?
   end
 end

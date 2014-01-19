@@ -34,10 +34,10 @@
               - if current_user.voted_for?(comment.id)
                 - if current_user.get_vote(comment.id) == '1'
                   .voted
-                    %i.voted-for.fa.fa-thumbs-o-up.green
+                    %i.voted-for.fa.fa-thumbs-up.green
                 - else 
                   .voted
-                    %i.voted-against.fa.fa-thumbs-o-down.red
+                    %i.voted-against.fa.fa-thumbs-down.red
               - else
                 .votes.make-vote
                   %i.vote-for.fa.fa-thumbs-o-up{ data: {:image_id => @image.id, :comment_id => comment.id} }

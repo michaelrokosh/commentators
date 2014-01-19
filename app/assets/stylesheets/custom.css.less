@@ -17,6 +17,14 @@ h1 {
   color: @urlcolor;
 }
 
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
+}
+
 header {
   h1 {
     a {
@@ -179,6 +187,15 @@ h4 {
     line-height: 50px;
     font-size: 30px;
     margin-right: 10px;
+  }
+  .voted {
+    float: right;
+    line-height: 50px;
+    .voted-for, .voted-against {
+      font-size: 25px;
+      line-height: 50px;
+      text-decoration: none;
+    }
   }
   .votes {
     float: right;

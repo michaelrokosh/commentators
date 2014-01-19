@@ -28,12 +28,15 @@ h1 {
 }
 
 header {
-  h1 {
+  .logo {
+    color: #2b587a;
+    &:before {
+      font-size: 70px;
+    }
     a {
-      margin-left: 12px !important;
-      color: #fff;
-      line-height: 50px;
-      font-size: 25px;
+      font-weight: bold;
+      font-size: 50px;
+      line-height: 100px;
     }
   }
 }
@@ -51,7 +54,7 @@ img {
 nav {
   font-size: 15px;
   letter-spacing: 2px;
-  margin: 20px 0px;
+  margin-bottom: 20px;
   ul {
     text-align: center;
     list-style: none;

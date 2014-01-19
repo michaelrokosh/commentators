@@ -29,7 +29,7 @@
               = comment.content
           - if user_signed_in?
             - if comment.user.id == current_user.id
-              .votes
+              .voted
                 .rating
                   = comment.rating
             - else

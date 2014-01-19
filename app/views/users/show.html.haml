@@ -1,9 +1,14 @@
 %h1
-  = image_tag(@user.avatar_url)
-  = @user.nickname
+  = image_tag(@user.avatar_url, class: 'img-circle')
   = @user.username
 .comments
   - @user.comments.each do |comment|
-    %h4.single-comment
-      = link_to("##{comment.image.id}", image_path(comment.image)) 
-      = comment.content
+    .single-comment
+      .image-id
+        = link_to("##{comment.image.id}", image_path(comment.image)) 
+      .bubble-comment
+        .content
+          = comment.content
+      .voted
+        .rating
+          = comment.rating

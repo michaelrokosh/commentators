@@ -178,7 +178,7 @@ h4 {
     line-height: 30px;
     font-size: 16px;
     float: left;
-    margin: 10px;
+    margin: 10px 15px;
     color: @urlcolor;
     width: 100%;
   }
@@ -205,6 +205,12 @@ h4 {
   .votes {
     float: right;
     line-height: 25px;
+    .vote-for:hover {
+      color: @green;
+    }
+    .vote-against:hover {
+      color: @red;
+    }
     .vote-for, .vote-against {
       cursor: pointer;
       font-size: 25px;

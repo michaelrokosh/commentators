@@ -33,18 +33,12 @@
             - unless comment.user.id == current_user.id
               #votes.make-vote
                 %i#vote-for.fa.fa-thumbs-o-up{ data: {:image_id => @image.id, :comment_id => comment.id} }
-                  = '+1'
                 %i#vote-against.fa.fa-thumbs-o-down{ data: {:image_id => @image.id, :comment_id => comment.id} }
-                  = '-1'
                 
           - else
             #votes
-              #vote-against
-                = link_to '-1', new_user_session_path
-              .separator
-                = '/'
-              #vote-for
-                = link_to '+1', new_user_session_path
+              = link_to '', new_user_session_path, class: 'fa fa-thumbs-o-up', id: 'vote-for'
+              = link_to '', new_user_session_path, class: 'fa fa-thumbs-o-down', id: 'vote-against'
           - if user_signed_in?
             - if current_user.admin?
               = link_to 'Фтопку', image_comment_path(comment.image, comment), method: :delete

@@ -18,4 +18,8 @@ class User < ActiveRecord::Base
   def voted_for?(voteable)
     votes.where(voteable_id: voteable).first.present?
   end
+
+  def get_vote(voteable)
+    votes.where(voteable_id: voteable).first.rate
+  end
 end

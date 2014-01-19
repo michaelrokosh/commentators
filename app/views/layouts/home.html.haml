@@ -32,7 +32,7 @@
               = @top_comment
             - if image.comments.any?
               %h4
-                = link_to(image.comments.order("rating DESC").first.user.username, user_path(image.comments.last.user))
+                = link_to(@top_comment.user.username, user_path(@top_comment.user))
       = will_paginate @recent_images
     = render 'layouts/sidebar'
      

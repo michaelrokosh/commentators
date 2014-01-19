@@ -31,9 +31,10 @@
               = comment.rating
           - if user_signed_in?
             - unless comment.user.id == current_user.id
-              .votes.make-vote
-                %i.vote-for.fa.fa-thumbs-o-up{ data: {:image_id => @image.id, :comment_id => comment.id} }
-                %i.vote-against.fa.fa-thumbs-o-down{ data: {:image_id => @image.id, :comment_id => comment.id} }
+              - unless current_user.voted_for?(comment)
+                .votes.make-vote
+                  %i.vote-for.fa.fa-thumbs-o-up{ data: {:image_id => @image.id, :comment_id => comment.id} }
+                  %i.vote-against.fa.fa-thumbs-o-down{ data: {:image_id => @image.id, :comment_id => comment.id} }
                 
           - else
             .votes

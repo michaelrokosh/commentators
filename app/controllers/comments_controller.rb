@@ -11,7 +11,11 @@ class CommentsController < ApplicationController
     @image = Image.find(params[:image_id])
     @comment = Comment.find(params[:id])
     @comment.destroy
-    redirect_to :back
+    respond_to do |format|
+      format.html { redirect_to :back}
+      format.json { head :ok }
+      format.js
+    end
   end
   
   def vote_up

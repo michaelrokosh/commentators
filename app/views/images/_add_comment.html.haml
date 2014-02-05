@@ -1,6 +1,6 @@
 %h1
   Добавить комментарий
-= form_for ([@image, @image.comments.build]) do |f|
+= form_for ([@image, @image.comments.build]), remote: true do |f|
   %p
     = f.hidden_field :image_id
     = f.text_area :content, class: 'form-control'

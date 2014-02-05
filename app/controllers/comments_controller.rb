@@ -4,7 +4,9 @@ class CommentsController < ApplicationController
   def create
     @image = Image.find(params[:image_id])
     @comment = current_user.comments.create(comment_params)
-    redirect_to @image
+    respond_to do |format|
+      format.js
+    end
   end
 
   def destroy
@@ -12,8 +14,6 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     @comment.destroy
     respond_to do |format|
-      format.html { redirect_to :back}
-      format.json { head :ok }
       format.js
     end
   end

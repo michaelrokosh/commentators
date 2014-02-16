@@ -39,6 +39,7 @@ gem 'will_paginate'
 gem "geocoder"
 gem 'omniauth'
 gem 'omniauth-vkontakte'
+gem 'jquery-ui-rails'
 
 group :production do
   gem 'rails_12factor'

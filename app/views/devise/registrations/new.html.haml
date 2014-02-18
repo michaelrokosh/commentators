@@ -1,6 +1,5 @@
 %h1
   = link_to 'Хочу войти!!!', user_omniauth_authorize_path(:vkontakte)
-/
   = content_for(:title, "Регистрация пользователя | commentators.to")
   %h1 Регистрация
   = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|

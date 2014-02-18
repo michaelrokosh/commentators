@@ -15,8 +15,7 @@
         = @top_comment.content
       %h4
         = link_to(@top_comment.user.username, user_path(@top_comment.user))
-    %h1
-      Комментарии:
+    = render 'add_comment'
     #comments
       = render @comments
   - else
@@ -24,4 +23,3 @@
       %h1
         Комметариев пока нет
 %h1
-= render 'add_comment'

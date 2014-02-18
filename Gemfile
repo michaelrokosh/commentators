@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
-ruby '2.0.0'
+ruby '2.1.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.0'
+gem 'rails', '4.0.2'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
@@ -33,13 +33,12 @@ end
 
 gem "devise"
 gem "less-rails"
-gem "therubyracer"
+gem 'therubyracer', '~> 0.12.0'
 gem 'font-awesome-rails'
 gem 'will_paginate'
 gem "geocoder"
 gem 'omniauth'
 gem 'omniauth-vkontakte'
-gem 'jquery-ui-rails'
 
 group :production do
   gem 'rails_12factor'

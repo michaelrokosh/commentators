@@ -1,6 +1,7 @@
 %h1
   = image_tag(@user.avatar_url, class: 'img-circle')
   = @user.username
+  = @user.karma
 .comments
   - @user.comments.each do |comment|
     .single-comment

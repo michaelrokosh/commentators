@@ -3,5 +3,6 @@
 = form_for ([@image, @image.comments.build]), remote: true do |f|
   %p
     = f.hidden_field :image_id
-    = f.text_area :content, class: 'form-control'
-    = f.submit 'Отправить', class: 'btn btn-default'
+    = f.text_field :content, class: 'form-control'
+    /
+      = f.submit 'Отправить', class: 'btn btn-default'

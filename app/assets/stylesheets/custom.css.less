@@ -29,14 +29,15 @@ h1 {
 
 header {
   .logo {
+    text-align: center;
     color: #2b587a;
-    &:before {
-      font-size: 70px;
-    }
     a {
-      font-weight: bold;
+      font-weight: 200;
       font-size: 50px;
       line-height: 100px;
+      &:hover {
+        text-decoration: none;
+      }
     }
   }
 }
@@ -52,7 +53,7 @@ img {
 }
 */
 nav {
-  font-size: 15px;
+  font-size: 30px;
   letter-spacing: 2px;
   margin-bottom: 20px;
   ul {
@@ -73,7 +74,7 @@ nav {
 }
 article {
   width: 100%;
-  margin: 0px 0px 40px 5px;
+  margin: 0px 0px 0px 5px;
   &:last-of-type {
     margin-bottom: 0px;
   }
@@ -83,19 +84,23 @@ article {
     width: 100%;
     overflow: hidden;
     .title {
-      float: left;
+      text-align: right;
       margin-top: 0;
-      margin-bottom: 3px;
-      font-size: 28px;
-      font-weight: bold;
-    }
-    .share {
-      float: right;
-      margin-top: 0;
-      margin-bottom: 3px;
-      img {
-        height: 20px;
+      margin-bottom: 0;
+      font-size: 30px;
+      font-weight: 200;
+      margin-bottom: 5px;
+      a:hover {
+        text-decoration: none;
       }
+    }
+  }
+  .share {
+    margin-top: 5px;
+    margin-bottom: 0px;
+    text-align: center;
+    img {
+      height: 20px;
     }
   }
   .image {
@@ -179,8 +184,27 @@ h4 {
     float: left;
     font-size: 25px;
   }
-  .username {
-    margin-left: 70px;
+  .comment-top {
+    height: 20px;
+    .username {
+      margin-left: 70px;
+    }
+    .medal {
+      position: relative;
+      top: 40px;
+      left: 20px;
+      .gold-medal, .silver-medal, .bronze-medal {
+        width: 10px;
+        height: 20px;
+        background-image: url('/medals.png');
+      }
+      .silver-medal {
+        background-position: 20px;
+      }
+      .bronze-medal {
+        background-position: 10px;
+      }
+    }
   }
   .avatar {
     float: left;
@@ -294,4 +318,24 @@ h4 {
 
 .img-circle {
   border-radius: 50%;
+}
+
+.add-comment {
+  margin-top: 20px;
+  .comment-field {
+    width: 90%;
+    float: right;
+    height: 50px;
+    font-size: 25px;
+  }
+}
+
+blockquote {
+  margin: 20px 0;
+}
+
+footer {
+  .cr {
+    margin-bottom: 20px;
+  }
 }

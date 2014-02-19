@@ -1,18 +1,16 @@
 %header
-  .logo.fa.fa-comments-o
-    = link_to 'КОММЕНТАТОРЫ', root_path 
-  .fa.fa-lightbulb-o
-  .fa.fa-group
-  .fa.fa-trophy
-  .fa.fa-quote-left
-%nav.navigation
-  - if user_signed_in?
-    %ul
-      - if current_user.admin?
-        %li= link_to 'Добавить фотку', new_image_path
-      %li= link_to current_user.username, user_path(current_user), title: "Профиль"
-      %li= link_to 'Выход', destroy_user_session_path, method: :delete, class: "fa fa-sign-out", title: "Выход"
-  - else
-    %ul
-      %li= link_to "Войти", user_omniauth_authorize_path(:vkontakte)
-      %li= link_to 'Зарегистрироваться', new_user_registration_path   
+  .logo
+    = link_to '"КОММЕНТАТОРЫ"', root_path 
+  %nav.navigation
+    - if user_signed_in?
+      %ul
+        - if current_user.admin?
+          %li= link_to '+', new_image_path
+        %li= link_to '', users_path, method: :delete, class: "fa fa-group", title: "Рейтинг"
+        %li= link_to image_tag(current_user.avatar_url, class: 'img-circle'), user_path(current_user), title: "Профиль"
+        %li= link_to '', destroy_user_session_path, method: :delete, class: "fa fa-sign-out", title: "Выход"
+    - else
+      %ul
+        %li= link_to "Войти", user_omniauth_authorize_path(:vkontakte)
+        %li= link_to 'Зарегистрироваться', new_user_registration_path  
+ 

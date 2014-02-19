@@ -40,7 +40,7 @@ class ImagesController < ApplicationController
   def show
     @image = Image.find(params[:id])
     @top_comment = @image.comments.order("rating DESC").first
-    @comments = @image.comments.all
+    @comments = @image.comments.order("created_at desc")
   end
 
   private

@@ -1,7 +1,17 @@
 = div_for(comment) do
   .single-comment
-    .username
-      = link_to comment.user.username, user_path(comment.user)
+    .comment-top
+      .username
+        = link_to comment.user.username, user_path(comment.user)
+      -if comment.id == @image.comments.order("rating desc").first.id
+        .medal
+          .gold-medal
+      -elsif comment.id == @image.comments.order("rating desc").second.id
+        .medal
+          .silver-medal
+      -elsif comment.id == @image.comments.order("rating desc").third.id
+        .medal
+          .bronze-medal
     .avatar.img-circle
       = image_tag(comment.user.avatar_url, class: 'img-circle')
     .bubble-comment

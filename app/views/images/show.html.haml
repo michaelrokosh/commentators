@@ -6,8 +6,6 @@
         - if current_user.admin?
           = link_to 'Редактировать', edit_image_path(@image)
           = link_to 'Фтопку', image_path(@image), method: :delete
-    %h4.share
-      = render 'layouts/share'
     = image_tag(@image.url, class: "resize")
   - if @image.comments.any?
     .top-comment
@@ -15,11 +13,23 @@
         = @top_comment.content
       %h4
         = link_to(@top_comment.user.username, user_path(@top_comment.user))
-    = render 'add_comment'
+    %h4.share
+      = render 'layouts/share'
+    - if user_signed_in?
+      = render 'add_comment'
+    - else
+      %h3 Присоединяйся!
     #comments
       = render @comments
   - else
     .top-comment
       %h1
         Комметариев пока нет
+    %h4.share
+      = render 'layouts/share'
+    - if user_signed_in?
+      = render 'add_comment'
+    - else
+      %h3 Присоединяйся!
+    #comments
 %h1

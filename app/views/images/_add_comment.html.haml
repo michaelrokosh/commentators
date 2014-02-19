@@ -1,8 +1,7 @@
-%h1
-  Добавить комментарий
 = form_for ([@image, @image.comments.build]), remote: true do |f|
-  %p
+  %p.add-comment
     = f.hidden_field :image_id
-    = f.text_field :content, class: 'form-control'
+    = image_tag(current_user.avatar_url, class: 'img-circle')
+    = f.text_field :content, class: 'form-control comment-field'
     /
       = f.submit 'Отправить', class: 'btn btn-default'

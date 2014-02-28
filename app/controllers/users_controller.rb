@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all 
+    @users = User.all.order('karma desc')
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @users }

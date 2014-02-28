@@ -1,0 +1,5 @@
+- @users.each do |user|
+  .single-user
+    = image_tag(user.avatar_url, class: 'img-circle')
+    = link_to user.username, user_path(user)
+    = user.karma

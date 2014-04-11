@@ -13,8 +13,7 @@
     %meta{content: "width=device-width, initial-scale=1, maximum-scale=1", name: "viewport", "user-scalable" => "no"}/
   %body
     = render 'layouts/header'
-    .row
-      .main
-        = yield
-        = render 'layouts/footer'
-      = render 'layouts/sidebar'
+    .main
+      = yield
+      = render 'layouts/footer'
+    = render 'layouts/sidebar'

@@ -10,6 +10,6 @@ jQuery ->
         $this = $(this)
         $this.html('<img src="/ajax-loader.gif" alt="Loading..." title="Loading..." />').addClass('disabled')
         $.getScript more_comments_url, ->
-          $this.text('More comments').removeClass('disabled') if $this
+          $this.text('Еще').removeClass('disabled') if $this
           loading_comments = false
       return

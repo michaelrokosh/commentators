@@ -30,7 +30,7 @@ group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
-
+gem 'bootstrap-will_paginate'
 gem "devise"
 gem "less-rails"
 gem 'therubyracer', '~> 0.12.0'

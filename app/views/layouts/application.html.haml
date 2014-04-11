@@ -11,9 +11,10 @@
       VK.init({apiId: 4119973, onlyWidgets: true});
     %script{charset: "utf-8", src: "//yandex.st/share/share.js", type: "text/javascript"}
     %meta{content: "width=device-width, initial-scale=1, maximum-scale=1", name: "viewport", "user-scalable" => "no"}/
-  %body
+  %body.col-md-12.col-xs-12
     = render 'layouts/header'
-    .main
-      = yield
-      = render 'layouts/footer'
-    = render 'layouts/sidebar'
+    .row
+      .main
+        = yield
+        = render 'layouts/footer'
+      = render 'layouts/sidebar'

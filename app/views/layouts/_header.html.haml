@@ -1,6 +1,6 @@
 %header
   .logo
-    = link_to '"КОММЕНТАТОРЫ"', root_path 
+    = link_to '©', root_path 
   %nav.navigation
     - if user_signed_in?
       %ul
@@ -12,5 +12,6 @@
     - else
       %ul
         %li= link_to "Войти", user_omniauth_authorize_path(:vkontakte)
-        %li= link_to 'Зарегистрироваться', new_user_registration_path  
+        %li= link_to '', users_path, class: "fa fa-group", title: "Население"
+        %li= link_to 'Рега', new_user_registration_path  
  

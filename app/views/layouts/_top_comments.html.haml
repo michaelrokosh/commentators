@@ -1,0 +1,52 @@
+- image.comments.each do |comment|
+  = div_for(comment) do
+    .single-comment
+      .comment-top
+        .username
+          = link_to comment.user.username, user_path(comment.user)
+        -if comment.id == image.comments.order("rating desc").first.id
+          .medal
+            .gold-medal
+        -elsif comment.id == image.comments.order("rating desc").second.id
+          .medal
+            .silver-medal
+        -elsif comment.id == image.comments.order("rating desc").third.id
+          .medal
+            .bronze-medal
+      .avatar.img-circle
+        = image_tag(comment.user.avatar_url, class: 'img-circle')
+      .bubble-comment
+        .content
+          = comment.content
+      - if user_signed_in?
+        - if comment.user.id == current_user.id
+          .voted
+            .rating
+              = comment.rating
+        - else
+          - if current_user.voted_for?(comment.id)
+            - if current_user.positive_vote?(comment.id)
+              .voted
+                %i.voted-for.fa.fa-thumbs-up.green
+                .rating
+                  = comment.rating
+            - else 
+              .voted
+                %i.voted-against.fa.fa-thumbs-down.red
+                .rating
+                  = comment.rating
+          - else
+            .votes.make-vote
+              %i.vote-for.fa.fa-thumbs-o-up{ data: {:image_id => image.id, :comment_id => comment.id} }
+              %i.vote-against.fa.fa-thumbs-o-down{ data: {:image_id => image.id, :comment_id => comment.id} }
+              .rating
+                = comment.rating
+      - else
+        .votes
+          = link_to '', new_user_session_path, class: 'vote-for fa fa-thumbs-o-up'
+          = link_to '', new_user_session_path, class: 'vote-against fa fa-thumbs-o-down'
+          .rating
+            = comment.rating
+      - if user_signed_in?
+        - if current_user.admin?
+          = link_to 'Фтопку', image_comment_path(comment.image, comment), method: :delete, remote: true

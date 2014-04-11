@@ -23,6 +23,7 @@
     = link_to "Новые", :sort_by => "recent"
     #comments
       = render @comments
+      = will_paginate(@comments)
   - else
     .top-comment
       %h1

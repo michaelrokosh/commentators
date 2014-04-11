@@ -13,6 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require application
+
+
+
 $(function() {
   $('.vote-against').click(function() {
     $button = $(this)

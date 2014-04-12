@@ -29,6 +29,7 @@ h1 {
 
 header {
   .logo {
+    margin: 20px;
     text-align: center;
     color: #2b587a;
     a {
@@ -310,9 +311,10 @@ h4 {
 }
 
 .sidebar {
-  width: 315px;
+  border: 1px solid #BEC8D3 !important;
+  width: 322px;
   float: right;
-  margin-left: 20px;
+  margin-left: 10px;
   margin-right: 5px;
   #vk_groups {
     margin-bottom: 20px;
@@ -339,18 +341,17 @@ blockquote {
   margin: 20px 0;
 }
 
-#vk_comments {
-  border: 1px solid #BEC8D3;
-}
-
 footer {
   .cr {
     margin-bottom: 20px;
   }
 }
 
-.logo {
-    margin: 20px;
+.spinning_logo {
+    z-index: -333;
+    width: 100px; 
+    height: 100px;
+    margin: 0 auto; 
     -webkit-animation-name: spin;
     -webkit-animation-duration: 4000ms;
     -webkit-animation-iteration-count: infinite;

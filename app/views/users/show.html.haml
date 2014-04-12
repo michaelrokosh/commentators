@@ -2,6 +2,8 @@
   = image_tag(@user.avatar_url, class: 'img-circle')
   = @user.username
   = @user.karma
+%h6
+  = link_to 'Редактировать профиль', edit_user_registration_path
 .comments
   - @user.comments.each do |comment|
     .single-comment

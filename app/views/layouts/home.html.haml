@@ -15,66 +15,67 @@
     = render 'layouts/header'
     .main
       - @recent_images.each do |image|
-        %article.commentator
-          .img-header
-            %h4.created_at_image
-              = image.created_at.strftime("%d/%m/%Y")
-            %h4.title
-              = link_to " #{image.comments.count}", image_path(image), class: "fa fa-comments-o"
+        - if image.created_at <= DateTime.now.to_date
+          %article.commentator
+            .img-header
+              %h4.created_at_image
+                = image.created_at.strftime("%d/%m/%Y")
+              %h4.title
+                = link_to " #{image.comments.count}", image_path(image), class: "fa fa-comments-o"
 
+              - if image.comments.any?
+                - @top_comment = image.comments.order("rating DESC").first.content
+              - else
+                - @top_comment = 'Комметариев пока нет'
+            .image
+              = link_to(image_tag(image.url, class: "resize"), image_path(image))
+            .top-comment
+              %h1
+                = @top_comment
+              - if image.comments.any?
+                %h4
+                  = link_to(image.comments.order("rating DESC").first.user.username, user_path(image.comments.order("rating DESC").first.user))
+            %h4.share
+              .yashare-auto-init{"data-yasharel10n" => "ru", "data-yasharequickservices" => "vkontakte,facebook,twitter,odnoklassniki,moimir", "data-yasharetheme" => "counter", "data-yashareType" => "big", "data-yashareLink" => "http://commentators.herokuapp.com/images/#{image.id}", "data-yashareTitle" => @top_comment}
             - if image.comments.any?
-              - @top_comment = image.comments.order("rating DESC").first.content
+              - image.comments.order("rating desc").limit(3).each do |comment|
+                - unless comment.id == image.comments.order("rating desc").first.id
+                  = div_for(comment) do
+                    .single-comment
+                      .comment-top
+                        .username
+                          = link_to comment.user.username, user_path(comment.user)
+                        -if comment.id == image.comments.order("rating desc").second.id
+                          .medal
+                            .silver-medal
+                        -elsif comment.id == image.comments.order("rating desc").third.id
+                          .medal
+                            .bronze-medal
+                      .avatar.img-circle
+                        = image_tag(comment.user.avatar_url, class: 'img-circle')
+                      .bubble-comment
+                        .content
+                          = comment.content
+                      .voted
+                        .rating
+                          = comment.rating
             - else
-              - @top_comment = 'Комметариев пока нет'
-          .image
-            = link_to(image_tag(image.url, class: "resize"), image_path(image))
-          .top-comment
-            %h1
-              = @top_comment
-            - if image.comments.any?
-              %h4
-                = link_to(image.comments.order("rating DESC").first.user.username, user_path(image.comments.order("rating DESC").first.user))
-          %h4.share
-            .yashare-auto-init{"data-yasharel10n" => "ru", "data-yasharequickservices" => "vkontakte,facebook,twitter,odnoklassniki,moimir", "data-yasharetheme" => "counter", "data-yashareType" => "big", "data-yashareLink" => "http://commentators.herokuapp.com/images/#{image.id}", "data-yashareTitle" => @top_comment}
-          - if image.comments.any?
-            - image.comments.order("rating desc").limit(3).each do |comment|
-              - unless comment.id == image.comments.order("rating desc").first.id
-                = div_for(comment) do
-                  .single-comment
-                    .comment-top
-                      .username
-                        = link_to comment.user.username, user_path(comment.user)
-                      -if comment.id == image.comments.order("rating desc").second.id
-                        .medal
-                          .silver-medal
-                      -elsif comment.id == image.comments.order("rating desc").third.id
-                        .medal
-                          .bronze-medal
-                    .avatar.img-circle
-                      = image_tag(comment.user.avatar_url, class: 'img-circle')
-                    .bubble-comment
-                      .content
-                        = comment.content
-                    .voted
-                      .rating
-                        = comment.rating
-          - else
-            .single-comment
-              .comment-top
-                .username
-                  %a
-                    Местный тролль
-                  /
-                    .medal
-                      .gold-medal
-              .avatar.img-circle
-                = image_tag('http://0.media.collegehumor.cvcdn.com/55/99/ccff67e6016bcbc8b7f892b6abb52d33.jpg', class: 'img-circle')
-              .bubble-comment
-                .content
-                  = "Здесь мог бы быть твой комментарий! В параллельной вселенной)))00!!"
-              .voted
-                .rating
-                  = '-∞'
+              .single-comment
+                .comment-top
+                  .username
+                    %a
+                      Местный тролль
+                    /
+                      .medal
+                        .gold-medal
+                .avatar.img-circle
+                  = image_tag('http://0.media.collegehumor.cvcdn.com/55/99/ccff67e6016bcbc8b7f892b6abb52d33.jpg', class: 'img-circle')
+                .bubble-comment
+                  .content
+                    = "Здесь мог бы быть твой комментарий! В параллельной вселенной)))00!!"
+                .voted
+                  .rating
+                    = '-∞'
         %hr
         /
           %blockquote

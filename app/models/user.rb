@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :images
   has_many :votes, as: :voter
+  before_destroy :clear_comments, dependent: :destroy
 
   def self.find_for_vkontakte_oauth access_token
     if user = User.where(url: access_token.info.urls.Vkontakte).first
@@ -21,5 +22,10 @@ class User < ActiveRecord::Base
 
   def positive_vote?(voteable)
     votes.where(voteable_id: voteable).first.rate == 1
+  end
+
+  protected
+  def clear_comments
+    comments.clear
   end
 end

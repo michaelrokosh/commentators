@@ -19,8 +19,12 @@
       = render 'add_comment'
     - else
       %h3 Присоединяйся!
-    = link_to "Лучшие", :sort_by => "popular"
-    = link_to "Новые", :sort_by => "recent"
+    .sort_comments
+      = 'Сортировать по'
+      - if params[:sort_by] == 'popular'
+        = link_to "новизне", :sort_by => "recent"
+      - else
+      = link_to "популярности", :sort_by => "popular"
     #comments
       = render @comments
     #with-button

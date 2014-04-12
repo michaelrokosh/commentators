@@ -84,11 +84,13 @@ article {
   .img-header {
     width: 100%;
     overflow: hidden;
+    .created_at_image {
+      float: left;
+    }
     .title {
       text-align: right;
-      margin-top: 0;
       margin-bottom: 9px;
-      font-size: 30px;
+      font-size: 20px;
       font-weight: 200;
       a:hover {
         text-decoration: none;
@@ -149,27 +151,28 @@ h4 {
   cursor: default;
   a, span {
     padding: 0.2em 0.3em;
-    color: @nightblue !important;
+    /* color: @nightblue !important; */
   }
   .disabled {
     color: #aaaaaa;
   }
   .current {
     font-style: normal;
-    font-weight: bold;
-    background-color: @nightblue;
+    /*font-weight: bold;*/
+    /* background-color: @nightblue; */
     display: inline-block;
     width: 1.4em;
     height: 1.4em;
-    -moz-border-radius: 1em;
+    color: #2b587a;
+    /*-moz-border-radius: 1em;
     -webkit-border-radius: 1em;
     border-radius: 1em;
     color: #fff;
-    font-size: 20px;
+    */
+    font-size: 30px;
   }
   a {
     text-decoration: none;
-    color: black;
     font-size: 20px;
     &:hover, &:focus {
       text-decoration: underline;
@@ -390,4 +393,8 @@ footer {
 #load_more_comments {
   display: none;
   margin-bottom: 10px; /* Some margin to separate it from the footer */
+}
+
+.sort_comments {
+  text-align: right;
 }

@@ -38,27 +38,34 @@
             %h4.share
               .yashare-auto-init{"data-yasharel10n" => "ru", "data-yasharequickservices" => "vkontakte,facebook,twitter,odnoklassniki,moimir", "data-yasharetheme" => "counter", "data-yashareType" => "big", "data-yashareLink" => "http://commentators.herokuapp.com/images/#{image.id}", "data-yashareTitle" => @top_comment}
             - if image.comments.any?
-              - image.comments.order("rating desc, created_at desc").limit(3).each do |comment|
-                - unless comment.id == image.comments.order("rating desc").first.id
-                  = div_for(comment) do
-                    .single-comment
-                      .comment-top
-                        .username
-                          = link_to comment.user.username, user_path(comment.user)
-                        -if comment.id == image.comments.order("rating desc").second.id
-                          .medal
-                            .silver-medal
-                        -elsif comment.id == image.comments.order("rating desc").third.id
-                          .medal
-                            .bronze-medal
-                      .avatar.img-circle
-                        = image_tag(comment.user.avatar_url, class: 'img-circle')
-                      .bubble-comment
-                        .content
-                          = comment.content
-                      .voted
-                        .rating
-                          = comment.rating
+              .single-comment
+                .comment-top
+                  .username
+                    = link_to image.comments.order("rating desc").second.user.username, user_path(image.comments.order("rating desc").second.user)
+                  .medal
+                    .silver-medal
+                .avatar.img-circle
+                  = image_tag(image.comments.order("rating desc").second.user.avatar_url, class: 'img-circle')
+                .bubble-comment
+                  .content
+                    = image.comments.order("rating desc").second.content
+                .voted
+                  .rating
+                    = image.comments.order("rating desc").second.rating
+              .single-comment
+                .comment-top
+                  .username
+                    = link_to image.comments.order("rating desc").third.user.username, user_path(image.comments.order("rating desc").third.user)
+                  .medal
+                    .bronze-medal
+                .avatar.img-circle
+                  = image_tag(image.comments.order("rating desc").third.user.avatar_url, class: 'img-circle')
+                .bubble-comment
+                  .content
+                    = image.comments.order("rating desc").third.content
+                .voted
+                  .rating
+                    = image.comments.order("rating desc").third.rating
             - else
               .single-comment
                 .comment-top

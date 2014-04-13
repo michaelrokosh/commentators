@@ -43,7 +43,7 @@ class ImagesController < ApplicationController
     if params[:sort_by] == 'popular'
       @comments = @image.comments.paginate(page: params[:page], per_page: 5).order('rating DESC')
     else
-      @comments = @image.comments.paginate(page: params[:page], per_page: 5).order('created_at DESC')
+      @comments = @image.comments.paginate(page: params[:page], per_page: 5 ).order('created_at DESC')
     end
 
     respond_to do |format|

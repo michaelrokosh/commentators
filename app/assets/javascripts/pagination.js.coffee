@@ -8,7 +8,7 @@ jQuery ->
         loading_comments = true
         more_comments_url = $('.pagination .next_page a').attr('href')
         $this = $(this)
-        $this.html('<img src="/ajax-loader.gif" alt="Loading..." title="Loading..." />').addClass('disabled')
+        $this.html('<div class="spinning_logo"><a href="/" id="spin">©</a></div>').addClass('disabled')
         $.getScript more_comments_url, ->
           $this.text('Еще').removeClass('disabled') if $this
           loading_comments = false

@@ -1,5 +1,7 @@
 %article.commentator
   .img-header
+    %h4.created_at_image
+      = @image.created_at.strftime("%d/%m/%Y")
     %h4.title
       = "##{@image.id}"
       - if user_signed_in?

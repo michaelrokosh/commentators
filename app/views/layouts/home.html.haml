@@ -21,8 +21,8 @@
               %h4.created_at_image
                 = image.created_at.strftime("%d/%m/%Y")
               %h4.title
-                = link_to " #{image.comments.count}", image_path(image), class: "fa fa-comments-o"
-
+                = link_to "", image_path(image), class: "fa fa-comments-o"
+                = image.comments.count
               - if image.comments.any?
                 - @top_comment = image.comments.order("rating DESC").first.content
               - else

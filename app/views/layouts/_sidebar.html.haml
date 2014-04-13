@@ -2,7 +2,12 @@
   #vk_groups
   :javascript
     VK.Widgets.Group("vk_groups", {mode: 1, width: "320", height: "400", color1: 'FFFFFF', color2: '2B587A', color3: '5B7FA6'}, 44170325);
-  #vk_comments
-  :javascript
-    VK.Widgets.Comments("vk_comments", {limit: 10, width: "320", attach: "graffiti,photo,video,audio"}, 33);
-  
+
+  -if params[:controller] == 'images' && params[:action] == 'show'
+    #vk_comments
+    :javascript
+      VK.Widgets.Comments("vk_comments", {limit: 10, width: "320", attach: "graffiti,photo,video,audio"});
+  -else
+    #vk_comments
+    :javascript
+      VK.Widgets.Comments("vk_comments", {limit: 10, width: "320", attach: "graffiti,photo,video,audio"}, 33);

@@ -6,12 +6,25 @@
 body {
   width: 1000px;
   margin: 0 auto;
+  background: #dedede url('http://subtlepatterns.com/patterns/sativa.png');
 }
 
 a {
   color: @urlcolor;
   &:hover {
     color: @urlcolor;
+  }
+}
+
+.commentators {
+  h1 {
+    text-align: center;
+margin: 200px auto;
+font-family: "League-Gothic", Courier;
+font-size: 100px;
+text-transform: uppercase;
+color: #fff;
+text-shadow: 5px 5px 0 #ffd217, 10px 10px 0 #5ac7ff, 15px 15px 0 #ffd217, 20px 20px 0 #5ac7ff;
   }
 }
 
@@ -28,10 +41,20 @@ h1 {
 }
 
 header {
+  overflow: hidden;
   .logo {
+    width: 60%;
+    float: left;
     margin: 20px;
-    text-align: center;
+    /* text-align: center; */
     color: #2b587a;
+    span {
+      font-size: 50px;
+      margin-left: 20px;
+    }
+    img {
+      width: 80px;
+    }
     a {
       font-weight: 200;
       font-size: 70px;
@@ -41,11 +64,49 @@ header {
       }
     }
   }
+  ul.menu {
+    width: auto;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background: #5b7ca2 url(/img/menu.png) repeat-x;
+    height: 40px;
+    line-height: 42px;
+    text-transform: uppercase;
+    font-size: 10px;
+    text-shadow: -1px -1px 0 #475e78;
+    color: #fff;
+    zoom: 1;
+    border: 0;
+    overflow: hidden;
+    li {
+      float: left;
+      border: 0;
+      margin: 0;
+      padding: 0;
+      a {
+        float: left;
+        display: block;
+        height: 40px;
+        color: #fff;
+        text-decoration: none;
+        padding: 0 18px 0 16px;
+        background: url(/img/menu.png) no-repeat 100% -46px;
+      }
+    }
+  }
+}
+
+.wrapper { 
+  background-color: #fff;
+  padding-top: 10px;
+  overflow: hidden;
+  padding: 10px;
 }
 
 .main {
   width: 655px;
-  margin: 0 0 0 5px;
+  margin: 0;
   float: left;
 }
 /*
@@ -53,20 +114,23 @@ img {
   max-width: 100% !important;
 }
 */
-nav {
-  font-size: 30px;
+.navigation {
+  font-size: 20px;
   letter-spacing: 2px;
-  margin-bottom: 20px;
+  margin: 20px;
+  line-height: 100px;
   ul {
     text-align: center;
     list-style: none;
     padding-left: 0px;
-    width: 594px;
     margin: 0 auto;
     li {
       padding: 4px 0px;
       display: inline;
       margin-right: 15px;
+      a {
+        text-decoration: none;
+      }
         &:last-of-type {
           margin: 0;
         }
@@ -82,7 +146,7 @@ article {
 
 .commentator {
   border: 1px solid #BEC8D3;
-  padding: 9px 9px 9px 9px;
+  padding: 0px 9px 9px 9px;
   .img-header {
     width: 100%;
     overflow: visible;
@@ -318,10 +382,10 @@ div.pagination {
 
 .sidebar {
   border: 1px solid #BEC8D3 !important;
-  width: 322px;
+  width: 315px;
   float: right;
   margin-left: 10px;
-  margin-right: 5px;
+  margin-right: 0;
   #vk_groups {
     margin-bottom: 20px;
   }

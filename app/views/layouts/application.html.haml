@@ -12,7 +12,8 @@
     %script{charset: "utf-8", src: "//yandex.st/share/share.js", type: "text/javascript"}
   %body
     = render 'layouts/header'
-    .main
-      = yield
-      = render 'layouts/footer'
-    = render 'layouts/sidebar'
+    .wrapper
+      .main
+        = yield
+        = render 'layouts/footer'
+      = render 'layouts/sidebar'

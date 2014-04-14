@@ -37,7 +37,7 @@
                   = link_to(image.comments.order("rating DESC").first.user.username, user_path(image.comments.order("rating DESC").first.user))
             %h4.share
               .yashare-auto-init{"data-yasharel10n" => "ru", "data-yasharequickservices" => "vkontakte,facebook,twitter,odnoklassniki,moimir", "data-yasharetheme" => "counter", "data-yashareType" => "big", "data-yashareLink" => "http://commentators.herokuapp.com/images/#{image.id}", "data-yashareTitle" => @top_comment}
-            - if image.comments.any?
+            - if image.comments.size > 1
               .single-comment
                 .comment-top
                   .username
@@ -52,7 +52,7 @@
                 .voted
                   .rating
                     = image.comments.order("rating desc").second.rating
-              -if image.comments.size > 1
+              -if image.comments.size > 2
                 .single-comment
                   .comment-top
                     .username

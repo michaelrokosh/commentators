@@ -104,7 +104,7 @@
               %p.cite
                 %cite
                   by Albert Einstein
-        = will_paginate @recent_images, :previous_label => 'Туда', :next_label => 'Сюда'
+        = will_paginate(@recent_images, :previous_label => 'Туда', :next_label => 'Сюда', renderer: WillPaginate::ActionView::LinkRenderer)
         = render 'layouts/footer'
       = render 'layouts/sidebar'
      

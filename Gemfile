@@ -37,7 +37,7 @@ gem 'font-awesome-rails'
 gem "geocoder"
 gem 'omniauth'
 gem 'omniauth-vkontakte'
-gem 'will_paginate'
+gem 'bootstrap-will_paginate'
 group :development, :test do 
 	gem 'rspec-rails'
 	gem 'factory_girl_rails'

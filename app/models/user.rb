@@ -7,6 +7,11 @@ class User < ActiveRecord::Base
   has_many :images
   has_many :votes, as: :voter
   before_destroy :clear_comments, dependent: :destroy
+  VALID_USERNAME_REGEX = /\A[a-zA-Zа-яА-Я0-9 ]+\Z/ 
+  validates :username, presence: true, 
+                      format: { with: VALID_USERNAME_REGEX, message: "должно состоять только из символов и цифр" },
+                      uniqueness: { case_sensitive: true, message: "занато" },
+                      length: { minimum: 3, maximum: 15, message: "должно быть в пределе 3-15 символов" }
 
   # Validate the attached image is image/jpg, image/png, etc
 

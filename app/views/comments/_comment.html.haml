@@ -42,8 +42,8 @@
               = comment.rating
     - else
       .votes
-        = link_to '', new_user_session_path, class: 'vote-for fa fa-thumbs-o-up'
-        = link_to '', new_user_session_path, class: 'vote-against fa fa-thumbs-o-down'
+        = link_to '', user_omniauth_authorize_path(:vkontakte), class: 'vote-for fa fa-thumbs-o-up'
+        = link_to '', user_omniauth_authorize_path(:vkontakte), class: 'vote-against fa fa-thumbs-o-down'
         .rating
           = comment.rating
     - if user_signed_in?

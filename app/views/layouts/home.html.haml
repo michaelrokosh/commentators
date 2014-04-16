@@ -40,7 +40,7 @@
                 - else
                   - @top_comment = 'Комметариев пока нет'
               .image
-                = link_to(image_tag(image.url, class: "resize"), image_path(image))
+                = link_to(image_tag(image.image.url(:medium), class: "resize"), image_path(image))
               .top-comment
                 %h1
                   = @top_comment

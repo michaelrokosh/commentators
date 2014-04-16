@@ -1,5 +1,6 @@
 = form_for @image do |f|
-  %p
-    = f.file_field :image
-  %p
-    = f.submit 'Создать' 
+  .upload-image
+    %p
+      = f.file_field :image
+    %p
+      = f.submit 'Добавить', class: 'btn btn-primary btn-sm'

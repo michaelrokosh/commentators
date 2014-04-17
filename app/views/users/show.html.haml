@@ -13,8 +13,6 @@
       .thumb-image.col-md-4.col-xs-4
         = link_to(image_tag(comment.image.image.url(:square)), image_path(comment.image))
       .single-comment.col-md-8.col-xs-8
-        .image-id
-          = link_to("##{comment.image.id}", image_path(comment.image)) 
         .bubble-comment.bubble-comment-user
           .content
             = comment.content

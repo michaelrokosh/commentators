@@ -96,13 +96,6 @@
                   .rating
                     = '-∞'
           %hr
-          /
-            %blockquote
-              %p
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas metus est, egestas vel aliquet at, pellentesque nec lorem. Pellentesque molestie bibendum eros, eu suscipit nisi volutpat fringilla
-              %p.cite
-                %cite
-                  by Albert Einstein
         = will_paginate(@recent_images, :previous_label => 'Туда', :next_label => 'Сюда', renderer: WillPaginate::ActionView::LinkRenderer)
         = render 'layouts/footer'
       = render 'layouts/sidebar'

@@ -1,14 +1,17 @@
-%h1
-  = image_tag(@user.avatar_url, class: 'img-circle')
-  = @user.username
-  = @user.karma
+%table.table
+  %tr.user-show
+    %td.single-user
+      = image_tag(@user.avatar_url, class: 'img-circle')
+      = @user.username
+    %td
+      = @user.karma
 %h6
   = link_to 'Редактировать профиль', edit_user_registration_path
 .user-comments
   - @user.comments.each do |comment|
     .row
       .thumb-image.col-md-4.col-xs-4
-        = image_tag(comment.image.image.url(:square))
+        = link_to(image_tag(comment.image.image.url(:square)), image_path(comment.image))
       .single-comment.col-md-8.col-xs-8
         .image-id
           = link_to("##{comment.image.id}", image_path(comment.image)) 

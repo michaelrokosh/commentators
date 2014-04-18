@@ -9,6 +9,11 @@ class Image < ActiveRecord::Base
       medium: '600x600>'
     }
 
+  def godno
+    self.godnota = true
+    self.created_at = Time.now
+    self.save
+  end
   # Validate the attached image is image/jpg, image/png, etc
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 	protected

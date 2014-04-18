@@ -15,6 +15,20 @@
 //= require application
 //= require pagination
 
+$(function() {
+  $('.godnota').click(function() {
+    $button = $(this)
+    if ( $( ".godnota" ).hasClass( "dniwe" ) ) {
+      $.ajax({
+        type: "POST",
+        url: '/images/' + $button.attr('data-image-id') + '/godnota',
+        success: function() {
+          $(".godnota").removeClass('dniwe').addClass('godno').html('OK'); ;
+        }
+      })
+    }
+  });
+});
 
 
 $(function() {

@@ -37,6 +37,14 @@ class ImagesController < ApplicationController
     end
   end
 
+  def godnota
+    @image = Image.find(params[:id])
+    if current_user.admin?
+      @image.godno
+      redirect_to :back
+    end
+  end
+
   def show
     @image = Image.find(params[:id])
     @top_comment = @image.comments.order("rating DESC").first
@@ -51,7 +59,6 @@ class ImagesController < ApplicationController
       format.js
     end
   end
-
 
   private
 

@@ -1,4 +1,24 @@
-$('#user-comments').append('<%= j render @user_comments %>');
+$('#user-comments').append('
+<%- @user_comments.each do |comment| %>
+	<div class="row">
+	  <div class="thumb-image col-md-4 col-xs-4">
+	    <%= link_to(image_tag(comment.image.image.url(:square)), image_path(comment.image)) %>
+	  </div>
+	  <div class="single-comment no-left-padding col-md-8 col-xs-8">
+	    <div class="bubble-comment bubble-comment-user">
+	      <div class="content">
+	        <%= comment.content %>
+	      </div>
+	    </div>
+	    <div class="voted">
+	      <div class="rating">
+	        <%= comment.rating %>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+<%- end %>
+');
 <% if @user_comments.next_page %>
     $('.pagination').replaceWith('<%= j will_paginate @user_comments %>');
     $('.pagination').hide();

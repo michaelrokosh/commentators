@@ -1,0 +1,32 @@
+.single-comment.micro-blog
+  .comment-top
+    .username
+      = link_to 'Mike', '/'
+    .medal
+      .gold-medal
+  .avatar.img-circle
+    = image_tag('http://cs413130.vk.me/v413130107/29c2/aE5jrGzYH_E.jpg', class: 'img-circle')
+  .bubble-comment
+    .content
+      Bla bla bla
+- @comments.each do |comment|
+  %article.commentator
+    .img-header
+      %h4.created_at_image
+        = comment.image.created_at.strftime("%d/%m/%Y")
+      %h4.title
+        = link_to "", image_path(comment.image), class: "fa fa-comments-o"
+        = comment.image.comments.count
+        - @top_comment = comment.image.comments.order("rating DESC").first.content
+    .image
+      = link_to(image_tag(comment.image.image.url(:medium), class: "resize"), image_path(comment.image))
+    .top-comment
+      %h1
+        = @top_comment
+      - if comment.image.comments.any?
+        %h4
+          = link_to(comment.image.comments.order("rating DESC").first.user.username, user_path(comment.image.comments.order("rating DESC").first.user))
+    %h4.share
+      .yashare-auto-init{"data-yasharel10n" => "ru", "data-yasharequickservices" => "vkontakte,facebook,twitter,odnoklassniki,moimir", "data-yasharetheme" => "counter", "data-yashareType" => "big", "data-yashareLink" => "http://commentators.herokuapp.com/images/#{comment.image.id}", "data-yashareTitle" => @top_comment}
+  %hr
+= will_paginate(@comments, :previous_label => 'Туда', :next_label => 'Сюда', renderer: WillPaginate::ActionView::LinkRenderer)

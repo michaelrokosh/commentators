@@ -6,4 +6,8 @@ class HomeController < ApplicationController
   def dniwe
     @recent_images = Image.where(godnota: false).paginate(:order => "created_at DESC", :page => params[:page], :per_page => 2)
   end
+
+  def best
+    @comments = Comment.all.paginate(:order => "rating DESC", :page => params[:page], :per_page => 2)
+  end
 end

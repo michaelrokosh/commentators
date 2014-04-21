@@ -15,5 +15,6 @@ Commentators::Application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks", :registrations => "registrations" }
   resources :users
   get '/dniwe', to: 'home#dniwe', as: :dniwe
+  get '/best', to: 'home#best', as: :best
   root 'home#index'
 end

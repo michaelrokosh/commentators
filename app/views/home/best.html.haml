@@ -17,7 +17,7 @@
       %h4.title
         = link_to "", image_path(comment.image), class: "fa fa-comments-o"
         = comment.image.comments.count
-        - @top_comment = comment.image.comments.order("rating DESC").first.content
+        - @top_comment = comment.content
     .image
       = link_to(image_tag(comment.image.image.url(:medium), class: "resize"), image_path(comment.image))
     .top-comment

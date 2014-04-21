@@ -8,18 +8,8 @@
 %h6
   = link_to 'Редактировать профиль', edit_user_registration_path
 #user-comments
-  - @user_comments.each do |comment|
-    .row
-      .thumb-image.col-md-4.col-xs-4
-        = link_to(image_tag(comment.image.image.url(:square)), image_path(comment.image))
-      .single-comment.no-left-padding.col-md-8.col-xs-8
-        .bubble-comment.bubble-comment-user
-          .content
-            = comment.content
-        .voted
-          .rating
-            = comment.rating
-  #with-button
-    = will_paginate(@user_comments)
-  - if @user_comments.next_page
-    #load_more_comments.btn.btn-primary.btn-lg Еще
+  = render partial: 'comments/user_comments', collection: @comments, as: :comment
+#with-button
+  = will_paginate(@comments)
+- if @comments.next_page
+  #load_more_comments.btn.btn-primary.btn-lg Еще

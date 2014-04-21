@@ -2,9 +2,9 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     if params[:sort_by] == 'popular'
-      @user_comments = @user.comments.paginate(page: params[:page], per_page: 5).order('rating DESC, created_at ASC')
+      @comments = @user.comments.paginate(page: params[:page], per_page: 5).order('rating DESC, created_at ASC')
     else
-      @user_comments = @user.comments.paginate(page: params[:page], per_page: 5 ).order('created_at DESC')
+      @comments = @user.comments.paginate(page: params[:page], per_page: 5 ).order('created_at DESC')
     end
 
     respond_to do |format|

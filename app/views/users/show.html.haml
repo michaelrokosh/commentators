@@ -1,15 +1,16 @@
-%table.table.user-show
-  %tr
-    %td.single-user
-      = image_tag(@user.avatar_url, class: 'img-circle')
-      = @user.username
-    %td
-      = @user.karma
-%h6
-  = link_to 'Редактировать профиль', edit_user_registration_path
-#user-comments
-  = render partial: 'comments/user_comments', collection: @comments, as: :comment
-#with-button
-  = will_paginate(@comments)
-- if @comments.next_page
-  #load_more_comments.btn.btn-primary.btn-lg Еще
+.user-page
+  %table.table.user-show
+    %tr
+      %td.single-user
+        = image_tag(@user.avatar_url, class: 'img-circle')
+        = @user.username
+      %td
+        = @user.karma
+  %h6
+    = link_to 'Редактировать профиль', edit_user_registration_path
+  #user-comments
+    = render partial: 'comments/user_comments', collection: @comments, as: :comment
+  #with-button
+    = will_paginate(@comments)
+  - if @comments.next_page
+    #load_more_comments.btn.btn-primary.btn-lg Еще

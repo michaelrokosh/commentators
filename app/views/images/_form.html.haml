@@ -1,4 +1,14 @@
+.single-comment.micro-blog
+  .comment-top
+    .username
+      = link_to 'Местный тролль', '/'
+  .avatar
+    = image_tag('/trollface.png', class: 'img-circle')
+  .bubble-comment
+    .content
+      Загружать можно только картинки или gif-анимацию до 1МБ, которые не носят порнографический характер.
 - if user_signed_in?
+  = @image.errors.full_messages.first if @image.errors.any?
   = form_for @image do |f|
     .upload-image
       %p

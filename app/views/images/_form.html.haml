@@ -11,7 +11,8 @@
 
   -if @image.errors.any? 
     - @image.errors.each do |attribute, error|
-      %h1 = error
+      %h1 
+        = error
   = form_for @image do |f|
     .upload-image
       %p

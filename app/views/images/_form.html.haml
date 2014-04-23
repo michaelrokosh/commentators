@@ -1,6 +1,9 @@
-= form_for @image do |f|
-  .upload-image
-    %p
-      = f.file_field :image
-    %p
-      = f.submit 'Добавить', class: 'btn btn-primary btn-sm'
+- if user_signed_in?
+  = form_for @image do |f|
+    .upload-image
+      %p
+        = f.file_field :image
+      %p
+        = f.submit 'Добавить', class: 'btn btn-primary btn-sm'
+- else
+  %h1.center Сначала нужно войти

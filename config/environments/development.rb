@@ -6,10 +6,11 @@ Commentators::Application.configure do
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
 
+  Paperclip.options[:command_path] = "/usr/local/bin/"
   config.paperclip_defaults = {
     :storage => :s3,
     :s3_credentials => {
-      :bucket => ENV['S3_BUCKET_NAME'],
+      :bucket => ENV['AWS_bucket'],
       :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
       :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
     }

@@ -1,14 +1,12 @@
 .single-comment.micro-blog
   .comment-top
     .username
-      = link_to 'Mike', '/'
-    .medal
-      .gold-medal
-  .avatar.img-circle
-    = image_tag('http://cs413130.vk.me/v413130107/29c2/aE5jrGzYH_E.jpg', class: 'img-circle')
+      = link_to 'Местный тролль', '/'
+  .avatar
+    = image_tag('/trollface.png', class: 'img-circle')
   .bubble-comment
     .content
-      Bla bla bla
+      Все картинки попадают в Днище. Отсюда админы выбирают лучшее. Не упусти шанс оставить первый комментарий!
 - @recent_images.each do |image|
   %article.commentator
     .img-header

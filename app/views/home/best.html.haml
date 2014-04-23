@@ -1,14 +1,12 @@
 .single-comment.micro-blog
   .comment-top
     .username
-      = link_to 'Mike', '/'
-    .medal
-      .gold-medal
-  .avatar.img-circle
-    = image_tag('http://cs413130.vk.me/v413130107/29c2/aE5jrGzYH_E.jpg', class: 'img-circle')
+      = link_to 'Местный тролль', '/'
+  .avatar
+    = image_tag('/trollface.png', class: 'img-circle')
   .bubble-comment
     .content
-      Bla bla bla
+      Если ты видишь свое имя на первых страницах топа - делай скриншот и вешай на стену. Ты многого добился в этой жизни!
 - @comments.each do |comment|
   %article.commentator
     .img-header

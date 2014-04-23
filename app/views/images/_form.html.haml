@@ -9,7 +9,7 @@
       Загружать возможно только картинки или gif-анимацию до 1МБ.
 - if user_signed_in?
   -if @image.errors.any? 
-    - @image.errors[:image]
+    = @image.errors[:image]
   = form_for @image do |f|
     .upload-image
       %p

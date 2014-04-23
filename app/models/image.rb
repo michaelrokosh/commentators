@@ -10,6 +10,9 @@ class Image < ActiveRecord::Base
       medium: '600x600>'
     }
 
+  validates_attachment_size :image, :less_than => 1.megabytes, 
+                          :unless => Proc.new {|m| m[:image].nil?}
+
   def godno
     self.godnota = true
     self.created_at = Time.now

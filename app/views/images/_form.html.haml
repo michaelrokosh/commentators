@@ -8,7 +8,7 @@
     .content
       Загружать можно только картинки или gif-анимацию до 1МБ, которые не носят порнографический характер.
 - if user_signed_in?
-  = @image.errors.get.first if @image.errors.any? 
+  = @image.errors.first if @image.errors.any? 
   = form_for @image do |f|
     .upload-image
       %p

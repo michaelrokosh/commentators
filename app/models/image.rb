@@ -10,16 +10,16 @@ class Image < ActiveRecord::Base
       medium: '600x600>'
     }
 
-  validates_attachment_size :image, :less_than => 1.megabytes, 
-                          :unless => Proc.new {|m| m[:image].nil?}
+  validates_attachment_size :image, :less_than => 1.megabytes
 
+  # Validate the attached image is image/jpg, image/png, etc
+  validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
   def godno
     self.godnota = true
     self.created_at = Time.now
     self.save
   end
-  # Validate the attached image is image/jpg, image/png, etc
-  validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
+  
 	protected
 	def clear_comments
 		comments.clear

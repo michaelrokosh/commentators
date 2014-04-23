@@ -2,13 +2,12 @@
   .img-header
     %h4.created_at_image
       = @image.created_at.strftime("%d/%m/%Y")
+    %h4.title
       Добавил: 
       - if @image.user != nil
         = link_to @image.user.username, user_path(@image.user)
       - else
-        Заблудшая душа 
-    %h4.title
-      = "##{@image.id}"
+        Повелитель удаленных душ
       - if user_signed_in?
         - if current_user.admin?
           - unless @image.godnota?

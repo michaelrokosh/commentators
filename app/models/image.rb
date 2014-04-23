@@ -1,6 +1,7 @@
 class Image < ActiveRecord::Base
   scope :recent, where("created_at <= ?", Time.now)
 	has_many :comments, dependent: :destroy
+  belongs_to :user
 	before_destroy :clear_comments
 
   has_attached_file :image, styles: {

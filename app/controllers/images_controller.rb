@@ -48,7 +48,7 @@ class ImagesController < ApplicationController
 
   def show
     @image = Image.find(params[:id])
-    @top_comment = @image.comments.order("rating DESC").first
+    @top_comment = @image.comments.order("rating DESC, created_at asc").first
     if params[:sort_by] == 'popular'
       @comments = @image.comments.paginate(page: params[:page], per_page: 5).order('rating DESC, created_at ASC')
     else

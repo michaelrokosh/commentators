@@ -3,13 +3,13 @@
     .comment-top
       .username
         = link_to comment.user.username, user_path(comment.user)
-      -if comment.id == @image.comments.order("rating desc, created_at DESC").first.id
+      -if comment.id == @image.comments.order("rating desc, created_at ASC").first.id
         .medal
           .gold-medal
-      -elsif comment.id == @image.comments.order("rating desc, created_at DESC").second.id
+      -elsif comment.id == @image.comments.order("rating desc, created_at ASC").second.id
         .medal
           .silver-medal
-      -elsif comment.id == @image.comments.order("rating desc, created_at DESC").third.id
+      -elsif comment.id == @image.comments.order("rating desc, created_at ASC").third.id
         .medal
           .bronze-medal
     .avatar.img-circle

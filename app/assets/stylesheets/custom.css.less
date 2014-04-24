@@ -109,45 +109,83 @@ img {
   max-width: 100% !important;
 }
 */
-.navigation {
-  position: relative;
-  padding: 10px;
-  font-size: 20px;
-  letter-spacing: 2px;
-  margin-bottom: 4px;
-  line-height: 80px;
-  #enter {
-    position: absolute;
-    top: 10px;
-    right: 70px;
-    color: #2b587a;
+#profile {
+  overflow: hidden;
+  margin-bottom: 10px;
+  #side-menu {
+    float: left;
+    padding: 10px;
+    border: 1px solid #BEC8D3;
+    width: 235px;
+    height: 95px;
+    ul {
+      list-style: none;
+      text-align: center;
+      margin-bottom: 0;
+      padding-left: 0;
+      margin-top: 5px;
+    }
   }
-  ul {
-    text-align: center;
-    list-style: none;
-    padding-left: 0px;
-    margin: 0 auto;
-    li {
-      padding: 4px 0px;
-      display: inline;
-      margin-right: 15px;
-      a {
-        text-decoration: none;
-      }
+  #profile-sign-in {
+    border: 1px solid #BEC8D3;
+    position: relative;
+    padding: 10px;
+    font-size: 20px;
+    letter-spacing: 2px;
+    line-height: 80px;
+    height: 127px;
+    img {
+      display: block;
+      margin: 0 auto;
+    }
+    #gate {
+      padding: 10px 10px 10px 10px;
+      width: 100px;
+      display: block;
+      margin: 0 auto;
+    }
+    #profile-enter {
+      position: absolute;
+      top: 10px;
+      right: 70px;
+      color: #2b587a;
+    }
+  }
+  .navigation {
+    border: 1px solid #BEC8D3;
+    position: relative;
+    padding: 10px;
+    font-size: 20px;
+    letter-spacing: 2px;
+    line-height: 80px;
+    /* new */
+    width: 70px;
+    float: right;
+    #profile-karma {
+      text-align: center;
+      margin-bottom: 0;
+    }
+    img {
+      display: block;
+      margin: 0 auto;
+    }
+    ul {
+      text-align: center;
+      list-style: none;
+      padding-left: 0px;
+      margin: 0 auto;
+      li {
+        padding: 4px 0px;
+        display: inline;
+        margin-right: 15px;
+        a {
+          text-decoration: none;
+        }
         &:last-of-type {
           margin: 0;
         }
-    }
-  }
-  #gate {
-    padding: 10px 10px 10px 10px;
-    width: 100px;
-    display: block;
-    margin: 0 auto;
-  }
-  #gate-info {
-    color: #2b587a;
-    text-align: center;
+      }
+    } 
   }
 }
 article {
@@ -498,11 +536,6 @@ footer {
   border: 1px solid #BEC8D3;
   padding: 10px;
   margin-bottom: 10px !important;
-}
-
-#profile {
-  border: 1px solid #BEC8D3 !important;
-  margin-bottom: 10px;
 }
 
 #group, #wall {

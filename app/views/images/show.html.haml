@@ -1,5 +1,10 @@
 = content_for :matashare do
-  %meta{content: "#{@image.image.url(:thumb)}", property: "og:image"}/  
+  - if @image.comments.any?
+    %meta{content: "#{@top_comment.content} © #{@top_comment.user.username}", property: "og:title"}/
+  - else  
+    %meta{content: "Комментариев пока нет", property: "og:title"}/
+  %meta{content: "#{@image.image.url(:thumb)}", property: "og:image"}/
+  %meta{content: "Комментаторы - это новый вид интерактивного развлечения, который заключается в комментировании картинок с целью попасть в топ лучших, размещенных непосредственно под изображением", property: "og:description"}/
 = content_for(:title, "Комментатор ##{@image.id} | Комментаторы")
 %article.commentator
   .img-header
@@ -29,7 +34,7 @@
     - if user_signed_in?
       = render 'add_comment'
     - else
-      %h3 Присоединяйся!
+      %h3 Для голосования и комментирования необходимо войти.
     .sort_comments
       = 'Сортировать по'
       - if params[:sort_by] == 'popular'

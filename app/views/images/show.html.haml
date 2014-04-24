@@ -1,6 +1,5 @@
 = content_for :matashare do
-  %meta{content: "#{@top_comment.content} © #{@top_comment.user.username}", property: "og:title"}/
-  %meta{content: "#{@image.image.url(:thumb)}", property: "og:image"}/
+  %meta{content: "#{@image.image.url(:thumb)}", property: "og:image"}/  
 = content_for(:title, "Комментатор ##{@image.id} | Комментаторы")
 %article.commentator
   .img-header

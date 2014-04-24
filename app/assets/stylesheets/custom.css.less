@@ -110,10 +110,18 @@ img {
 }
 */
 .navigation {
+  position: relative;
+  padding: 10px;
   font-size: 20px;
   letter-spacing: 2px;
   margin-bottom: 4px;
   line-height: 80px;
+  #enter {
+    position: absolute;
+    top: 10px;
+    right: 70px;
+    color: #2b587a;
+  }
   ul {
     text-align: center;
     list-style: none;
@@ -132,8 +140,10 @@ img {
     }
   }
   #gate {
-    padding: 10px 10px 0 10px;
-    width: 100%;
+    padding: 10px 10px 10px 10px;
+    width: 100px;
+    display: block;
+    margin: 0 auto;
   }
   #gate-info {
     color: #2b587a;
@@ -620,4 +630,3 @@ color: white;
     border-color: #357ebd;
   }
 }
-

@@ -4,9 +4,9 @@
   - if @image.comments.size == 1
     %meta{content: "", property: "og:description"}/
   - if @image.comments.size == 2
-    %meta{content: "2. #{@image.comments.order("rating desc, created_at asc").second.content} © #{@image.comments.order("rating desc, created_at asc").second.user.username}", property: "og:description"}/
+    %meta{content: "2. #{@image.comments.order("rating desc, created_at desc").second.content} © #{@image.comments.order("rating desc, created_at asc").second.user.username}", property: "og:description"}/
   - if @image.comments.size > 2
-    %meta{content: "2. #{@image.comments.order("rating desc, created_at asc").second.content} 3. #{@image.comments.order("rating desc, created_at asc").third.content}", property: "og:description"}/
+    %meta{content: "2. #{@image.comments.order("rating desc, created_at desc").second.content} 3. #{@image.comments.order("rating desc, created_at desc").third.content}", property: "og:description"}/
 = content_for(:title, "Комментатор ##{@image.id} | Комментаторы")
 %article.commentator
   .img-header

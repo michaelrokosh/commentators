@@ -1,3 +1,5 @@
+%meta{content: "#{@image.image.url(:thumb)}", property: "og:image"}/
+= content_for(:title, "Комментатор ##{@image.id} | Комментаторы")
 %article.commentator
   .img-header
     %h4.created_at_image

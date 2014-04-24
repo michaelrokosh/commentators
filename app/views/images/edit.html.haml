@@ -1,1 +1,12 @@
-= render 'form'
+= content_for(:title, 'Редактировать | Комментаторы')
+.single-comment.micro-blog
+  .comment-top
+    .username
+      = link_to 'Местный тролль', '/'
+  .avatar
+    = image_tag('/trollface.png', class: 'img-circle')
+  .bubble-comment
+    .content
+      Редактировать картинки может только администратор!
+- if user_signed_in? && current_user.admin?
+  = render 'form'

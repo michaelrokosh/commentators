@@ -1,12 +1,3 @@
-.single-comment.micro-blog
-  .comment-top
-    .username
-      = link_to 'Местный тролль', '/'
-  .avatar
-    = image_tag('/trollface.png', class: 'img-circle')
-  .bubble-comment
-    .content
-      Загружать возможно только картинки или gif-анимацию до 1МБ.
 - if user_signed_in?
   -if @image.errors.any? 
     %h2.center

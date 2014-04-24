@@ -2,7 +2,7 @@
 %html
   %head
     %title
-      Комментаторы
+      = yield(:title)
     = stylesheet_link_tag "application", media: "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
@@ -10,6 +10,8 @@
     :javascript
       VK.init({apiId: 4119973, onlyWidgets: true});
     %script{charset: "utf-8", src: "//yandex.st/share/share.js", type: "text/javascript"}
+    %meta{content: "Комментаторы - это новый вид интерактивного развлечения, который заключается в комментировании картинок с целью попасть в топ лучших, размещенных непосредственно под изображением", name: "description"}/
+    %meta{content: "Комментоторы, картинки с подписями, весёлые картинки, фотки с подписями", name: "keywords"}/
   %body
     = render 'layouts/header'
     .wrapper

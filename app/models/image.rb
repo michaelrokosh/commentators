@@ -5,7 +5,7 @@ class Image < ActiveRecord::Base
 	before_destroy :clear_comments
 
   has_attached_file :image, styles: {
-      thumb: '100x100>',
+      thumb: '100x79#',
       square: '200x200#',
       medium: '600x600>'
     }

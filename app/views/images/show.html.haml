@@ -4,7 +4,7 @@
   - else  
     %meta{content: "Комментариев пока нет", property: "og:title"}/
   %meta{content: "#{@image.image.url(:thumb)}", property: "og:image"}/
-  %meta{content: "Комментаторы - это новый вид интерактивного развлечения, который заключается в комментировании картинок с целью попасть в топ лучших, размещенных непосредственно под изображением", property: "og:description"}/
+  %meta{content: "Комментаторы - это новый вид интерактивного развлечения, который заключается в комментировании картинок с целью попасть в топ лучших, размещенных непосредственно под изображением.", property: "og:description"}/
 = content_for(:title, "Комментатор ##{@image.id} | Комментаторы")
 %article.commentator
   .img-header
@@ -22,7 +22,8 @@
             %i.godnota.dniwe.fa.fa-thumbs-o-up{ data: {:image_id => @image.id}}
           = link_to 'Редактировать', edit_image_path(@image)
           = link_to 'Фтопку', image_path(@image), method: :delete
-    = image_tag(@image.image.url(:medium), class: "resize")
+    .image
+      = image_tag(@image.image.url(:medium), class: "resize")
   - if @image.comments.any?
     .top-comment
       %h1

@@ -15,8 +15,10 @@
           = current_user.karma
     - else
       #profile-sign-in
-        = link_to(image_tag('http://cs620031.vk.me/v620031107/323e/jQmhatbflvc.jpg', id: "gate"), user_omniauth_authorize_path(:vkontakte))
-        %h6#profile-enter (вход)
+        %h6#profile-info
+          Авторизация с помощью Вконтакте. Личные данные остаются конфиденциальными, аватар и имя можно изменить.
+        %h6#profile-enter
+          = link_to 'ВХОД', user_omniauth_authorize_path(:vkontakte)
   #group
     #vk_groups
     :javascript

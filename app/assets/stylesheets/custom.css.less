@@ -129,14 +129,18 @@ img {
   #profile-sign-in {
     border: 1px solid #BEC8D3;
     position: relative;
-    padding: 10px;
     font-size: 20px;
     letter-spacing: 2px;
     line-height: 80px;
     height: 127px;
+    color: #2b587a;
     img {
       display: block;
       margin: 0 auto;
+    }
+    #profile-info {
+      padding: 10px;
+      margin: 0;
     }
     #gate {
       padding: 10px 10px 10px 10px;
@@ -145,10 +149,20 @@ img {
       margin: 0 auto;
     }
     #profile-enter {
-      position: absolute;
-      top: 10px;
-      right: 70px;
+      font-size: 18px;
       color: #2b587a;
+      text-align: center;
+      background: #5b7ca2;
+      color: white;
+      line-height: 54px;
+      margin: 0;
+      a {
+        color: #fff;
+        text-decoration: none;
+        &:hover {
+          color: rgb(241, 219, 19);
+        }
+      }
     }
   }
   .navigation {
@@ -231,7 +245,7 @@ article {
     text-align: center;
   }
   .top-comment {
-    background-color: @nightblue;
+    background-color: #5b7ca2;
     width: 100%;
     overflow:hidden;
     border: 1px solid #BEC8D3;

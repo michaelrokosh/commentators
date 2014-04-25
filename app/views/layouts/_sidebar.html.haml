@@ -15,7 +15,7 @@
           = current_user.karma
     - else
       #profile-sign-in
-        = link_to(image_tag('/vk-in.png', id: "gate"), user_omniauth_authorize_path(:vkontakte))
+        = link_to(image_tag('http://s3.amazonaws.com/commentators/images/images/000/000/016/square/vk-in.png', id: "gate"), user_omniauth_authorize_path(:vkontakte))
         %h6#profile-enter (вход)
   #group
     #vk_groups

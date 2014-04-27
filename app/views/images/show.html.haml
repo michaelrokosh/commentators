@@ -7,6 +7,17 @@
   %meta{content: "Комментаторы - это новый вид интерактивного развлечения, который заключается в комментировании картинок с целью попасть в топ лучших, размещенных непосредственно под изображением.", property: "og:description"}/
 = content_for(:title, "Комментатор ##{@image.id} | Комментаторы")
 %article.commentator
+  :javascript
+    (function(w,doc) {
+    if (!w.__utlWdgt ) {
+        w.__utlWdgt = true;
+        var d = doc, s = d.createElement('script'), g = 'getElementsByTagName';
+        s.type = 'text/javascript'; s.charset='UTF-8'; s.async = true;
+        s.src = ('https:' == w.location.protocol ? 'https' : 'http')  + '://w.uptolike.com/widgets/v1/uptolike.js';
+        var h=d[g]('body')[0];
+        h.appendChild(s);
+    }})(window,document);
+  .uptolike-buttons{"data-background-alpha" => "0.0", "data-background-color" => "ededed", "data-buttons-color" => "ff9300", "data-counter-background-alpha" => "1.0", "data-counter-background-color" => "ffffff", "data-following-enable" => "false", "data-icon-color" => "ffffff", "data-like-text-enable" => "false", "data-mode" => "share", "data-orientation" => "horizontal", "data-pid" => "1257232", "data-selection-enable" => "true", "data-share-counter-size" => "11", "data-share-counter-type" => "common", "data-share-shape" => "round-rectangle", "data-share-size" => "30", "data-share-style" => "1", "data-sn-ids" => "fb.tw.ok.vk.gp.mr.", "data-text-color" => "000000"}
   .img-header
     %h4.created_at_image
       = @image.created_at.strftime("%d/%m/%Y")

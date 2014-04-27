@@ -29,17 +29,6 @@
         %h4
           = link_to(image.comments.order("rating DESC").first.user.username, user_path(image.comments.order("rating DESC").first.user))
     %h4.share
-      :javascript
-        (function(w,doc) {
-        if (!w.__utlWdgt ) {
-            w.__utlWdgt = true;
-            var d = doc, s = d.createElement('script'), g = 'getElementsByTagName';
-            s.type = 'text/javascript'; s.charset='UTF-8'; s.async = true;
-            s.src = ('https:' == w.location.protocol ? 'https' : 'http')  + '://w.uptolike.com/widgets/v1/uptolike.js';
-            var h=d[g]('body')[0];
-            h.appendChild(s);
-        }})(window,document);
-      .uptolike-buttons{"data-background-alpha" => "0.0", "data-background-color" => "ededed", "data-buttons-color" => "ff9300", "data-counter-background-alpha" => "1.0", "data-counter-background-color" => "ffffff", "data-following-enable" => "false", "data-icon-color" => "ffffff", "data-like-text-enable" => "false", "data-mode" => "share", "data-orientation" => "horizontal", "data-pid" => "1257234", "data-selection-enable" => "true", "data-share-counter-size" => "14", "data-share-counter-type" => "common", "data-share-shape" => "round", "data-share-size" => "40", "data-share-style" => "1", "data-sn-ids" => "vk.fb.tw.ok.mr.", "data-text-color" => "000000"}
       .yashare-auto-init{"data-yasharel10n" => "ru", "data-yasharequickservices" => "vkontakte,facebook,twitter,odnoklassniki,moimir", "data-yasharetheme" => "counter", "data-yashareType" => "big", "data-yashareLink" => "http://commentators.herokuapp.com/images/#{image.id}", "data-yashareTitle" => @top_comment}
     - if image.comments.size > 1
       .single-comment

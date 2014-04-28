@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   # Validate the attached image is image/jpg, image/png, etc
 
   def self.update_avatar access_token
-    avatar_url = access_token.info.image
+    self.avatar_url = access_token.info.image
     self.save
   end
 

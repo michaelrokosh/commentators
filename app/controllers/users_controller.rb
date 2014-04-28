@@ -44,6 +44,7 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
+    @user.update_avatar
     able_to_edit_profile?
 
     # required for settings form to submit when password is left blank

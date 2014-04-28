@@ -14,6 +14,10 @@ class User < ActiveRecord::Base
                       length: { minimum: 3, maximum: 22, message: "должно быть в пределе 3-15 символов" }
   # Validate the attached image is image/jpg, image/png, etc
 
+  def self.update_avatar access_token
+    self.avatar_url = access_token.info.image
+    self.save
+  end
 
   def self.find_for_vkontakte_oauth access_token
     if user = User.where(url: access_token.info.urls.Vkontakte).first

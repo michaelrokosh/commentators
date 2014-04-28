@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   def show
     @user = User.find(params[:id])
     if params[:sort_by] == 'popular'
@@ -44,7 +45,6 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
-    @user.update_avatar
     able_to_edit_profile?
 
     # required for settings form to submit when password is left blank

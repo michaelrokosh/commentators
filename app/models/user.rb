@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   has_many :images
   has_many :votes, as: :voter
   before_destroy :clear_comments, dependent: :destroy
-  VALID_USERNAME_REGEX = /\A[a-zA-Zа-яА-Я0-9 ]+\Z/ 
+  VALID_USERNAME_REGEX = /\A[a-zA-Zа-яА-ЯЁё0-9 ]+\Z/ 
   validates :username, presence: true, 
                       format: { with: VALID_USERNAME_REGEX, message: "должно состоять только из символов и цифр" },
                       uniqueness: { case_sensitive: true, message: "занато" },

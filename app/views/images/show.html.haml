@@ -35,7 +35,8 @@
     - if user_signed_in?
       = render 'add_comment'
     - else
-      %h3 Для голосования и комментирования необходимо войти.
+      #not-signed-in
+        %h3 Для голосования и комментирования необходимо войти.
     .sort_comments
       = 'Сортировать по'
       - if params[:sort_by] == 'popular'

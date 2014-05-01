@@ -10,8 +10,8 @@ class User < ActiveRecord::Base
   VALID_USERNAME_REGEX = /\A[a-zA-Zа-яА-ЯЁё0-9 ]+\Z/ 
   validates :username, presence: true, 
                       format: { with: VALID_USERNAME_REGEX, message: "должно состоять только из символов и цифр" },
-                      uniqueness: { case_sensitive: false, message: "занато" },
-                      exclusion: { in: %w(admin Admin Михаил админ Админ Модератор) },
+                      uniqueness: { case_sensitive: false, message: "занято" },
+                      exclusion: { in: %w(admin Admin Михаил админ Админ Модератор), message: "занято" },
                       length: { minimum: 3, maximum: 22, message: "должно быть в пределе 3-15 символов" }
   # Validate the attached image is image/jpg, image/png, etc
 

@@ -8,7 +8,7 @@ class ImagesController < ApplicationController
     @image = current_user.images.create(image_params)
 
     if @image.save
-      redirect_to @image
+      redirect_to '/dniwe'
     else
       render 'new'
     end

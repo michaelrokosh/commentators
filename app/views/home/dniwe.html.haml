@@ -2,9 +2,9 @@
 .single-comment.micro-blog
   .comment-top
     .username
-      = link_to 'Местный тролль', '/'
+      = link_to @yellow_lord.username, user_path(@yellow_lord)
   .avatar
-    = image_tag('/trollface.png', class: 'img-circle')
+    = image_tag(@yellow_lord.avatar_url, class: 'img-circle')
   .bubble-comment
     .content
       Все картинки попадают в Днище. Отсюда админы выбирают лучшее. Не упусти шанс оставить первый комментарий!

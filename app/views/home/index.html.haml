@@ -27,14 +27,14 @@
         = @top_comment
       - if image.comments.any?
         %h4
-          = link_to(image.comments.order("rating DESC").first.user.username, user_path(image.comments.order("rating DESC").first.user))
+          = link_to(image.comments.order("rating DESC").first.user.username, user_path(image.comments.order("rating DESC").first.user), rel: 'author')
     %h4.share
       .yashare-auto-init{"data-yasharel10n" => "ru", "data-yasharequickservices" => "vkontakte,facebook,twitter,odnoklassniki,moimir", "data-yasharetheme" => "counter", "data-yashareType" => "big", "data-yashareLink" => "http://commentators.to/images/#{image.id}", "data-yashareTitle" => @top_comment}
     - if image.comments.size > 1
       .single-comment
         .comment-top
           .username
-            = link_to image.comments.order("rating desc").second.user.username, user_path(image.comments.order("rating desc").second.user)
+            = link_to image.comments.order("rating desc").second.user.username, user_path(image.comments.order("rating desc").second.user), rel: 'author'
           .medal
             .silver-medal
         .avatar.img-circle
@@ -49,7 +49,7 @@
         .single-comment
           .comment-top
             .username
-              = link_to image.comments.order("rating desc").third.user.username, user_path(image.comments.order("rating desc").third.user)
+              = link_to image.comments.order("rating desc").third.user.username, user_path(image.comments.order("rating desc").third.user), rel: 'author'
             .medal
               .bronze-medal
           .avatar.img-circle

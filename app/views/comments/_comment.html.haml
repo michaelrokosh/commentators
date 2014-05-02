@@ -2,7 +2,7 @@
   .single-comment
     .comment-top
       .username
-        = link_to comment.user.username, user_path(comment.user)
+        = link_to comment.user.username, user_path(comment.user), rel: 'author'
       -if comment.id == @image.comments.order("rating desc, created_at ASC").first.id
         .medal
           .gold-medal

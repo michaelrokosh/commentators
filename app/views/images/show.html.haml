@@ -13,7 +13,7 @@
     %h4.title
       Добавил: 
       - if @image.user != nil
-        = link_to @image.user.username, user_path(@image.user)
+        = link_to @image.user.username, user_path(@image.user), rel: 'author'
       - else
         Повелитель удаленных душ
       - if user_signed_in?
@@ -29,7 +29,7 @@
       %h1
         = @top_comment.content
       %h4
-        = link_to(@top_comment.user.username, user_path(@top_comment.user))
+        = link_to(@top_comment.user.username, user_path(@top_comment.user), rel: 'author')
     %h4.share
       = render 'layouts/share'
     - if user_signed_in?

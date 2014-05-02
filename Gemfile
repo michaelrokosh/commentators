@@ -25,6 +25,7 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 1.2'
 gem 'paperclip'
 gem 'aws-sdk'
+gem 'sitemap_generator'
 
 gem 'haml'
 

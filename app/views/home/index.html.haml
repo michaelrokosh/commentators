@@ -34,7 +34,7 @@
       .single-comment
         .comment-top
           .username
-            = link_to image.comments.order("rating desc").second.user.username, user_path(image.comments.order("rating desc").second.user), rel: 'author'
+            = link_to image.comments.order("rating desc, created_at ASC").second.user.username, user_path(image.comments.order("rating desc, created_at ASC").second.user), rel: 'author'
           .medal
             .silver-medal
         .avatar.img-circle

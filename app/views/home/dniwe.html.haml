@@ -17,7 +17,7 @@
         = link_to "", image_path(image), class: "fa fa-comments-o"
         = image.comments.count
       - if image.comments.any?
-        - @top_comment = image.comments.order("rating DESC, created_at DESC").first.content
+        - @top_comment = image.comments.order("rating DESC, created_at ASC").first.content
       - else
         - @top_comment = 'Комметариев пока нет'
     .image

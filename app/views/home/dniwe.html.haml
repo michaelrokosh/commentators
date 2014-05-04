@@ -17,7 +17,7 @@
         = link_to "", image_path(image), class: "fa fa-comments-o"
         = image.comments.count
       - if image.comments.any?
-        - @top_comment = image.comments.order("rating DESC, created_at ASC").first.content
+        - @top_comment = image.comments.order("rating DESC, created_at DESC").first.content
       - else
         - @top_comment = 'Комметариев пока нет'
     .image
@@ -27,7 +27,7 @@
         = @top_comment
       - if image.comments.any?
         %h4
-          = link_to(image.comments.order("rating DESC, created_at ASC").first.user.username, user_path(image.comments.order("rating DESC, created_at ASC").first.user), rel: 'author')
+          = link_to(image.comments.order("rating DESC, created_at DESC").first.user.username, user_path(image.comments.order("rating DESC, created_at ASC").first.user), rel: 'author')
     %h4.share
       .yashare-auto-init{"data-yasharel10n" => "ru", "data-yasharequickservices" => "vkontakte,facebook,twitter,odnoklassniki,moimir", "data-yasharetheme" => "counter", "data-yashareType" => "big", "data-yashareLink" => "http://commentators.to/images/#{image.id}", "data-yashareTitle" => @top_comment}
     - if image.comments.size > 1
@@ -38,28 +38,28 @@
           .medal
             .silver-medal
         .avatar.img-circle
-          = image_tag(image.comments.order("rating desc, created_at ASC").second.user.avatar_url, class: 'img-circle')
+          = image_tag(image.comments.order("rating desc, created_at DESC").second.user.avatar_url, class: 'img-circle')
         .bubble-comment
           .content
-            = image.comments.order("rating desc, created_at ASC").second.content
+            = image.comments.order("rating desc, created_at DESC").second.content
         .voted
           .rating
-            = image.comments.order("rating desc, created_at ASC").second.rating
+            = image.comments.order("rating desc, created_at DESC").second.rating
       -if image.comments.size > 2
         .single-comment
           .comment-top
             .username
-              = link_to image.comments.order("rating desc, created_at ASC").third.user.username, user_path(image.comments.order("rating desc, created_at ASC").third.user), rel: 'author'
+              = link_to image.comments.order("rating desc, created_at DESC").third.user.username, user_path(image.comments.order("rating desc, created_at DESC").third.user), rel: 'author'
             .medal
               .bronze-medal
           .avatar.img-circle
-            = image_tag(image.comments.order("rating desc, created_at ASC").third.user.avatar_url, class: 'img-circle')
+            = image_tag(image.comments.order("rating desc, created_at DESC").third.user.avatar_url, class: 'img-circle')
           .bubble-comment
             .content
-              = image.comments.order("rating desc, created_at ASC").third.content
+              = image.comments.order("rating desc, created_at DESC").third.content
           .voted
             .rating
-              = image.comments.order("rating desc, created_at ASC").third.rating
+              = image.comments.order("rating desc, created_at DESC").third.rating
     - else
       .single-comment
         .comment-top

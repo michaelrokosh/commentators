@@ -1,4 +1,4 @@
-= content_for :matashare do
+= content_for :metashare do
   - if @image.comments.any?
     %meta{content: "#{@top_comment.content} © #{@top_comment.user.username}", property: "og:title"}/
   - else  

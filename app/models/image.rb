@@ -8,7 +8,9 @@ class Image < ActiveRecord::Base
       thumb: '100x100>',
       square: '200x200#',
       medium: '600x600>'
-    }
+    },
+    url: "/system/:attachment/:id/:style/:basename.:extension",  
+    path: ":rails_root/public/system/:attachment/:id/:style/:basename.:extension"  
 
   validates_attachment_size :image, :less_than => 1.megabytes, message: "Файл весит больше 1 МБ!"
 

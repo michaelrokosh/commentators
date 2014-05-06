@@ -10,7 +10,7 @@ class Image < ActiveRecord::Base
       medium: '600x600>'
     }
 
-  validates_attachment_size :image, :less_than => 1.megabytes, message: "Файл весит больше 1 МБ!"
+  validates_attachment_size :image, :less_than => 2.megabytes, message: "Файл весит больше 2 МБ!"
 
   # Validate the attached image is image/jpg, image/png, etc
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/, message: "Файл не является изображением!"

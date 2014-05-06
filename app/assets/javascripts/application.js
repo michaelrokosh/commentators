@@ -49,7 +49,7 @@ $(function() {
 });
 
 $(function() {
-  $('.vote-for').click(function() {
+  $(document).on( "click", ".vote-for", function() {
     $button = $(this)
     if ( $( "#vote-block-" + $button.attr('data-comment-id')).hasClass( "make-vote" ) ) {
       $.ajax({

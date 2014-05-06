@@ -35,13 +35,13 @@ $(function() {
   $('.vote-against').click(function() {
     $button = $(this)
     $comment_id = ".comment_" + $button.attr('data-comment-id')
-    if ( $( ".votes" ).hasClass( "make-vote" ) ) {
+    if ( $( "#vote-block-" + $button.attr('data-comment-id')).hasClass( "make-vote" ) ) {
       $.ajax({
         type: "POST",
         url: '/images/' + $button.attr('data-image-id') + '/comments/' + $button.attr('data-comment-id') + '/vote_down',
         success: function() {
           var rating = parseInt($button.attr('data-comment-rating')) - 1
-          $("#voteblock_" + $button.attr('data-comment-id')).removeClass('make-vote').addClass('vote-made').html('<div class="voted"><i class="voted-against fa fa-thumbs-down red"></i><div class="rating">' + rating + '</div></div>'); ;
+          $("#vote-block-" + $button.attr('data-comment-id')).removeClass('make-vote').addClass('vote-made').html('<div class="vote-block"><div class="rating">' + rating + '</div><div class="voted"><i class="voted-against fa fa-thumbs-down red"></i></div></div>'); ;
         }
       })
     }
@@ -51,13 +51,13 @@ $(function() {
 $(function() {
   $('.vote-for').click(function() {
     $button = $(this)
-    if ( $( ".votes" ).hasClass( "make-vote" ) ) {
+    if ( $( "#vote-block-" + $button.attr('data-comment-id')).hasClass( "make-vote" ) ) {
       $.ajax({
         type: "POST",
         url: '/images/' + $button.attr('data-image-id') + '/comments/' + $button.attr('data-comment-id') + '/vote_up',
         success: function() {
           var rating = parseInt($button.attr('data-comment-rating')) + 1
-          $("#voteblock_" + $button.attr('data-comment-id')).removeClass('make-vote').addClass('vote-made').html('<div class="voted"><i class="voted-for fa fa-thumbs-up green"></i><div class="rating">' + rating + '</div></div>'); ; 
+          $("#vote-block-" + $button.attr('data-comment-id')).removeClass('make-vote').addClass('vote-made').html('<div class="vote-block"><div class="rating">' + rating + '</div><div class="voted"><i class="voted-for fa fa-thumbs-up green"></i></div></div>'); ; 
         }
       })
     }

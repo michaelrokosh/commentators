@@ -20,32 +20,36 @@
     - if user_signed_in?
       - if comment.user.id == current_user.id
         .voted
-          .rating
+          .rating-no-votes
             = comment.rating
       - else
         - if current_user.voted_for?(comment.id)
           - if current_user.positive_vote?(comment.id)
-            .voted
-              %i.voted-for.fa.fa-thumbs-up.green
+            .vote-block
               .rating
                 = comment.rating
+              .voted
+                %i.voted-for.fa.fa-thumbs-up.green
           - else 
-            .voted
-              %i.voted-against.fa.fa-thumbs-down.red
+            .vote-block
               .rating
                 = comment.rating
+              .voted
+                %i.voted-against.fa.fa-thumbs-down.red
         - else
-          .votes.make-vote{ id: "voteblock_#{comment.id}" }
-            %i.vote-for.fa.fa-thumbs-o-up{ data: {:image_id => @image.id, :comment_id => comment.id, :comment_rating => comment.rating} }
-            %i.vote-against.fa.fa-thumbs-o-down{ data: {:image_id => @image.id, :comment_id => comment.id, :comment_rating => comment.rating} }
+          .vote-block.make-vote{ id: "vote-block-#{comment.id}" }
             .rating
               = comment.rating
+            .votes
+              %i.vote-for.fa.fa-thumbs-o-up{ data: {:image_id => @image.id, :comment_id => comment.id, :comment_rating => comment.rating} }
+              %i.vote-against.fa.fa-thumbs-o-down{ data: {:image_id => @image.id, :comment_id => comment.id, :comment_rating => comment.rating} }
     - else
-      .votes
-        = link_to '', user_omniauth_authorize_path(:vkontakte), class: 'vote-for fa fa-thumbs-o-up'
-        = link_to '', user_omniauth_authorize_path(:vkontakte), class: 'vote-against fa fa-thumbs-o-down'
+      .vote-block
         .rating
           = comment.rating
+        .votes
+          = link_to '', user_omniauth_authorize_path(:vkontakte), class: 'vote-for fa fa-thumbs-o-up'
+          = link_to '', user_omniauth_authorize_path(:vkontakte), class: 'vote-against fa fa-thumbs-o-down'
     - if user_signed_in?
       - if current_user.admin?
         = link_to 'Фтопку', image_comment_path(comment.image, comment), method: :delete, remote: true

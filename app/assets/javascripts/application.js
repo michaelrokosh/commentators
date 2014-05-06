@@ -32,7 +32,7 @@ $(function() {
 
 
 $(function() {
-  $('.vote-against').click(function() {
+  $(document).on( "click", ".voted-against", function() {
     $button = $(this)
     $comment_id = ".comment_" + $button.attr('data-comment-id')
     if ( $( "#vote-block-" + $button.attr('data-comment-id')).hasClass( "make-vote" ) ) {

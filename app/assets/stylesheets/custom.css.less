@@ -375,13 +375,22 @@ div.pagination {
   }
   .rating {
     text-align: center;
-    font-size: 20px;
+    font-size: 18px;
   }
   .voted {
+    padding: 2px;
+    border-left-radius: 9px;
+    border-right: none;
+    border-left-radius: 9px;
+    margin-right: -10px;
+    border-right: none;
+    border: 1px solid #BEC8D3;
+    border-right: none;
+
     float: right;
     width: 46px;
     text-align: center;
-    line-height: 25px;
+    line-height: 20px;
     .voted-for, .voted-against {
       font-size: 25px;
       line-height: 25px;
@@ -389,8 +398,17 @@ div.pagination {
     }
   }
   .votes {
+    padding: 2px;
+    border-left-radius: 9px;
+    border-right: none;
+    border-left-radius: 9px;
+    margin-right: -10px;
+    border-right: none;
+    border: 1px solid #BEC8D3;
+    border-right: none;
+
     float: right;
-    line-height: 25px;
+    line-height: 20px;
     .vote-for:hover {
       color: @green;
     }
@@ -399,7 +417,7 @@ div.pagination {
     }
     .vote-for, .vote-against {
       cursor: pointer;
-      font-size: 25px;
+      font-size: 18px;
       line-height: 25px;
       text-decoration: none;
       color: @urlcolor;
@@ -410,9 +428,6 @@ div.pagination {
       color: @urlcolor;
     }
   }
-}
-
-.vote-made {
 }
 
 .bubble-comment {

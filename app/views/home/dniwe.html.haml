@@ -75,6 +75,6 @@
           .content
             = "Здесь мог бы быть твой комментарий! Хотя нет, вряд ли ты на это способен))00"
         .voted
-          .rating
+          .rating-no-votes
             = '-∞'
 = will_paginate(@recent_images, :previous_label => 'Туда', :next_label => 'Сюда', renderer: WillPaginate::ActionView::LinkRenderer)

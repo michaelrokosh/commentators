@@ -43,7 +43,7 @@
           .content
             = image.comments.order("rating desc, created_at ASC").second.content
         .voted
-          .rating
+          .rating-no-votes
             = image.comments.order("rating desc, created_at ASC").second.rating
       -if image.comments.size > 2
         .single-comment
@@ -58,7 +58,7 @@
             .content
               = image.comments.order("rating desc, created_at ASC").third.content
           .voted
-            .rating
+            .rating-no-votes
               = image.comments.order("rating desc, created_at ASC").third.rating
     - else
       .single-comment
@@ -75,6 +75,6 @@
           .content
             = "Здесь мог бы быть твой комментарий! Хотя нет, вряд ли ты на это способен))00"
         .voted
-          .rating
+          .rating-no-votes
             = '-∞'
 = will_paginate(@recent_images, :previous_label => 'Туда', :next_label => 'Сюда', renderer: WillPaginate::ActionView::LinkRenderer)

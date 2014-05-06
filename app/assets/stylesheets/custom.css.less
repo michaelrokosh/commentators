@@ -246,10 +246,20 @@ article {
     text-align: center;
   }
   .top-comment {
+    position: relative;
     background-color: #5b7ca2;
     width: 100%;
-    overflow:hidden;
     border: 1px solid #BEC8D3;
+    &:before {
+      content: '';
+      position: absolute;
+      border-style: solid;
+      border-width: 0 15px 15px;
+      border-color: #5b7ca2 transparent;
+      display: block;
+      top: -15px;
+      left: 20px;
+    }
     h1 {
       padding: 25px 10px 25px 10px;
       margin: 0;

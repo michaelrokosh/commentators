@@ -380,9 +380,14 @@ div.pagination {
     color: @urlcolor;
   }
   .rating-no-votes {
-    /*line-height: 42px;*/
-    text-align: center;
     font-size: 18px;
+    margin-right: -10px;
+    border-right: none;
+    float: right;
+    text-align: center;
+    line-height: 50px;
+    height: 50px;
+    width: 50px;
   }
   .vote-block {
     float: right;
@@ -403,11 +408,11 @@ div.pagination {
     float: right;
     text-align: center;
     line-height: 20px;
-    height: 28px;
-    margin-top: 10px;
+    height: 50px;
     .voted-for, .voted-against {
       font-size: 16px;
       text-decoration: none;
+      margin-top: 13px;
     }
   }
   .votes {
@@ -575,7 +580,7 @@ footer {
   text-align: right;
 }
 
-.micro-blog, .commentator, #side-menu, .navigation, .user-page, #group, #wall, .voted, .votes {
+.micro-blog, .commentator, #side-menu, .navigation, .user-page, #group, #wall, .voted, .votes, .rating-no-votes {
   border-style: solid;
   border-color: #c9c9c9;
   border-width: 1px 2px 2px 1px;

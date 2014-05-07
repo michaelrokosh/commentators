@@ -53,9 +53,5 @@
       = will_paginate(@comments)
     - if @comments.next_page
       #load_more_comments.btn.btn-lg.load-more Еще
-    %h4.share
-      = render 'layouts/share'
-    - if user_signed_in?
-      = render 'add_comment'
     #comments
 %h1

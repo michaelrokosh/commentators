@@ -244,36 +244,38 @@ article {
   .image {
     margin: 0 auto;
     text-align: center;
-  }
-  .top-comment {
     position: relative;
-    background-color: #5b7ca2;
-    width: 100%;
-    border: 1px solid #BEC8D3;
-    &:before {
-      content: '';
+    .top-comment {
       position: absolute;
-      border-style: solid;
-      border-width: 0 15px 15px;
-      border-color: #5b7ca2 transparent;
-      display: block;
-      top: -15px;
-      left: 33px;
-    }
-    h1 {
-      padding: 25px 10px 25px 10px;
-      margin: 0;
-      text-align: center;
-      color: #fff;
-      text-shadow: 0px 2px 3px #3563B6;
-    }
-    h4 {
-      color: #A9B8CC;
-      padding: 0px;
-      text-align: center;
-      margin: -10px 20px 20px 20px;
-      a {
+      bottom: 0;
+      background-color: #000;
+      opacity: 0.7;
+      width: 100%;
+      &:before {
+        content: '';
+        position: absolute;
+        border-style: solid;
+        border-width: 0 15px 15px;
+        border-color: #000 transparent;
+        display: block;
+        top: -15px;
+        left: 33px;
+      }
+      h1 {
+        padding: 25px 10px 25px 10px;
+        margin: 0;
+        text-align: center;
+        color: #fff;
+        text-shadow: 0px 2px 3px #3563B6;
+      }
+      h4 {
         color: #A9B8CC;
+        padding: 0px;
+        text-align: center;
+        margin: -10px 20px 20px 20px;
+        a {
+          color: #A9B8CC;
+        }
       }
     }
   }

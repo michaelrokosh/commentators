@@ -24,12 +24,16 @@
           = link_to 'Фтопку', image_path(@image), method: :delete
     .image
       = image_tag(@image.image.url(:medium), class: "resize")
-  - if @image.comments.any?
-    .top-comment
-      %h1
-        = @top_comment.content
-      %h4
-        = link_to(@top_comment.user.username, user_path(@top_comment.user), rel: 'author')
+      - if @image.comments.any?
+        .top-comment
+          %h1
+            = @top_comment.content
+          %h4
+            = link_to(@top_comment.user.username, user_path(@top_comment.user), rel: 'author')
+      - else
+        .top-comment
+          %h1
+            Комметариев пока нет
     %h4.share
       = render 'layouts/share'
     - if user_signed_in?
@@ -49,10 +53,6 @@
       = will_paginate(@comments)
     - if @comments.next_page
       #load_more_comments.btn.btn-lg.load-more Еще
-  - else
-    .top-comment
-      %h1
-        Комметариев пока нет
     %h4.share
       = render 'layouts/share'
     - if user_signed_in?

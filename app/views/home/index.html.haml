@@ -22,12 +22,12 @@
         - @top_comment = 'Комметариев пока нет'
     .image
       = link_to(image_tag(image.image.url(:medium), class: "resize"), image_path(image))
-    .top-comment
-      %h1
-        = @top_comment
-      - if image.comments.any?
-        %h4
-          = link_to(image.comments.order("rating DESC, created_at ASC").first.user.username, user_path(image.comments.order("rating DESC, created_at ASC").first.user), rel: 'author')
+      .top-comment
+        %h1
+          = @top_comment
+        - if image.comments.any?
+          %h4
+            = link_to(image.comments.order("rating DESC, created_at ASC").first.user.username, user_path(image.comments.order("rating DESC, created_at ASC").first.user), rel: 'author')
     %h4.share
       .yashare-auto-init{"data-yasharel10n" => "ru", "data-yasharequickservices" => "vkontakte,facebook,twitter,odnoklassniki,moimir", "data-yasharetheme" => "counter", "data-yashareType" => "big", "data-yashareLink" => "http://commentators.to/images/#{image.id}", "data-yashareTitle" => @top_comment}
     - if image.comments.size > 1

@@ -15,14 +15,8 @@
           = current_user.karma
     - else
       #profile-sign-in
-        %h6#profile-info
-          Авторизация с помощью Вконтакте. 
-          %br
-          Никаких паролей вводить не надо :)
-          %br
-          Быстро. Удобно. Безопасно.
-        %h6#profile-enter
-          = link_to 'ВХОД', user_omniauth_authorize_path(:vkontakte)
+        = button_to 'ВХОД', user_omniauth_authorize_path(:vkontakte), :id => "sign-in-btn",
+      :class => "btn btn-lg btn-primary", :method => :get
   #group
     #vk_groups
     :javascript

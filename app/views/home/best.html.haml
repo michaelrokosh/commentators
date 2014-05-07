@@ -10,13 +10,7 @@
       Если ты видишь свое имя на первых страницах топа - делай скриншот и вешай на стену. Ты многого добился в этой жизни!
 - @comments.each do |comment|
   %article.commentator
-    .img-header
-      %h4.created_at_image
-        = comment.image.created_at.strftime("%d/%m/%Y")
-      %h4.title
-        = link_to "", image_path(comment.image), class: "fa fa-comments-o"
-        = comment.image.comments.count
-        - @top_comment = comment.content
+    - @top_comment = comment.content
     .image
       = link_to(image_tag(comment.image.image.url(:medium), class: "resize"), image_path(comment.image))
       .top-comment

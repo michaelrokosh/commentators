@@ -10,16 +10,10 @@
       Хочешь проверить, насколько ты остроумен? Оставь комментарий к картинке и следи за реакциею других людей.
 - @recent_images.each do |image|
   %article.commentator
-    .img-header
-      %h4.created_at_image
-        = image.created_at.strftime("%d/%m/%Y")
-      %h4.title
-        = link_to "", image_path(image), class: "fa fa-comments-o"
-        = image.comments.count
-      - if image.comments.any?
-        - @top_comment = image.comments.order("rating DESC, created_at ASC").first.content
-      - else
-        - @top_comment = 'Комметариев пока нет'
+    - if image.comments.any?
+      - @top_comment = image.comments.order("rating DESC, created_at ASC").first.content
+    - else
+      - @top_comment = 'Комметариев пока нет'
     .image
       = link_to(image_tag(image.image.url(:medium), class: "resize"), image_path(image))
       .top-comment

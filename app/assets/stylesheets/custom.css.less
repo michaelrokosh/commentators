@@ -6,7 +6,7 @@
 body {
   width: 1000px;
   margin: 0 auto;
-  background: #dedede url('http://subtlepatterns.com/patterns/sativa.png');
+  background: #dedede url(/triangular-bg.png);
 }
 
 a {
@@ -57,7 +57,7 @@ header {
     }
   }
   ul.menu {
-    background-image: linear-gradient(to bottom, #5b7ca2 0, #405E7A 100%);
+    background-color: rgba(0,0,0,0.5);
     width: auto;
     list-style: none;
     margin: 0;
@@ -98,16 +98,17 @@ header {
 }
 
 .wrapper { 
-  background-color: #fff;
+  background-color: rgba(255,255,255, 0.5);
   padding-top: 10px;
   overflow: hidden;
   padding: 10px;
 }
 
 .main {
-  width: 615px;
+  width: 605px;
   margin: 0;
   float: left;
+  padding: 10px;
 }
 /*
 img {
@@ -116,8 +117,10 @@ img {
 */
 #profile {
   overflow: hidden;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   #side-menu {
+    background-color: #fff;
+    border-radius: 10px;
     float: left;
     padding: 10px;
     width: 275px;
@@ -169,6 +172,8 @@ img {
     }
   }
   .navigation {
+    background-color: #fff;
+    border-radius: 10px;
     position: relative;
     padding: 10px;
     font-size: 20px;
@@ -211,31 +216,39 @@ article {
   }
 }
 
-.commentator {  
-  padding: 0px 10px 10px 10px;
-  margin-bottom: 10px;
-  .image {
-    img {
-      border: 1px solid #BEC8D3;
-    }
+.img-header {
+  width: 100%;
+  overflow: hidden;
+  .created_at_image {
+    float: left;
   }
-  .img-header {
-    width: 100%;
+  .title {
+    float: right;
     overflow: visible;
-    .created_at_image {
-      float: left;
-    }
-    .title {
-      float: right;
-      overflow: visible;
-      a:hover {
-        text-decoration: none;
-      }
+    a:hover {
+      text-decoration: none;
     }
   }
+}
+
+.under-image {
+  padding: 0 10px 10px 10px;
+  #comments {
+    .single-comment {
+      padding: 0px 0px 20px 0px !important;
+    }
+  }
+}
+
+.commentator {  
+  padding: 0px 0px 0px 0px;
+  margin-bottom: 20px;
+  background-color: #fff;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
   .share {
     margin-top: 10px;
-    margin-bottom: 0px;
+    margin-bottom: 5px;
     text-align: center;
     img {
       height: 20px;
@@ -340,7 +353,7 @@ div.pagination {
 }
 
 .single-comment {
-  margin-bottom: 20px;
+  padding: 0px 10px 20px 10px;
   .thumb-image {
     float: left;
     width: 200px;
@@ -451,7 +464,7 @@ div.pagination {
   margin-left: 20px;
   display: inline-block;
   position: relative;
-  width: 79%;
+  width: 77%;
   max-height: 300px;
   padding: 0px;
   background: #dee5eb;
@@ -495,10 +508,10 @@ div.pagination {
 }
 
 .sidebar {
-  width: 355px;
+  width: 375px;
   float: right;
-  margin-left: 10px;
   margin-right: 0;
+  padding: 10px;
   #vk_groups {
     margin-bottom: 20px;
   }
@@ -583,22 +596,26 @@ footer {
   text-align: right;
 }
 
+/*
 .micro-blog, .commentator, #side-menu, .navigation, .user-page, #group, #wall, .voted, .votes, .rating-no-votes, #profile-sign-in {
   border-style: solid;
   border-color: #c9c9c9;
   border-width: 1px 2px 2px 1px;
 }
+*/
 
 .micro-blog {
   padding: 10px;
-  margin-bottom: 10px !important;
+  margin-bottom: 20px !important;
+  background-color: #fff;
+  border-radius: 10px;
   .bubble-comment {
     width: 85%;
   }
 }
 
 #group, #wall {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .upload-image {
@@ -610,9 +627,7 @@ footer {
 
 .users {
   padding: 10px;
-  border-style: solid;
-  border-color: #c9c9c9;
-  border-width: 1px 2px 2px 1px;  .karma-table {
+  .karma-table {
     font-size: 20px;
     vertical-align: middle;
     text-align: center;
@@ -675,7 +690,7 @@ table {
   height: auto;
   width: 100%;
   text-align: left;
-  background-image: linear-gradient(to bottom, #5b7ca2 0, #405E7A 100%);
+  background-color: rgba(0,0,0,0.5);
   /* background-color: #5b7ca2; */
   /* -webkit-box-shadow: inset rgba(0, 0, 0, 0.35) 0 5px 25px;
   -moz-box-shadow: inset rgba(0, 0, 0, 0.35) 0 5px 25px; */

@@ -19,9 +19,8 @@
         = comment.content
     - if user_signed_in?
       - if comment.user.id == current_user.id
-        .voted
-          .rating-no-votes
-            = comment.rating
+        .rating-no-votes
+          = comment.rating
       - else
         - if current_user.voted_for?(comment.id)
           - if current_user.positive_vote?(comment.id)

@@ -235,10 +235,12 @@ article {
 }
 
 .under-image {
-  padding: 0 10px 10px 10px;
+  border-radius: 10px;
+  background-color: #fff;
+  padding: 10px 10px 10px 10px;
   #comments {
     .single-comment {
-      padding: 0px 0px 20px 0px !important;
+      padding: 10px !important;
     }
   }
 }
@@ -246,12 +248,15 @@ article {
 .commentator {  
   padding: 0px 0px 0px 0px;
   margin-bottom: 20px;
-  background-color: #fff;
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
   .share {
+    background-color: #fff;
+    margin-bottom: 20px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
     padding: 10px;
-    margin: 0 !important;
+    margin: 0 0 20px 0;
     text-align: center;
     img {
       height: 20px;
@@ -403,7 +408,6 @@ div.pagination {
   }
   .rating-no-votes {
     font-size: 18px;
-    margin-right: -10px;
     border-right: none;
     float: right;
     text-align: center;
@@ -425,7 +429,6 @@ div.pagination {
   }
   .voted {
     padding: 2px;
-    margin-right: -10px;
     border-right: none;
     float: right;
     text-align: center;
@@ -439,7 +442,6 @@ div.pagination {
   }
   .votes {
     padding: 2px;
-    margin-right: -10px;
     border-right: none;
     float: right;
     line-height: 20px;
@@ -660,20 +662,26 @@ footer {
 
 .user-page {
   padding: 10px;
-}
-
-#user-comments {
-  .row {
-    margin: 10px -15px;
+  #user-profile-info {
+    background-color: #fff;
+    border-radius: 10px;  
+    margin-bottom: 20px;
+    .user-show {
+      td {
+        vertical-align: middle !important;
+        font-size: 20px;
+        border: none !important;
+      }
+    }
   }
 }
 
-.user-show {
-  background-color: #dee5eb;
-  td {
-    vertical-align: middle !important;
-    font-size: 20px;
-    border: none !important;
+#user-comments {
+  border-radius: 10px;
+  background-color: #fff;
+  padding: 20px;
+  .row {
+    margin: 10px -15px;
   }
 }
 
@@ -776,4 +784,11 @@ font-weight: bold;
     background-color: rgba(0,0,0, 0.6); 
     border-color: rgba(0,0,0, 0.5);
   }
+}
+
+.comments {
+  background-color: #fff;
+  border-radius: 10px;
+  margin-top: 20px;
+  padding: 10px;
 }

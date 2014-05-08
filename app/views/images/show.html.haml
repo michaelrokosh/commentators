@@ -34,9 +34,9 @@
       .top-comment
         %h1
           Комметариев пока нет
+  %h4.share
+    = render 'layouts/share'
   .under-image
-    %h4.share
-      = render 'layouts/share'
     - if user_signed_in?
       = render 'add_comment'
     - else

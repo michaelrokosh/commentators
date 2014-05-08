@@ -21,7 +21,7 @@
           %i.godnota.dniwe.fa.fa-thumbs-o-up{ data: {:image_id => @image.id}}
         = link_to 'Редактировать', edit_image_path(@image)
         = link_to 'Фтопку', image_path(@image), method: :delete
-%article.commentator
+.commentator
   .image
     = image_tag(@image.image.url(:medium), class: "resize")
     - if @image.comments.any?

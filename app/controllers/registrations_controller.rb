@@ -9,7 +9,7 @@ class RegistrationsController < Devise::RegistrationsController
     @user = User.new(sign_up_params)
     if @user.save
       sign_up(:user, @user)
-      redirect_to root_path
+      redirect_to :back
     else
       render :new
     end

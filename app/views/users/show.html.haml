@@ -10,7 +10,8 @@
           = @user.karma
   #user-comments
     = render partial: 'comments/user_comments', collection: @comments, as: :comment
-    #with-button
-      = will_paginate(@comments)
-    - if @comments.next_page
+  #with-button
+    = will_paginate(@comments)
+  - if @comments.next_page
+    #load-more-btn
       #load_more_comments.btn.btn-custom.btn-lg.load-more Еще

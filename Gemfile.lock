@@ -214,6 +214,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  actionpack
   activerecord-deprecated_finders (= 1.0.3)
   aws-sdk
   better_errors

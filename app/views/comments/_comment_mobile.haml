@@ -1,5 +1,6 @@
-.row
-  .comment-avatar-mobile.col-xs-2.col-sm-2.col-md-2
-    = image_tag(comment.user.avatar_url, class: 'img-circle-mobile')
-  .comment-content-mobile.col-xs-10.col-sm-10.col-md-10
-    = comment.content
+%table.table.table-striped
+  %tr.row
+    %td.comment-avatar-mobile.col-xs-2.col-sm-2.col-md-2
+      = image_tag(comment.user.avatar_url, class: 'img-circle-mobile')
+    %td.comment-content-mobile.col-xs-10.col-sm-10.col-md-10
+      = comment.content

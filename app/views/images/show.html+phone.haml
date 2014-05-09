@@ -22,7 +22,7 @@
         = link_to 'Редактировать', edit_image_path(@image)
         = link_to 'Фтопку', image_path(@image), method: :delete
 .commentator
-  = render 'image_mobile', image: @image
+  = render 'images/image_mobile', image: @image
   %h4.share
     = render 'layouts/share'
   .under-image

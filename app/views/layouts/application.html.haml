@@ -13,8 +13,11 @@
     %script{charset: "utf-8", src: "//yandex.st/share/share.js", type: "text/javascript"}
     %meta{content: "Комментаторы - это новый вид интерактивного развлечения, который заключается в комментировании картинок с целью попасть в топ лучших, размещенных непосредственно под изображением.", name: "description"}/
     %meta{content: "Комментоторы, картинки с подписями, весёлые картинки, фотки с подписями", name: "keywords"}/
-  %body#mobile.col-xs-12.col-sm-12.col-md-12
-    = render 'layouts/header_mobile'
-    #wrapper-mobile
-      = yield
-      = render 'layouts/google_analytics'
+  %body#desktop
+    = render 'layouts/header'
+    .wrapper
+      .main
+        = yield
+      = render 'layouts/sidebar'
+    = render 'layouts/footer'
+    = render 'layouts/google_analytics'

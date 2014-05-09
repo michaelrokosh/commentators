@@ -13,17 +13,4 @@
         = render 'comments/comment_mobile', comment: image.comments.order('rating DESC').second
         -if image.comments.size > 2
           = render 'comments/comment_mobile', comment: image.comments.order('rating DESC').third
-      - else
-        .single-comment-mobile
-          .comment-top
-            .username
-              %a
-                Местный тролль
-              /
-          .avatar.img-circle
-            = image_tag('/trollface.png', class: 'img-circle')
-          .content
-            = "Здесь мог бы быть твой комментарий! Хотя нет, вряд ли ты на это способен))00"
-          .rating-no-votes
-            = '-∞'
 = will_paginate(@recent_images, :previous_label => 'Туда', :next_label => 'Сюда', renderer: WillPaginate::ActionView::LinkRenderer)

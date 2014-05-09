@@ -13,10 +13,10 @@
     = csrf_meta_tags
     %meta{content: "Комментаторы - это новый вид интерактивного развлечения, который заключается в комментировании картинок с целью попасть в топ лучших, размещенных непосредственно под изображением.", name: "description"}/
     %meta{content: "Комментоторы, комментаторы картинки, картинки с подписями, весёлые картинки, фотки с подписями", name: "keywords"}/
-  %body
+  %body.col-xs-12.col-sm-12.col-md-12
     = render 'layouts/header'
-    .wrapper
-      .main
+    .wrapper.col-xs-12.col-sm-12.col-md-12
+      .main.col-xs-12.col-sm-12.col-md-12
         = yield
     = render 'layouts/footer'
     = render 'layouts/google_analytics'

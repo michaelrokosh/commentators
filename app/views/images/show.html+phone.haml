@@ -22,7 +22,7 @@
         = link_to 'Редактировать', edit_image_path(@image)
         = link_to 'Фтопку', image_path(@image), method: :delete
 .commentator
-  .image
+  .image-mobile
     = image_tag(@image.image.url(:medium), class: "resize")
     - if @image.comments.any?
       .top-comment
@@ -51,8 +51,8 @@
         = link_to "новизне", :sort_by => "recent"
       - else
         = link_to "популярности", :sort_by => "popular"
-    #comments
-      = render @comments 
+    .comments
+      = render 'comments/comment_mobile', collection: @comments 
     #with-button
       = will_paginate(@comments)
     - if @comments.next_page

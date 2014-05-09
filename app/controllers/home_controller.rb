@@ -8,6 +8,6 @@ class HomeController < ApplicationController
   end
 
   def best
-    @comments = Comment.order('created_at DESC').all.paginate(:page => params[:page], :per_page => 3)
+    @comments = Comment.order('rating DESC').all.paginate(:page => params[:page], :per_page => 3)
   end
 end

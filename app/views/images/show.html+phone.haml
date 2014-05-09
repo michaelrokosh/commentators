@@ -48,8 +48,7 @@
         = link_to "новизне", :sort_by => "recent"
       - else
         = link_to "популярности", :sort_by => "popular"
-    .comments
-      = render partial: 'comments/comment_mobile', collection: @comments, as: :comment
+    = render partial: 'comments/comment_mobile', collection: @comments, as: :comment
     #with-button
       = will_paginate(@comments)
     - if @comments.next_page

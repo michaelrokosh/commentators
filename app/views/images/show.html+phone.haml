@@ -1,0 +1,61 @@
+= content_for :metashare do
+  - if @image.comments.any?
+    %meta{content: "#{@top_comment.content} © #{@top_comment.user.username}", property: "og:title"}/
+  - else  
+    %meta{content: "Комментариев пока нет", property: "og:title"}/
+  %meta{content: "#{@image.image.url(:thumb)}", property: "og:image"}/
+  %meta{content: "Комментаторы - это новый вид интерактивного развлечения, который заключается в комментировании картинок с целью попасть в топ лучших, размещенных непосредственно под изображением.", property: "og:description"}/
+= content_for(:title, "Комментатор ##{@image.id} | Комментаторы")
+.img-header
+  %h4.created_at_image
+    = @image.created_at.strftime("%d/%m/%Y")
+  %h4.title
+    Добавил: 
+    - if @image.user != nil
+      = link_to @image.user.username, user_path(@image.user), rel: 'author'
+    - else
+      Повелитель удаленных душ
+    - if user_signed_in?
+      - if current_user.admin?
+        - unless @image.godnota?
+          %i.godnota.dniwe.fa.fa-thumbs-o-up{ data: {:image_id => @image.id}}
+        = link_to 'Редактировать', edit_image_path(@image)
+        = link_to 'Фтопку', image_path(@image), method: :delete
+.commentator
+  .image
+    = image_tag(@image.image.url(:medium), class: "resize")
+    - if @image.comments.any?
+      .top-comment
+        %h1
+          = @top_comment.content
+        %h4
+          = link_to(@top_comment.user.username, user_path(@top_comment.user), rel: 'author')
+    - else
+      .top-comment
+        %h1
+          Комметариев пока нет
+    .copyright
+      %h6
+        commentators.to
+  %h4.share
+    = render 'layouts/share'
+  .under-image
+    - if user_signed_in?
+      = render 'add_comment'
+    - else
+      #not-signed-in
+        %h3 Для голосования и комментирования необходимо войти.
+    .sort_comments
+      = 'Сортировать по'
+      - if params[:sort_by] == 'popular'
+        = link_to "новизне", :sort_by => "recent"
+      - else
+        = link_to "популярности", :sort_by => "popular"
+    #comments
+      = render @comments 
+    #with-button
+      = will_paginate(@comments)
+    - if @comments.next_page
+      #load_more_comments.btn.btn-lg.btn-custom.load-more Еще
+    #comments
+%h1

@@ -31,14 +31,17 @@
     .copyright
       %h6
         commentators.to
-  - if current_user.admin?
-    = link_to 'Редактировать', edit_image_path(@image)
-    = link_to 'Фтопку', image_path(@image), method: :delete
   %h4.share
+    - if current_user.admin?
+      = link_to 'Редактировать', edit_image_path(@image)
+      = link_to 'Фтопку', image_path(@image), method: :delete
     = render 'layouts/share'
   .under-image
     - if user_signed_in?
-      = render 'add_comment'
+      = form_for ([@image, @image.comments.build]), remote: true do |f|
+        %p.add-comment
+          = f.hidden_field :image_id
+          = f.text_field :content, maxlength: 70, class: 'form-control comment-field'
     - else
       #not-signed-in
         %h3 Для голосования и комментирования необходимо войти.
@@ -48,7 +51,8 @@
         = link_to "новизне", :sort_by => "recent"
       - else
         = link_to "популярности", :sort_by => "popular"
-    = render partial: 'comments/comment_mobile', collection: @comments, as: :comment
+    .comments-mobile
+      = render partial: 'comments/comment_mobile', collection: @comments, as: :comment
     #with-button
       = will_paginate(@comments)
     - if @comments.next_page

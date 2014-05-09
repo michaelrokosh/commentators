@@ -1,3 +1,7 @@
+- if image.comments.any?
+  - @top_comment = image.comments.order("rating DESC, created_at ASC").first.content
+- else
+  - @top_comment = 'Комметариев пока нет'
 .image-mobile
   = link_to(image_tag(image.image.url(:medium), class: "resize"), image_path(image))
   .top-comment

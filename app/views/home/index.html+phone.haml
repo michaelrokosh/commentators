@@ -1,10 +1,6 @@
 = content_for(:title, "Комментаторы - развлекательный сайт нового формата")
 - @recent_images.each do |image|
   %article.commentator
-    - if image.comments.any?
-      - @top_comment = image.comments.order("rating DESC, created_at ASC").first.content
-    - else
-      - @top_comment = 'Комметариев пока нет'
     = render 'images/image_mobile', image: image
     %h4.share
       .yashare-auto-init{"data-yasharel10n" => "ru", "data-yasharequickservices" => "vkontakte,facebook,twitter,odnoklassniki,moimir", "data-yasharetheme" => "counter", "data-yashareType" => "big", "data-yashareLink" => "http://commentators.to/images/#{image.id}", "data-yashareTitle" => @top_comment}

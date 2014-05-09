@@ -22,21 +22,7 @@
         = link_to 'Редактировать', edit_image_path(@image)
         = link_to 'Фтопку', image_path(@image), method: :delete
 .commentator
-  .image-mobile
-    = image_tag(@image.image.url(:medium), class: "resize")
-    - if @image.comments.any?
-      .top-comment
-        %h1
-          = @top_comment.content
-        %h4
-          = link_to(@top_comment.user.username, user_path(@top_comment.user), rel: 'author')
-    - else
-      .top-comment
-        %h1
-          Комметариев пока нет
-    .copyright
-      %h6
-        commentators.to
+  = render 'image_mobile', image: @image
   %h4.share
     = render 'layouts/share'
   .under-image
@@ -52,7 +38,7 @@
       - else
         = link_to "популярности", :sort_by => "popular"
     .comments
-      = render 'comments/comment_mobile', collection: @image.comments, as: :comment
+      = render partial: 'comments/comment_mobile', collection: @comments, as: :comment
     #with-button
       = will_paginate(@comments)
     - if @comments.next_page

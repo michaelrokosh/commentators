@@ -1,6 +1,6 @@
 = content_for :metashare do
   - if @image.comments.any?
-    %meta{content: "#{@image.comments.order('rating DESC, created_at ASC').first.content}", property: "og:title"}/
+    %meta{content: "#{@top_comment}", property: "og:title"}/
   - else  
     %meta{content: "Комментариев пока нет", property: "og:title"}/
   %meta{content: "#{@image.image.url(:thumb)}", property: "og:image"}/
@@ -22,7 +22,17 @@
         = link_to 'Редактировать', edit_image_path(@image)
         = link_to 'Фтопку', image_path(@image), method: :delete
 .commentator
-  = render 'images/image_mobile', image: @image
+  .image-mobile
+    = link_to(image_tag(image.image.url(:medium), class: "resize"), image_path(image))
+    .top-comment
+      %h1
+        = @top_comment
+      - if image.comments.any?
+        %h4
+          = link_to(image.comments.order("rating DESC, created_at ASC").first.user.username, user_path(image.comments.order("rating DESC, created_at ASC").first.user), rel: 'author')
+  .copyright
+    %h6
+      commentators.to
   %h4.share
     = render 'layouts/share'
   .under-image

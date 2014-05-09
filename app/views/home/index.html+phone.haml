@@ -1,13 +1,4 @@
 = content_for(:title, "Комментаторы - развлекательный сайт нового формата")
-.single-comment.micro-blog
-  .comment-top
-    .username
-      = link_to @yellow_lord.username, user_path(@yellow_lord)
-  .avatar
-    = image_tag(@yellow_lord.avatar_url, class: 'img-circle')
-  .bubble-comment
-    .content
-      Хочешь проверить, насколько ты остроумен? Оставь комментарий к картинке и следи за реакциею других людей.
 - @recent_images.each do |image|
   %article.commentator
     - if image.comments.any?
@@ -29,47 +20,20 @@
       .yashare-auto-init{"data-yasharel10n" => "ru", "data-yasharequickservices" => "vkontakte,facebook,twitter,odnoklassniki,moimir", "data-yasharetheme" => "counter", "data-yashareType" => "big", "data-yashareLink" => "http://commentators.to/images/#{image.id}", "data-yashareTitle" => @top_comment}
     .comments
       - if image.comments.size > 1
-        .single-comment
-          .comment-top
-            .username
-              = link_to image.comments.order("rating desc, created_at ASC").second.user.username, user_path(image.comments.order("rating desc, created_at ASC").second.user), rel: 'author'
-            .medal
-              .silver-medal
-          .avatar.img-circle
-            = image_tag(image.comments.order("rating desc, created_at ASC").second.user.avatar_url, class: 'img-circle')
-          .bubble-comment
-            .content
-              = image.comments.order("rating desc, created_at ASC").second.content
-          .rating-no-votes
-            = image.comments.order("rating desc, created_at ASC").second.rating
+        = render 'comments/mobile_comment', object: image.comments.order('rating DESC').second
         -if image.comments.size > 2
-          .single-comment
-            .comment-top
-              .username
-                = link_to image.comments.order("rating desc, created_at ASC").third.user.username, user_path(image.comments.order("rating ASC").third.user), rel: 'author'
-              .medal
-                .bronze-medal
-            .avatar.img-circle
-              = image_tag(image.comments.order("rating desc, created_at ASC").third.user.avatar_url, class: 'img-circle')
-            .bubble-comment
-              .content
-                = image.comments.order("rating desc, created_at ASC").third.content
-            .rating-no-votes
-              = image.comments.order("rating desc, created_at ASC").third.rating
+           = render 'comments/mobile_comment', object: image.comments.order('rating DESC').third
       - else
-        .single-comment
+        .single-comment-mobile
           .comment-top
             .username
               %a
                 Местный тролль
               /
-                .medal
-                  .gold-medal
           .avatar.img-circle
             = image_tag('/trollface.png', class: 'img-circle')
-          .bubble-comment
-            .content
-              = "Здесь мог бы быть твой комментарий! Хотя нет, вряд ли ты на это способен))00"
+          .content
+            = "Здесь мог бы быть твой комментарий! Хотя нет, вряд ли ты на это способен))00"
           .rating-no-votes
             = '-∞'
 = will_paginate(@recent_images, :previous_label => 'Туда', :next_label => 'Сюда', renderer: WillPaginate::ActionView::LinkRenderer)

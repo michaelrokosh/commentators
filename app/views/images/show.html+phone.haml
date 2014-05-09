@@ -23,13 +23,13 @@
         = link_to 'Фтопку', image_path(@image), method: :delete
 .commentator
   .image-mobile
-    = link_to(image_tag(image.image.url(:medium), class: "resize"), image_path(image))
+    = link_to(image_tag(@image.image.url(:medium), class: "resize"), image_path(@image))
     .top-comment
       %h1
         = @top_comment
-      - if image.comments.any?
+      - if @image.comments.any?
         %h4
-          = link_to(image.comments.order("rating DESC, created_at ASC").first.user.username, user_path(image.comments.order("rating DESC, created_at ASC").first.user), rel: 'author')
+          = link_to(@image.comments.order("rating DESC, created_at ASC").first.user.username, user_path(@image.comments.order("rating DESC, created_at ASC").first.user), rel: 'author')
   .copyright
     %h6
       commentators.to

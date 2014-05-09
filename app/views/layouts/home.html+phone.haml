@@ -17,5 +17,22 @@
   %body#mobile.col-xs-12.col-sm-12.col-md-12
     = render 'layouts/header_mobile'
     #wrapper-mobile
+      #profile-mobile
+      - if user_signed_in?
+        %ul
+          %li
+            = link_to 'Добавить изображение', new_image_path
+          %li
+            = link_to 'Редактировать профиль', edit_user_registration_path
+          %li
+            = link_to 'Выйти', destroy_user_session_path, method: :delete
+        .navigation
+          = link_to image_tag(current_user.avatar_url, class: 'img-circle'), user_path(current_user), title: "Профиль"
+          %h6#profile-karma
+            = current_user.karma
+      - else
+        #profile-sign-in
+          = button_to 'ВХОД', user_omniauth_authorize_path(:vkontakte), :id => "sign-in-btn",
+        :class => "btn btn-sm btn-custom", :method => :get
       = yield
       = render 'layouts/google_analytics'

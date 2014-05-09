@@ -4,7 +4,7 @@ class HomeController < ApplicationController
   end
 
   def dniwe
-    @recent_images = Image.where(godnota: false).paginate(:order => "created_at DESC", :page => params[:page], :per_page => 3)
+    @recent_images = Image.order('created_at DESC').where(godnota: false).paginate(:page => params[:page], :per_page => 3)
   end
 
   def best

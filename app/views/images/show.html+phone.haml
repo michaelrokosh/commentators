@@ -1,6 +1,6 @@
 = content_for :metashare do
   - if @image.comments.any?
-    %meta{content: "#{@top_comment.content} © #{@top_comment.user.username}", property: "og:title"}/
+    %meta{content: "#{@image.comments.order('rating DESC, created_at ASC').first.content}", property: "og:title"}/
   - else  
     %meta{content: "Комментариев пока нет", property: "og:title"}/
   %meta{content: "#{@image.image.url(:thumb)}", property: "og:image"}/

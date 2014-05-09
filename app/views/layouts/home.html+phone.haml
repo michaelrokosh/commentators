@@ -17,9 +17,5 @@
   %body#mobile.col-xs-12.col-sm-12.col-md-12
     = render 'layouts/header_mobile'
     #wrapper-mobile
-      - else
-        #profile-sign-in
-          = button_to 'ВХОД', user_omniauth_authorize_path(:vkontakte), :id => "sign-in-btn",
-        :class => "btn btn-sm btn-custom", :method => :get
       = yield
       = render 'layouts/google_analytics'

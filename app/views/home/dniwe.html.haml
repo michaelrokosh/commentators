@@ -22,6 +22,9 @@
         - if image.comments.any?
           %h4
             = link_to(image.comments.order("rating DESC, created_at ASC").first.user.username, user_path(image.comments.order("rating DESC, created_at ASC").first.user), rel: 'author')
+      .copyright
+        %h6
+          commentators.to
     %h4.share
       .yashare-auto-init{"data-yasharel10n" => "ru", "data-yasharequickservices" => "vkontakte,facebook,twitter,odnoklassniki,moimir", "data-yasharetheme" => "counter", "data-yashareType" => "big", "data-yashareLink" => "http://commentators.to/images/#{image.id}", "data-yashareTitle" => @top_comment}
     .comments

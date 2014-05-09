@@ -47,8 +47,8 @@ class ImagesController < ApplicationController
 
   def show
     @image = Image.find(params[:id])
-    
-    if image.comments.any?
+
+    if @image.comments.any?
       @top_comment = @image.comments.order("rating DESC, created_at ASC").first.content
     else
       @top_comment = 'Комметариев пока нет'

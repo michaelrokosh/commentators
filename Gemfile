@@ -30,7 +30,7 @@ gem 'sitemap_generator'
 gem 'haml'
 
 gem 'bootstrap-will_paginate', '0.0.10'
-
+gem 'activerecord-deprecated_finders' , '1.0.3'
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

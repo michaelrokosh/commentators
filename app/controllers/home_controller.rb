@@ -1,9 +1,11 @@
 class HomeController < ApplicationController
   def index
   	@recent_images = Image.order('created_at DESC').where(godnota: true).paginate(:page => params[:page], :per_page => 3)
-    respond_to do |format|
-      format.html.tablet # renders app/views/projects/show.html+tablet.erb
-      format.html.phone
+    if Rails.env.production?
+      respond_to do |format|
+        format.html.tablet # renders app/views/projects/show.html+tablet.erb
+        format.html.phone
+      end
     end
   end
 

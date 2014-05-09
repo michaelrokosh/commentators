@@ -19,8 +19,6 @@
       - if current_user.admin?
         - unless @image.godnota?
           %i.godnota.dniwe.fa.fa-thumbs-o-up{ data: {:image_id => @image.id}}
-        = link_to 'Редактировать', edit_image_path(@image)
-        = link_to 'Фтопку', image_path(@image), method: :delete
 .commentator
   .image-mobile
     = link_to(image_tag(@image.image.url(:medium), class: "resize"), image_path(@image))
@@ -30,9 +28,12 @@
       - if @image.comments.any?
         %h4
           = link_to(@image.comments.order("rating DESC, created_at ASC").first.user.username, user_path(@image.comments.order("rating DESC, created_at ASC").first.user), rel: 'author')
-  .copyright
-    %h6
-      commentators.to
+    .copyright
+      %h6
+        commentators.to
+  - if current_user.admin?
+    = link_to 'Редактировать', edit_image_path(@image)
+    = link_to 'Фтопку', image_path(@image), method: :delete
   %h4.share
     = render 'layouts/share'
   .under-image

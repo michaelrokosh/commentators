@@ -8,6 +8,6 @@ class HomeController < ApplicationController
   end
 
   def best
-    @comments = Comment.all.paginate(order: "rating DESC", page: params[:page], per_page: 3)
+    @comments = Comment.all
   end
 end

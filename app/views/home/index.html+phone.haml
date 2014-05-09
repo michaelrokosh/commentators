@@ -1,4 +1,5 @@
 = content_for(:title, "Комментаторы - развлекательный сайт нового формата")
+= render 'layouts/header_mobile'
 - @recent_images.each do |image|
   %article.commentator
     - if image.comments.any?

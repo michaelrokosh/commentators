@@ -4,25 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_filter :configure_permitted_parameters, if: :devise_controller?
   before_filter :set_yellow_lord
-  before_action :detect_device_type
 
-
-  private
-    def detect_device_type
-      case request.user_agent
-      when /iPad/i
-        request.variant = :tablet
-      when /iPhone/i
-        request.variant = :phone
-      when /Android/i && /mobile/i
-        request.variant = :phone
-      when /Android/i
-        request.variant = :tablet
-      when /Windows Phone/i
-        :phone
-      end
-    end
-    
   protected
     def set_yellow_lord
       @yellow_lord = User.find(14)

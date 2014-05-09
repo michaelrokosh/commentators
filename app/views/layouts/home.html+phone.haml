@@ -15,6 +15,7 @@
     %meta{content: "Комментоторы, комментаторы картинки, картинки с подписями, весёлые картинки, фотки с подписями", name: "keywords"}/
     %meta{content: "width=device-width, initial-scale=1, maximum-scale=1", name: "viewport", "user-scalable" => "no"}/
   %body#mobile.col-xs-12.col-sm-12.col-md-12
+    = render 'layouts/header_mobile'
     #wrapper-mobile
       = yield
       = render 'layouts/google_analytics'

@@ -11,7 +11,7 @@
         %li
           - if user_signed_in?
             %a.fa.fa-sign-out
-              = link_to destroy_user_session_path, method: :delete
+              = link_to(destroy_user_session_path), method: :delete
           - else
             %a.fa.fa-sign-in
               = link_to user_omniauth_authorize_path(:vkontakte)

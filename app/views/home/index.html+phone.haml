@@ -22,7 +22,7 @@
       - if image.comments.size > 1
         = render 'comments/mobile_comment', locals: { comment: image.comments.order('rating DESC').second }
         -if image.comments.size > 2
-           = render 'comments/mobile_comment', locals: { comment: image.comments.order('rating DESC').third }
+          = render 'comments/mobile_comment', locals: { comment: image.comments.order('rating DESC').third }
       - else
         .single-comment-mobile
           .comment-top

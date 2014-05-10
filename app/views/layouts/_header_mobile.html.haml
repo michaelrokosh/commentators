@@ -10,8 +10,6 @@
           %a{href: "/best"} Перлы
         %li
           - if user_signed_in?
-            %a.fa.fa-sign-out
-              = link_to '', destroy_user_session_path, method: :delete, title: 'Выход'
+            %a.fa.fa-sign-out{href: destroy_user_session_path, method: :delete, title: 'Выход'}
           - else
-            %a.fa.fa-sign-in
-              = link_to '', user_omniauth_authorize_path(:vkontakte), title: 'Вход'
+            %a.fa.fa-sign-in{user_omniauth_authorize_path(:vkontakte), title: 'Вход'}

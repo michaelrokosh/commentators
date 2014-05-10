@@ -66,7 +66,7 @@ $(function() {
 
 
 $(function() {
-  $(document).bind( "vclick", ".vote-down", function() {
+  $(document).on( "click tap touchstart", ".vote-down", function() {
     $button = $(this)
     $comment_id = ".comment_" + $button.attr('data-comment-id')
     if ( $( "#vote-block-" + $button.attr('data-comment-id')).hasClass( "make-vote" ) ) {
@@ -83,7 +83,7 @@ $(function() {
 });
 
 $(function() {
-  $(document).bind( "vclick", ".vote-up", function() {
+  $(document).on( "click tap touchstart", ".vote-up", function() {
     $button = $(this)
     if ( $( "#vote-block-" + $button.attr('data-comment-id')).hasClass( "make-vote" ) ) {
       $.ajax({

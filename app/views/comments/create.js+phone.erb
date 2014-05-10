@@ -1,0 +1,2 @@
+$('#comments').prepend("<%= escape_javascript(render 'comments/comment_mobile', comment: @comment) %>");
+$('#<%= dom_id(@comment) %>').effect('highlight');

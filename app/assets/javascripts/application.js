@@ -66,7 +66,7 @@ $(function() {
 
 
 $(function() {
-  $(document).on( "click", ".vote-against-mobile", function() {
+  $(document).on( "click", ".vote-down", function() {
     $button = $(this)
     $comment_id = ".comment_" + $button.attr('data-comment-id')
     if ( $( "#vote-block-" + $button.attr('data-comment-id')).hasClass( "make-vote" ) ) {
@@ -83,7 +83,7 @@ $(function() {
 });
 
 $(function() {
-  $(document).on( "click", ".vote-for-mobile", function() {
+  $(document).on( "click", ".vote-up", function() {
     $button = $(this)
     if ( $( "#vote-block-" + $button.attr('data-comment-id')).hasClass( "make-vote" ) ) {
       $.ajax({
@@ -91,7 +91,7 @@ $(function() {
         url: '/images/' + $button.attr('data-image-id') + '/comments/' + $button.attr('data-comment-id') + '/vote_up',
         success: function() {
           var rating = parseInt($button.attr('data-comment-rating')) + 1
-          $("#vote-block-" + $button.attr('data-comment-id')).removeClass('make-vote').addClass('vote-made').html('<div class="vote-block"><div class="rating">' + rating + '</div><div class="voted"><i class="voted-for fa fa-thumbs-up green"></i></div></div>'); ; 
+          $("#vote-block-" + $button.attr('data-comment-id')).removeClass('make-vote').addClass('vote-made').html('<div class="vote-block"><div class="rating">' + rating + '</div></div>'); ; 
         }
       })
     }

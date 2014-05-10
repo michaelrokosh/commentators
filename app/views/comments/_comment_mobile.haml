@@ -5,7 +5,7 @@
     = comment.content
     %td.rating.vote-block.make-vote.col-xs-4.col-sm-4.col-md-4{ id: "vote-block-#{comment.id}" }
       = comment.rating
-    %td.vote-up.col-xs-4.col-sm-4.col-md-4
-      %i.vote-for-mobile.fa.fa-thumbs-o-up{ data: {:image_id => comment.image.id, :comment_id => comment.id, :comment_rating => comment.rating} }
-    %td.vote-down.col-xs-4.col-sm-4.col-md-4
-      %i.vote-against-mobile.fa.fa-thumbs-o-down{ data: {:image_id => comment.image.id, :comment_id => comment.id, :comment_rating => comment.rating} }
+    %td.vote-up.col-xs-4.col-sm-4.col-md-4{ data: {:image_id => comment.image.id, :comment_id => comment.id, :comment_rating => comment.rating} }
+      %i.vote-for-mobile.fa.fa-thumbs-o-up
+    %td.vote-down.col-xs-4.col-sm-4.col-md-4{ data: {:image_id => comment.image.id, :comment_id => comment.id, :comment_rating => comment.rating} }
+      %i.vote-against-mobile.fa.fa-thumbs-o-down

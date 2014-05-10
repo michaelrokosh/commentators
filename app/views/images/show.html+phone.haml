@@ -41,7 +41,7 @@
       = form_for ([@image, @image.comments.build]), remote: true do |f|
         %p.add-comment
           = f.hidden_field :image_id
-          = f.text_field :content, maxlength: 70, class: 'form-control comment-field', id: 'comment-field'
+          = f.text_field :content, maxlength: 70, class: 'form-control', id: 'comment-field'
       %p#counter
         %span
           0

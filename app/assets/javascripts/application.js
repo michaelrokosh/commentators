@@ -68,7 +68,7 @@ $(function() {
 //counter
 
 $(document).ready(function(){
-  var limitnum = 120; // set your int limit for max number of characters
+  var limitnum = 70; // set your int limit for max number of characters
   
   function limiting(obj, limit) {
     var cnt = $("#counter > span");
@@ -91,7 +91,7 @@ $(document).ready(function(){
   }
 
 
-  $('textarea').keyup(function(){
+  $('#comment-field').keyup(function(){
     limiting($(this), limitnum);
   });
 });

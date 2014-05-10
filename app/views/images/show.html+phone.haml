@@ -39,10 +39,12 @@
   .under-image
     - if user_signed_in?
       = form_for ([@image, @image.comments.build]), remote: true do |f|
-        %p#counter
         %p.add-comment
           = f.hidden_field :image_id
           = f.text_field :content, maxlength: 70, class: 'form-control comment-field', id: 'comment-field'
+      %p#counter
+        %span
+          0
     - else
       #not-signed-in
         %h3 Для голосования и комментирования необходимо войти.

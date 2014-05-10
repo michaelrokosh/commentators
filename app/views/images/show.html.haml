@@ -22,7 +22,7 @@
         = link_to 'Редактировать', edit_image_path(@image)
         = link_to 'Фтопку', image_path(@image), method: :delete
 .commentator
-  .image-mobile
+  .image
     = image_tag(@image.image.url(:medium), class: "resize")
     - if @image.comments.any?
       .top-comment

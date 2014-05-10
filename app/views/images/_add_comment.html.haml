@@ -1,7 +1,10 @@
+%p#counter
+  %span
+    0
 = form_for ([@image, @image.comments.build]), remote: true do |f|
   %p.add-comment
     = f.hidden_field :image_id
     = image_tag(current_user.avatar_url, class: 'img-circle')
-    = f.text_field :content, maxlength: 70, class: 'form-control comment-field'
+    = f.text_field :content, maxlength: 70, class: 'form-control comment-field', id: 'comment-field'
     /
       = f.submit 'Отправить', class: 'btn btn-default'

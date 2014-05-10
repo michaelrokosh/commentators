@@ -32,9 +32,10 @@
       %h6
         commentators.to
   %h4.share
-    - if current_user.admin?
-      = link_to 'Редактировать', edit_image_path(@image)
-      = link_to 'Фтопку', image_path(@image), method: :delete
+    -if user_signed_in?
+      - if current_user.admin?
+        = link_to 'Редактировать', edit_image_path(@image)
+        = link_to 'Фтопку', image_path(@image), method: :delete
     = render 'layouts/share'
   .under-image
     - if user_signed_in?

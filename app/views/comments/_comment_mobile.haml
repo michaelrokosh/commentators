@@ -3,9 +3,23 @@
     = image_tag(comment.user.avatar_url, class: 'img-circle-mobile')
   %td.comment-content-mobile.col-xs-8.col-sm-8.col-md-8
     = comment.content
-    %td.rating.vote-block.make-vote.col-xs-4.col-sm-4.col-md-4{ id: "vote-block-#{comment.id}" }
-      = comment.rating
-    %td.vote-up.col-xs-4.col-sm-4.col-md-4{ data: {:image_id => comment.image.id, :comment_id => comment.id, :comment_rating => comment.rating} }
-      %i.vote-for-mobile.fa.fa-thumbs-o-up
-    %td.vote-down.col-xs-4.col-sm-4.col-md-4{ data: {:image_id => comment.image.id, :comment_id => comment.id, :comment_rating => comment.rating} }
-      %i.vote-against-mobile.fa.fa-thumbs-o-down
+  %td.rating.vote-block.make-vote.col-xs-4.col-sm-4.col-md-4{ id: "vote-block-#{comment.id}" }
+    = comment.rating
+  - if user_signed_in?
+    - unless comment.user.id == current_user.id
+      - if current_user.voted_for?(comment.id)
+        - if current_user.positive_vote?(comment.id)
+          %td.vote-up.col-xs-4.col-sm-4.col-md-4{ data: {:image_id => comment.image.id, :comment_id => comment.id, :comment_rating => comment.rating} }
+            %i.fa.fa-thumbs-o-up
+          %td.vote-down.col-xs-4.high-opacity.col-sm-4.col-md-4{ data: {:image_id => comment.image.id, :comment_id => comment.id, :comment_rating => comment.rating} }
+            %i.fa.fa-thumbs-o-down
+        - else
+          %td.vote-up.col-xs-4.col-sm-4.col-md-4.high-opacity{ data: {:image_id => comment.image.id, :comment_id => comment.id, :comment_rating => comment.rating} }
+            %i.fa.fa-thumbs-o-up
+          %td.vote-down.col-xs-4.col-sm-4.col-md-4{ data: {:image_id => comment.image.id, :comment_id => comment.id, :comment_rating => comment.rating} }
+            %i.fa.fa-thumbs-o-down
+      - else
+        %td.vote-up.col-xs-4.col-sm-4.col-md-4{ data: {:image_id => comment.image.id, :comment_id => comment.id, :comment_rating => comment.rating} }
+          %i.fa.fa-thumbs-o-up
+        %td.vote-down.col-xs-4.col-sm-4.col-md-4{ data: {:image_id => comment.image.id, :comment_id => comment.id, :comment_rating => comment.rating} }
+          %i.fa.fa-thumbs-o-down

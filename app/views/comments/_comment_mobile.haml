@@ -19,7 +19,7 @@
           %td.vote-down.col-xs-4.col-sm-4.col-md-4{ data: {:image_id => comment.image.id, :comment_id => comment.id, :comment_rating => comment.rating} }
             %i.fa.fa-thumbs-o-down
       - else
-        %td.vote-up.col-xs-4.col-sm-4.col-md-4{ data: {:image_id => comment.image.id, :comment_id => comment.id, :comment_rating => comment.rating} }
+        %td.vote-up.col-xs-4.col-sm-4.col-md-4{ data: {:image_id => comment.image.id, :comment_id => comment.id, :comment_rating => comment.rating}, onclick: '' }
           %i.fa.fa-thumbs-o-up
-        %td.vote-down.col-xs-4.col-sm-4.col-md-4{ data: {:image_id => comment.image.id, :comment_id => comment.id, :comment_rating => comment.rating} }
+        %td.vote-down.col-xs-4.col-sm-4.col-md-4{ data: {:image_id => comment.image.id, :comment_id => comment.id, :comment_rating => comment.rating}, onclick: "" }
           %i.fa.fa-thumbs-o-down

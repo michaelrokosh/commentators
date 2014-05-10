@@ -37,7 +37,7 @@
         = link_to 'Редактировать', edit_image_path(@image)
         = link_to 'Фтопку', image_path(@image), method: :delete
     = render 'layouts/share'
-  .under-image
+  .under-image-mobile
     - if user_signed_in?
       = form_for ([@image, @image.comments.build]), remote: true do |f|
         %p.add-comment

@@ -1,6 +1,5 @@
-%table.table.single-comment-mobile
-  %tr.row
-    %td.comment-avatar-mobile.col-xs-2.col-sm-2.col-md-2
-      = image_tag(comment.user.avatar_url, class: 'img-circle-mobile')
-    %td.comment-content-mobile.col-xs-10.col-sm-10.col-md-10
-      = comment.content
+%tr.row
+  %td.comment-avatar-mobile.col-xs-2.col-sm-2.col-md-2
+    = image_tag(comment.user.avatar_url, class: 'img-circle-mobile')
+  %td.comment-content-mobile.col-xs-10.col-sm-10.col-md-10
+    = comment.content

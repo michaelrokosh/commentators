@@ -16,16 +16,18 @@ body#mobile {
 
 .comments-mobile {
   padding: 10px;
-  border-top: 1px solid #DAE1E8;
   background-color: #fff;
-  &:last-child {
-    border-bottom: 1px solid #DAE1E8;
+  .single-comment-mobile {
+    border-top: 1px solid #DAE1E8;
+    &:last-child {
+      border-bottom: 1px solid #DAE1E8;
+    }
   }
   td {
     border: none !important;
   }
   .comment-avatar-mobile {
-    padding: 0 10px;
+    padding: 0 5px;
     vertical-align: middle;
   }
   .comment-content-mobile {
@@ -93,7 +95,7 @@ body#mobile {
   }
 }
 
-#counter-mobile {
+.counter-mobile {
   font-size: 30px;
   line-height: 34px;
   .warning {

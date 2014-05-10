@@ -66,7 +66,7 @@ $(function() {
 
 
 $(function() {
-  $(document).on( "tap", ".vote-down", function() {
+  $(document).bind( "click tap", ".vote-down", function() {
     $button = $(this)
     $comment_id = ".comment_" + $button.attr('data-comment-id')
     if ( $( "#vote-block-" + $button.attr('data-comment-id')).hasClass( "make-vote" ) ) {
@@ -83,7 +83,7 @@ $(function() {
 });
 
 $(function() {
-  $(document).on( "tap", ".vote-up", function() {
+  $(document).bind( "click tap", ".vote-up", function() {
     $button = $(this)
     if ( $( "#vote-block-" + $button.attr('data-comment-id')).hasClass( "make-vote" ) ) {
       $.ajax({

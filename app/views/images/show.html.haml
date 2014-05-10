@@ -22,21 +22,7 @@
         = link_to 'Редактировать', edit_image_path(@image)
         = link_to 'Фтопку', image_path(@image), method: :delete
 .commentator
-  .image
-    = image_tag(@image.image.url(:medium), class: "resize")
-    - if @image.comments.any?
-      .top-comment
-        %h1
-          = @top_comment
-        %h4
-          = link_to(@image.comments.order("rating DESC, created_at ASC").first.user.username, user_path(@image.comments.order("rating DESC, created_at ASC").first.user), rel: 'author')
-    - else
-      .top-comment
-        %h1
-          Комметариев пока нет
-    .copyright
-      %h6
-        commentators.to
+  = render 'images/image', image: @image
   %h4.share
     = render 'layouts/share'
   .under-image

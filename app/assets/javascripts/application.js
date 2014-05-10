@@ -32,7 +32,7 @@ $(function() {
 
 
 $(function() {
-  $(document).on( "click tap", ".vote-against", function() {
+  $(document).on( "click", ".vote-against", function() {
     $button = $(this)
     $comment_id = ".comment_" + $button.attr('data-comment-id')
     if ( $( "#vote-block-" + $button.attr('data-comment-id')).hasClass( "make-vote" ) ) {
@@ -49,7 +49,7 @@ $(function() {
 });
 
 $(function() {
-  $(document).on( "click", ".vote-for", function() {
+  $(document).on( "click tap", ".vote-for", function() {
     $button = $(this)
     if ( $( "#vote-block-" + $button.attr('data-comment-id')).hasClass( "make-vote" ) ) {
       $.ajax({
@@ -66,7 +66,7 @@ $(function() {
 
 
 $(function() {
-  $(document).on( "click", ".vote-down", function() {
+  $(document).on( "click tap", ".vote-down", function() {
     $button = $(this)
     $comment_id = ".comment_" + $button.attr('data-comment-id')
     if ( $( "#vote-block-" + $button.attr('data-comment-id')).hasClass( "make-vote" ) ) {

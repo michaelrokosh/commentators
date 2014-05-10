@@ -38,7 +38,7 @@
       - else
         = link_to "популярности", :sort_by => "popular"
     #comments
-      = render @comments 
+      = render @comments
     #with-button
       = will_paginate(@comments)
     - if @comments.next_page

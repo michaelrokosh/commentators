@@ -57,14 +57,14 @@ $(function() {
         url: '/images/' + $button.attr('data-image-id') + '/comments/' + $button.attr('data-comment-id') + '/vote_up',
         success: function() {
           var rating = parseInt($button.attr('data-comment-rating')) + 1
-          $("#vote-block-" + $button.attr('data-comment-id')).removeClass('make-vote').addClass('vote-made').html('<div class="vote-block"><div class="rating">' + rating + '</div></div>'); ; 
+          $("#vote-block-" + $button.attr('data-comment-id')).removeClass('make-vote').addClass('vote-made').html('<div class="vote-block"><div class="rating">' + rating + '</div><div class="voted"><i class="voted-against fa fa-thumbs-up green"></i></div></div>'); ; 
         }
       })
     }
   });
 });
 
-
+// mobile version
 $(function() {
   $(document).on( "click tap touchstart", ".vote-down", function() {
     $button = $(this)
@@ -97,7 +97,7 @@ $(function() {
     }
   });
 });
-
+//mobile v end
 
 //counter
 

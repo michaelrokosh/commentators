@@ -17,10 +17,12 @@ body#mobile {
 .comments-mobile {
   background-color: #fff;
   border-collapse: collapse;
+  margin-bottom: 20px !important;
   tr {
     border-top: 1px solid #DAE1E8;
     &:last-child {
       border-bottom: 1px solid #DAE1E8;
+      margin-bottom: 20px;
     }
   }
   td {
@@ -101,4 +103,28 @@ body#mobile {
   .warning {
     color: red;
   }
+}
+.vote-up, .vote-down {
+  vertical-align: middle;
+  opacity: 0.7;
+  color: #fff;
+  vertical-align: middle !important;
+}
+
+.vote-up {
+  background-color: green;
+}
+
+.vote-down {
+  background-color: red;
+}
+
+.rating {
+  vertical-align: middle;
+}
+
+.sort_comments-mobile {
+  text-align: right;
+  margin-right: 10px;
+  margin-bottom: 10px;
 }

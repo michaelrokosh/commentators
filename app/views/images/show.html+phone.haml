@@ -51,17 +51,17 @@
     - else
       #not-signed-in
         %h3 Для голосования и комментирования необходимо войти.
-    .sort_comments
+    .sort_comments-mobile
       = 'Сортировать по'
       - if params[:sort_by] == 'popular'
         = link_to "новизне", :sort_by => "recent"
       - else
         = link_to "популярности", :sort_by => "popular"
-    %table.table.comments-mobile
+    %table.table.comments-mobile#comments
       = render partial: 'comments/comment_mobile', collection: @comments, as: :comment
     #with-button
       = will_paginate(@comments)
     - if @comments.next_page
-      #load_more_comments.btn.btn-lg.btn-custom.load-more Еще
+      #load_more_comments.btn.btn-sm.btn-custom.load-more Еще
     #comments
 %h1

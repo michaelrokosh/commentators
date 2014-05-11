@@ -1,5 +1,5 @@
 .image
-  = image_tag(image.image.url(:medium), class: "resize")
+  = link_to(image_tag(image.image.url(:medium), class: "resize"), image_path(image))
   - if image.comments.any?
     .top-comment
       %h1

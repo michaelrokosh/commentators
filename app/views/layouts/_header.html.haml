@@ -2,11 +2,12 @@
   %navigation
     %ul.menu
       %li
-        %a.home{href: "/", style: "color: rgb(241, 219, 19);", title: "Главная"} COMMENTATORS.TO
+        .home
+          = link_to_unless_current 'COMMENTATORS.TO', root_path 
       .rmenu
         %li
-          %a{href: "/dniwe"} Dniwe
+          = link_to_unless_current 'Dniwe', dniwe_path
         %li
-          %a{href: "/best"} Перлы
+          = link_to_unless_current 'Перлы', best_path
         %li
-          %a{href: "/users"} Население
+          = link_to_unless_current 'Население', users_path

@@ -5,7 +5,7 @@
     %meta{content: "Комментариев пока нет", property: "og:title"}/
   %meta{content: "#{@image.image.url(:thumb)}", property: "og:image"}/
   %meta{content: "Комментаторы - это новый вид интерактивного развлечения, который заключается в комментировании картинок с целью попасть в топ лучших, размещенных непосредственно под изображением.", property: "og:description"}/
-= content_for(:title, "Комментатор ##{@image.id} | Комментаторы")
+= content_for(:title, "Комментатор ##{@image.id} - #{@top_comment} | Комментаторы")
 .img-header
   %h4.created_at_image
     = @image.created_at.strftime("%d/%m/%Y")

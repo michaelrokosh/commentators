@@ -11,7 +11,7 @@
 - @comments.each do |comment|
   %article.commentator
     - @top_comment = comment.content
-    = render 'images/image', image: comment.image
+    = render 'images/image', image: comment.commentable
     %h4.share
-      .yashare-auto-init{"data-yasharel10n" => "ru", "data-yasharequickservices" => "vkontakte,facebook,twitter,odnoklassniki,moimir", "data-yasharetheme" => "counter", "data-yashareType" => "big", "data-yashareLink" => "http://commentators.to/images/#{comment.image.id}", "data-yashareTitle" => @top_comment}
+      .yashare-auto-init{"data-yasharel10n" => "ru", "data-yasharequickservices" => "vkontakte,facebook,twitter,odnoklassniki,moimir", "data-yasharetheme" => "counter", "data-yashareType" => "big", "data-yashareLink" => "http://commentators.to/images/#{comment.commentable.id}", "data-yashareTitle" => @top_comment}
 = will_paginate(@comments, :previous_label => 'Туда', :next_label => 'Сюда', renderer: WillPaginate::ActionView::LinkRenderer)

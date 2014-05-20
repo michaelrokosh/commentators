@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140423120107) do
+ActiveRecord::Schema.define(version: 20140520213723) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,12 +21,13 @@ ActiveRecord::Schema.define(version: 20140423120107) do
     t.integer  "commenter_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "image_id"
+    t.integer  "commentable_id"
     t.integer  "user_id"
-    t.integer  "rating",       default: 0
+    t.integer  "rating",           default: 0
+    t.string   "commentable_type"
   end
 
-  add_index "comments", ["image_id"], name: "index_comments_on_image_id", using: :btree
+  add_index "comments", ["commentable_id"], name: "index_comments_on_commentable_id", using: :btree
 
   create_table "images", force: true do |t|
     t.string   "url"

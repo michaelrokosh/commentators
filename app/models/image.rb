@@ -1,6 +1,6 @@
 class Image < ActiveRecord::Base
   scope :recent, where("created_at <= ?", Time.now)
-	has_many :comments, dependent: :destroy
+	has_many :comments, as: :commentable, dependent: :destroy
   belongs_to :user
 	before_destroy :clear_comments
 

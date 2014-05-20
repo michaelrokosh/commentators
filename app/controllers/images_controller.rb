@@ -51,7 +51,7 @@ class ImagesController < ApplicationController
     if @image.comments.any?
       @top_comment = @image.comments.order("rating DESC, created_at ASC").first.content
     else
-      @top_comment = 'Комметариев пока нет'
+      @top_comment = 'Комментариев пока нет'
     end
 
     if params[:sort_by] == 'popular'

@@ -1,0 +1,47 @@
+= content_for :metashare do
+  - if @news.comments.any?
+    %meta{content: "#{@top_comment}", property: "og:title"}/
+  - else  
+    %meta{content: "Комментариев пока нет", property: "og:title"}/
+  %meta{content: "#{@news.image.url(:thumb)}", property: "og:image"}/
+  %meta{content: "Комментаторы - это новый вид интерактивного развлечения, который заключается в комментировании картинок с целью попасть в топ лучших, размещенных непосредственно под изображением.", property: "og:description"}/
+= content_for(:title, "Комментатор ##{@news.id} - #{@top_comment} | Комментаторы")
+.img-header
+  %h4.created_at_image
+    = @news.created_at.strftime("%d/%m/%Y")
+  %h4.title
+    Добавил: 
+    - if @news.user != nil
+      = link_to @news.user.username, user_path(@news.user), rel: 'author'
+    - else
+      Повелитель удаленных душ
+    - if user_signed_in?
+      - if current_user.admin?
+        - unless @news.godnota?
+          %i.godnota.dniwe.fa.fa-thumbs-o-up{ data: {:image_id => @news.id}}
+        = link_to 'Редактировать', edit_news_path(@news)
+        = link_to 'Фтопку', news_path(@news), method: :delete
+.commentator
+  = render 'images/image', image: @news
+  %h4.share
+    = render 'layouts/share'
+  .under-image
+    - if user_signed_in?
+      = render 'add_comment'
+    - else
+      #not-signed-in
+        %h3 Для голосования и комментирования необходимо войти.
+    .sort_comments
+      = 'Сортировать по'
+      - if params[:sort_by] == 'popular'
+        = link_to "новизне", :sort_by => "recent"
+      - else
+        = link_to "популярности", :sort_by => "popular"
+    #comments
+      = render @comments
+    #with-button
+      = will_paginate(@comments)
+    - if @comments.next_page
+      #load_more_comments.btn.btn-lg.btn-custom.load-more Еще
+    #comments
+%h1

@@ -1,0 +1,13 @@
+#upload-form
+  - if user_signed_in?
+    -if @news.errors.any? 
+      %h2.center
+        = @news.errors[:image].join(" ")
+    = form_for @news do |f|
+      .upload-image
+        %p
+          = f.file_field :image
+        %p
+          = f.submit 'Добавить', class: 'btn btn-custom btn-sm btn-wide'
+  - else
+    %h1.center Сначала нужно войти

@@ -24,7 +24,7 @@
 .commentator
   = render 'images/image', image: @news
   %h4.share
-    = render 'layouts/share'
+    = render 'layouts/share', shareable: @news
   .under-image
     - if user_signed_in?
       = render 'add_comment'

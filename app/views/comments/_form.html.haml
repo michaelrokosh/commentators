@@ -2,6 +2,6 @@
   Добавить комментарий
 = form_for ([@image, @image.comments.build]) do |f|
   %p
-    = f.hidden_field :image_id
+    = f.hidden_field :commentable_id
     = f.text_area :content
     = f.submit 'Отправить'

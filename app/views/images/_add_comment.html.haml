@@ -1,7 +1,7 @@
 = form_for ([@image, @image.comments.build]), remote: true do |f|
   .row#add-comment
     %p.add-comment-field.col-xs-11.col-sm-11.col-md-11
-      = f.hidden_field :image_id
+      = f.hidden_field :commentable_id
       = image_tag(current_user.avatar_url, class: 'img-circle')
       = f.text_field :content, maxlength: 70, class: 'form-control comment-field', id: 'comment-field'
     %p#counter.col-xs-1.col-sm-1.col-md-1

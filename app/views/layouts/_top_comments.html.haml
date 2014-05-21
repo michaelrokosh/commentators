@@ -49,4 +49,4 @@
             = comment.rating
       - if user_signed_in?
         - if current_user.admin?
-          = link_to 'Фтопку', image_comment_path(comment.image, comment), method: :delete, remote: true
+          = link_to 'Фтопку', image_comment_path(comment.commentable, comment), method: :delete, remote: true

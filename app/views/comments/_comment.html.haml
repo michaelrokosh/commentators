@@ -51,4 +51,4 @@
           = link_to '', user_omniauth_authorize_path(:vkontakte), class: 'vote-against fa fa-thumbs-o-down'
     - if user_signed_in?
       - if current_user.admin?
-        = link_to 'Фтопку', image_comment_path(comment.image, comment), method: :delete, remote: true
+        = link_to 'Фтопку', image_comment_path(comment.commentable, comment), method: :delete, remote: true

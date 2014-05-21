@@ -27,7 +27,7 @@
     = render 'layouts/share', shareable: @news
   .under-image
     - if user_signed_in?
-      = render 'add_comment'
+      = render 'layouts/add_comment', commentable: @news
     - else
       #not-signed-in
         %h3 Для голосования и комментирования необходимо войти.

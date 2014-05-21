@@ -1,4 +1,4 @@
-= form_for ([commentable, @commentable.comments.build]), remote: true do |f|
+= form_for ([commentable, commentable.comments.build]), remote: true do |f|
   .row#add-comment
     %p.add-comment-field.col-xs-11.col-sm-11.col-md-11
       = f.hidden_field :commentable_id

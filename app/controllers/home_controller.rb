@@ -8,9 +8,9 @@ class HomeController < ApplicationController
   end
 
   def dniwe
-    @recent_images = Image.order('created_at DESC').where(godnota: false)
-    @recent_news = News.order('created_at DESC').where(godnota: false)
-    @recent_posts = @recent_images+@recent_news
+    @recent_images = Image.where(godnota: false)
+    @recent_news = News.where(godnota: false)
+    @recent_posts = (@recent_images+@recent_news).sort_by(&:created_at).reverse
     @recent_posts = @recent_posts.paginate(:page => params[:page], :per_page => 3)
   end
 

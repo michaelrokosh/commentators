@@ -21,7 +21,7 @@ $(function() {
     if ( $( ".godnota" ).hasClass( "dniwe" ) ) {
       $.ajax({
         type: "POST",
-        url: '/images/' + $button.attr('data-image-id') + '/godnota',
+        url: '/' + $button.attr('data-type') + '/' + $button.attr('data-post-id') + '/godnota',
         success: function() {
           $(".godnota").removeClass('dniwe').addClass('godno').html('OK'); ;
         }

@@ -18,11 +18,11 @@
     - if user_signed_in?
       - if current_user.admin?
         - unless @news.godnota?
-          %i.godnota.dniwe.fa.fa-thumbs-o-up{ data: {:image_id => @news.id}}
+          %i.godnota.dniwe.fa.fa-thumbs-o-up{ data: {:post_id => @news.id, type: "news"}}
         = link_to 'Редактировать', edit_news_path(@news)
         = link_to 'Фтопку', news_path(@news), method: :delete
 .commentator
-  = render 'images/image', image: @news, top_comment: @top_comment
+  = render 'news/news', image: @news, top_comment: @top_comment
   .commentator-footer
     %h4.share
       = render 'layouts/share', shareable: @news

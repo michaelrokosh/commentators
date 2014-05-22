@@ -11,7 +11,10 @@
 - @comments.each do |comment|
   %article.commentator
     - @top_comment = comment.content
-    = render 'images/image', image: comment.commentable, top_comment: @top_comment
-    .commentator-footer
-      = render 'layouts/share', top_comment: @top_comment, shareable: comment.commentable
+    - if image.class.name == 'Image'
+      = render "images/image", top_comment: @top_comment, image: comment.commentable
+      .commentator-footer
+        = render 'layouts/share', top_comment: @top_comment, shareable: comment.commentable
+    - elsif image.class.name == 'News'
+      = render "news/news", top_comment: @top_comment, image: comment.commentable
 = will_paginate(@comments, :previous_label => 'Туда', :next_label => 'Сюда', renderer: WillPaginate::ActionView::LinkRenderer)

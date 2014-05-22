@@ -23,11 +23,6 @@
         = link_to 'Фтопку', news_path(@news), method: :delete
 .commentator
   = render 'news/news', image: @news, top_comment: @top_comment
-  .commentator-footer
-    = render 'layouts/share', shareable: @news, top_comment: @top_comment
-    .news-content-wrapper
-      .news-content
-        = @news.content
   .under-image
     - if user_signed_in?
       = render 'comments/add_comment', commentable: @news

@@ -4,7 +4,7 @@
     - if comment.commentable.class.name == 'Image'
       = render "images/image_mobile", image: comment.commentable
     - if comment.commentable.class.name == 'News'
-      = render "images/news_mobile", image: comment.commentable
+      = render "news/news_mobile", image: comment.commentable
     .commentator-footer
       = render 'layouts/share', top_comment: @top_comment, shareable: comment.commentable
 = will_paginate(@comments, :previous_label => 'Туда', :next_label => 'Сюда', renderer: WillPaginate::ActionView::LinkRenderer)

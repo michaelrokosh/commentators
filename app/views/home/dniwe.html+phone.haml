@@ -4,7 +4,7 @@
     - if image.class.name == 'Image'
       = render "images/image_mobile", image: image
     - if image.class.name == 'News'
-      = render "images/news_mobile", image: image
+      = render "news/news_mobile", image: image
     .commentator-footer
       = render 'layouts/share', top_comment: @top_comment, shareable: image
     %table.table.comments-mobile

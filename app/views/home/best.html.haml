@@ -13,6 +13,5 @@
     - @top_comment = comment.content
     = render 'images/image', image: comment.commentable, top_comment: @top_comment
     .commentator-footer
-      %h4.share
-        .yashare-auto-init{"data-yasharel10n" => "ru", "data-yasharequickservices" => "vkontakte,facebook,twitter,odnoklassniki,moimir", "data-yasharetheme" => "counter", "data-yashareType" => "big", "data-yashareLink" => "http://commentators.to/images/#{comment.commentable.id}", "data-yashareTitle" => @top_comment}
+      = render 'layouts/share', top_comment: @top_comment, shareable: comment.commentable
 = will_paginate(@comments, :previous_label => 'Туда', :next_label => 'Сюда', renderer: WillPaginate::ActionView::LinkRenderer)

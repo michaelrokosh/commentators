@@ -24,8 +24,7 @@
 .commentator
   = render 'news/news', image: @news, top_comment: @top_comment
   .commentator-footer
-    %h4.share
-      = render 'layouts/share', shareable: @news
+    = render 'layouts/share', shareable: @news, top_comment: @top_comment
     .news-content-wrapper
       .news-content
         = @news.content

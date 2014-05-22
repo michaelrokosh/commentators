@@ -1,7 +1,10 @@
 = content_for(:title, "DNIWE | Комментаторы")
 - @comments.each do |comment|
   %article.commentator
-    = render 'images/image_mobile', image: comment.commentable
-    %h4.share
-      .yashare-auto-init{"data-yasharel10n" => "ru", "data-yasharequickservices" => "vkontakte,facebook,twitter,odnoklassniki,moimir", "data-yasharetheme" => "counter", "data-yashareType" => "big", "data-yashareLink" => "http://commentators.to/images/#{comment.commentable.id}", "data-yashareTitle" => @top_comment}
+    - if comment.commentable.class.name == 'Image'
+      = render "images/image_mobile", image: comment.commentable
+    - if comment.commentable.class.name == 'News'
+      = render "images/news_mobile", image: comment.commentable
+    .commentator-footer
+      = render 'layouts/share', top_comment: @top_comment, shareable: comment.commentable
 = will_paginate(@comments, :previous_label => 'Туда', :next_label => 'Сюда', renderer: WillPaginate::ActionView::LinkRenderer)

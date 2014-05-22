@@ -31,12 +31,13 @@
     .copyright
       %h6
         commentators.to
-  %h4.share
-    -if user_signed_in?
-      - if current_user.admin?
-        = link_to 'Редактировать', edit_image_path(@image)
-        = link_to 'Фтопку', image_path(@image), method: :delete
-    = render 'layouts/share'
+  .commentator-footer
+    %h4.share
+      -if user_signed_in?
+        - if current_user.admin?
+          = link_to 'Редактировать', edit_image_path(@image)
+          = link_to 'Фтопку', image_path(@image), method: :delete
+    = render 'layouts/share', shareable: @image, top_comment: @top_comment
   .under-image-mobile
     - if user_signed_in?
       = form_for ([@image, @image.comments.build]), remote: true do |f|

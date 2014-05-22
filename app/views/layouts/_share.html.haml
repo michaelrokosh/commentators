@@ -1,10 +1,11 @@
-- if shareable.comments.any?
-  .yashare-auto-init{"data-yasharel10n" => "ru", "data-yasharequickservices" => "vkontakte,facebook,twitter,odnoklassniki,moimir", "data-yasharetheme" => "counter", "data-yashareType" => "big", "data-yashareLink" => "http://commentators.to/#{shareable.class.name.downcase}/#{shareable.id}", "data-yashareTitle" => @top_comment}
-- else
-  .yashare-auto-init{"data-yasharel10n" => "ru", "data-yasharequickservices" => "vkontakte,facebook,twitter,odnoklassniki,moimir", "data-yasharetheme" => "counter", "data-yashareType" => "big", "data-yashareLink" => "http://commentators.to/#{shareable.class.name.downcase}/#{shareable.id}", "data-yashareTitle" => "Комментариев пока нет"}
-/
-  = image_tag('/share/vkontakte.png')
-  = image_tag('/share/facebook.png')
-  = image_tag('/share/twitter.png')
-  = image_tag('/share/google_plus.png')
-  = image_tag('/share/odnoklassniki.png')
+%h4.share
+  - if shareable.comments.any?
+    - if shareable.class.name == "Image"
+      .yashare-auto-init{"data-yasharel10n" => "ru", "data-yasharequickservices" => "vkontakte,facebook,twitter,odnoklassniki,moimir", "data-yasharetheme" => "counter", "data-yashareType" => "big", "data-yashareLink" => "http://commentators.to/images/#{shareable.id}", "data-yashareTitle" => top_comment}
+    - elsif shareable.class.name == "News"
+      .yashare-auto-init{"data-yasharel10n" => "ru", "data-yasharequickservices" => "vkontakte,facebook,twitter,odnoklassniki,moimir", "data-yasharetheme" => "counter", "data-yashareType" => "big", "data-yashareLink" => "http://commentators.to/news/#{shareable.id}", "data-yashareTitle" => top_comment}
+  - else
+    - if shareable.class.name == "Image"
+      .yashare-auto-init{"data-yasharel10n" => "ru", "data-yasharequickservices" => "vkontakte,facebook,twitter,odnoklassniki,moimir", "data-yasharetheme" => "counter", "data-yashareType" => "big", "data-yashareLink" => "http://commentators.to/images/#{shareable.id}", "data-yashareTitle" => "Комментариев пока нет"}
+    - elsif shareable.class.name == "News"
+      .yashare-auto-init{"data-yasharel10n" => "ru", "data-yasharequickservices" => "vkontakte,facebook,twitter,odnoklassniki,moimir", "data-yasharetheme" => "counter", "data-yashareType" => "big", "data-yashareLink" => "http://commentators.to/news/#{shareable.id}", "data-yashareTitle" => "Комментариев пока нет"}

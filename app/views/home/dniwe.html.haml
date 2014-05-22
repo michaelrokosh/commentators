@@ -16,13 +16,15 @@
       - @top_comment = 'Комментариев пока нет'
     - if image.class.name == 'Image'
       = render "images/image", top_comment: @top_comment, image: image
+      .commentator-footer
+        = render 'layouts/share', top_comment: @top_comment, shareable: image
     - elsif image.class.name == 'News'
       = render "news/news", top_comment: @top_comment, image: image
-    .commentator-footer
-      = render 'layouts/share', top_comment: @top_comment, shareable: image
-      .news-content-wrapper
-        .news-content
-          = image.content
+      .commentator-footer
+        = render 'layouts/share', top_comment: @top_comment, shareable: image
+        .news-content-wrapper
+          .news-content
+            = image.content
     .comments
       - if image.comments.size > 1
         .single-comment

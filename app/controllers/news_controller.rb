@@ -20,7 +20,7 @@ class NewsController < ApplicationController
 
   def update
     @news = News.find(params[:id])
-    if @news.update(image_params)
+    if @news.update(news_params)
       redirect_to @news
     else
       render 'edit'

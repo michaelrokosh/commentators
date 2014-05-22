@@ -1,54 +1,110 @@
-= div_for(comment) do
-  .single-comment
-    .comment-top
-      .username
-        = link_to comment.user.username, user_path(comment.user), rel: 'author'
-      -if comment.id == @image.comments.order("rating desc, created_at ASC").first.id
-        .medal
-          .gold-medal
-      -elsif comment.id == @image.comments.order("rating desc, created_at ASC").second.id
-        .medal
-          .silver-medal
-      -elsif comment.id == @image.comments.order("rating desc, created_at ASC").third.id
-        .medal
-          .bronze-medal
-    .avatar.img-circle
-      = image_tag(comment.user.avatar_url, class: 'img-circle')
-    .bubble-comment
-      .content
-        = comment.content
-    - if user_signed_in?
-      - if comment.user.id == current_user.id
-        .rating-no-votes
-          = comment.rating
-      - else
-        - if current_user.voted_for?(comment.id)
-          - if current_user.positive_vote?(comment.id)
-            .vote-block
-              .rating
-                = comment.rating
-              .voted
-                %i.voted-for.fa.fa-thumbs-up.green
-          - else 
-            .vote-block
-              .rating
-                = comment.rating
-              .voted
-                %i.voted-against.fa.fa-thumbs-down.red
+- if controller.controller_name == "images" 
+  = div_for(comment) do
+    .single-comment
+      .comment-top
+        .username
+          = link_to comment.user.username, user_path(comment.user), rel: 'author'
+        -if comment.id == @image.comments.order("rating desc, created_at ASC").first.id
+          .medal
+            .gold-medal
+        -elsif comment.id == @image.comments.order("rating desc, created_at ASC").second.id
+          .medal
+            .silver-medal
+        -elsif comment.id == @image.comments.order("rating desc, created_at ASC").third.id
+          .medal
+            .bronze-medal
+      .avatar.img-circle
+        = image_tag(comment.user.avatar_url, class: 'img-circle')
+      .bubble-comment
+        .content
+          = comment.content
+      - if user_signed_in?
+        - if comment.user.id == current_user.id
+          .rating-no-votes
+            = comment.rating
         - else
-          .vote-block.make-vote{ id: "vote-block-#{comment.id}" }
-            .rating
-              = comment.rating
-            .votes
-              %i.vote-for.fa.fa-thumbs-o-up{ data: {:image_id => @image.id, :comment_id => comment.id, :comment_rating => comment.rating} }
-              %i.vote-against.fa.fa-thumbs-o-down{ data: {:image_id => @image.id, :comment_id => comment.id, :comment_rating => comment.rating} }
-    - else
-      .vote-block
-        .rating
-          = comment.rating
-        .votes
-          = link_to '', user_omniauth_authorize_path(:vkontakte), class: 'vote-for fa fa-thumbs-o-up'
-          = link_to '', user_omniauth_authorize_path(:vkontakte), class: 'vote-against fa fa-thumbs-o-down'
-    - if user_signed_in?
-      - if current_user.admin?
-        = link_to 'Фтопку', image_comment_path(comment.commentable, comment), method: :delete, remote: true
+          - if current_user.voted_for?(comment.id)
+            - if current_user.positive_vote?(comment.id)
+              .vote-block
+                .rating
+                  = comment.rating
+                .voted
+                  %i.voted-for.fa.fa-thumbs-up.green
+            - else 
+              .vote-block
+                .rating
+                  = comment.rating
+                .voted
+                  %i.voted-against.fa.fa-thumbs-down.red
+          - else
+            .vote-block.make-vote{ id: "vote-block-#{comment.id}" }
+              .rating
+                = comment.rating
+              .votes
+                %i.vote-for.fa.fa-thumbs-o-up{ data: {:image_id => @image.id, :comment_id => comment.id, :comment_rating => comment.rating} }
+                %i.vote-against.fa.fa-thumbs-o-down{ data: {:image_id => @image.id, :comment_id => comment.id, :comment_rating => comment.rating} }
+      - else
+        .vote-block
+          .rating
+            = comment.rating
+          .votes
+            = link_to '', user_omniauth_authorize_path(:vkontakte), class: 'vote-for fa fa-thumbs-o-up'
+            = link_to '', user_omniauth_authorize_path(:vkontakte), class: 'vote-against fa fa-thumbs-o-down'
+      - if user_signed_in?
+        - if current_user.admin?
+          = link_to 'Фтопку', image_comment_path(comment.commentable, comment), method: :delete, remote: true
+- elsif controller.controller_name == "news" 
+  = div_for(comment) do
+    .single-comment
+      .comment-top
+        .username
+          = link_to comment.user.username, user_path(comment.user), rel: 'author'
+        -if comment.id == @news.comments.order("rating desc, created_at ASC").first.id
+          .medal
+            .gold-medal
+        -elsif comment.id == @news.comments.order("rating desc, created_at ASC").second.id
+          .medal
+            .silver-medal
+        -elsif comment.id == @news.comments.order("rating desc, created_at ASC").third.id
+          .medal
+            .bronze-medal
+      .avatar.img-circle
+        = image_tag(comment.user.avatar_url, class: 'img-circle')
+      .bubble-comment
+        .content
+          = comment.content
+      - if user_signed_in?
+        - if comment.user.id == current_user.id
+          .rating-no-votes
+            = comment.rating
+        - else
+          - if current_user.voted_for?(comment.id)
+            - if current_user.positive_vote?(comment.id)
+              .vote-block
+                .rating
+                  = comment.rating
+                .voted
+                  %i.voted-for.fa.fa-thumbs-up.green
+            - else 
+              .vote-block
+                .rating
+                  = comment.rating
+                .voted
+                  %i.voted-against.fa.fa-thumbs-down.red
+          - else
+            .vote-block.make-vote{ id: "vote-block-#{comment.id}" }
+              .rating
+                = comment.rating
+              .votes
+                %i.vote-for.fa.fa-thumbs-o-up{ data: {:image_id => @news.id, :comment_id => comment.id, :comment_rating => comment.rating} }
+                %i.vote-against.fa.fa-thumbs-o-down{ data: {:image_id => @news.id, :comment_id => comment.id, :comment_rating => comment.rating} }
+      - else
+        .vote-block
+          .rating
+            = comment.rating
+          .votes
+            = link_to '', user_omniauth_authorize_path(:vkontakte), class: 'vote-for fa fa-thumbs-o-up'
+            = link_to '', user_omniauth_authorize_path(:vkontakte), class: 'vote-against fa fa-thumbs-o-down'
+      - if user_signed_in?
+        - if current_user.admin?
+          = link_to 'Фтопку', news_comment_path(comment.commentable, comment), method: :delete, remote: true

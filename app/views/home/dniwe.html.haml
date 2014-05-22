@@ -14,9 +14,10 @@
       - @top_comment = image.comments.order("rating DESC, created_at ASC").first.content
     - else
       - @top_comment = 'Комментариев пока нет'
-    = render 'images/image', image: image
-    %h4.share
-      .yashare-auto-init{"data-yasharel10n" => "ru", "data-yasharequickservices" => "vkontakte,facebook,twitter,odnoklassniki,moimir", "data-yasharetheme" => "counter", "data-yashareType" => "big", "data-yashareLink" => "http://commentators.to/images/#{image.id}", "data-yashareTitle" => @top_comment}
+    = render 'images/image', image: image, top_comment: @top_comment
+    .commentator-footer
+      %h4.share
+        .yashare-auto-init{"data-yasharel10n" => "ru", "data-yasharequickservices" => "vkontakte,facebook,twitter,odnoklassniki,moimir", "data-yasharetheme" => "counter", "data-yashareType" => "big", "data-yashareLink" => "http://commentators.to/images/#{image.id}", "data-yashareTitle" => @top_comment}
     .comments
       - if image.comments.size > 1
         .single-comment
@@ -64,4 +65,4 @@
               = "Здесь мог бы быть твой комментарий! Хотя нет, вряд ли ты на это способен))00"
           .rating-no-votes
             = '-∞'
-= will_paginate(@recent_images, :previous_label => 'Туда', :next_label => 'Сюда', renderer: WillPaginate::ActionView::LinkRenderer)
+= will_paginate(@recent_posts, :previous_label => 'Туда', :next_label => 'Сюда', renderer: WillPaginate::ActionView::LinkRenderer)

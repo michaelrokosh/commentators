@@ -1,7 +1,8 @@
 %h1
   Добавить комментарий
-= form_for ([@image, @image.comments.build]) do |f|
+= form_for ([commentable, commentable.comments.build]) do |f|
   %p
     = f.hidden_field :commentable_id
+    = f.hidden_field :commentable_type, value: commentable.class.name
     = f.text_area :content
     = f.submit 'Отправить'

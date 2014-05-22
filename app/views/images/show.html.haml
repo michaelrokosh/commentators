@@ -22,12 +22,13 @@
         = link_to 'Редактировать', edit_image_path(@image)
         = link_to 'Фтопку', image_path(@image), method: :delete
 .commentator
-  = render 'images/image', image: @image
-  %h4.share
-    = render 'layouts/share', shareable: @image
+  = render 'images/image', image: @image, top_comment: @top_comment
+  .commentator-footer
+    %h4.share
+      = render 'layouts/share', shareable: @image
   .under-image
     - if user_signed_in?
-      = render 'layouts/add_comment', commentable: @image
+      = render 'comments/add_comment', commentable: @image
     - else
       #not-signed-in
         %h3 Для голосования и комментирования необходимо войти.

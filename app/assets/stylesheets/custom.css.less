@@ -130,7 +130,7 @@ img {
     float: left;
     padding: 10px;
     width: 275px;
-    height: 95px;
+    height: 110px;
     ul {
       list-style: none;
       text-align: center;
@@ -185,6 +185,7 @@ img {
     letter-spacing: 2px;
     line-height: 80px;
     /* new */
+    height: 110px;
     width: 70px;
     float: right;
     #profile-karma {
@@ -218,8 +219,11 @@ img {
 article {
   background-color: #fff;
   width: 100%;
-  .share {
+  .commentator-footer {
     margin-bottom: 0 !important;
+    .share {
+      margin-bottom: 0 !important;
+    }
   }
   .comments {
     margin-top: 0;
@@ -264,16 +268,22 @@ article {
   margin-bottom: 20px;
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
-  .share {
+  .commentator-footer {
     background-color: #fff;
     margin-bottom: 20px;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
-    padding: 10px;
+    padding: 10px 0;
     margin: 0 0 20px 0;
-    text-align: center;
-    img {
-      height: 20px;
+    .share {
+      background-color: #fff;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+      text-align: center;
+      margin-top: 0;
+      img {
+        height: 20px;
+      }
     }
   }
   .image {
@@ -803,3 +813,16 @@ font-weight: bold;
   border-bottom-right-radius: 10px;
 }
 
+.news-content-wrapper {
+  background: #fff;
+  padding: 0px 20px 10px 20px;
+  .news-content {
+    background-color: #F0F0ED;
+    padding: 15px;
+    border-radius: 5px;
+  }
+}
+
+.add-news-content {
+  height: 100px !important;
+}

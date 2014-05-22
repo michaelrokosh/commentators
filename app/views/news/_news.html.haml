@@ -1,4 +1,7 @@
 .image
+  .news-title
+    %h4
+      = link_to(image.title, news_path(image))
   = link_to(image_tag(image.image.url(:medium), alt: "#{top_comment}", class: "resize"), news_path(image))
   - if image.comments.any?
     .top-comment

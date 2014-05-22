@@ -9,7 +9,7 @@ class News < ActiveRecord::Base
       square: '200x200#',
       medium: '600x600>'
     }
-
+  validates :content, presence: true
   validates_attachment_size :image, :less_than => 2.megabytes, message: "Файл весит больше 2 МБ!"
 
   # Validate the attached image is image/jpg, image/png, etc

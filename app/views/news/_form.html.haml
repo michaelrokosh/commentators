@@ -9,6 +9,8 @@
           = f.file_field :image
         .add-content
           %p
+            = f.text_field :title, class: 'form-control add-news-content'
+          %p
             = f.text_area :content, class: 'form-control add-news-content'
           %p
             = f.submit 'Добавить', class: 'btn btn-custom btn-sm btn-wide'

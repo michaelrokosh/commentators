@@ -1,5 +1,5 @@
 = content_for(:title, "DNIWE | Комментаторы")
-- @recent_images.each do |image|
+- @recent_posts.each do |image|
   %article.commentator
     - if image.class.name == 'Image'
       = render "images/image_mobile", image: image

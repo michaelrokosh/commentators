@@ -8,13 +8,16 @@
   .bubble-comment
     .content
       Все картинки попадают в Днище. Отсюда админы выбирают лучшее. Не упусти шанс оставить первый комментарий!
-- @recent_images.each do |image|
+- @recent_posts.each do |image|
   %article.commentator
     - if image.comments.any?
       - @top_comment = image.comments.order("rating DESC, created_at ASC").first.content
     - else
       - @top_comment = 'Комментариев пока нет'
-    = render 'images/image', image: image, top_comment: @top_comment
+    - if image.class.name == 'Image'
+      = render "images/image", top_comment: @top_comment, image: image
+    - elsif image.class.name == 'News'
+      = render "news/news", top_comment: @top_comment, image: image
     .commentator-footer
       %h4.share
         .yashare-auto-init{"data-yasharel10n" => "ru", "data-yasharequickservices" => "vkontakte,facebook,twitter,odnoklassniki,moimir", "data-yasharetheme" => "counter", "data-yashareType" => "big", "data-yashareLink" => "http://commentators.to/images/#{image.id}", "data-yashareTitle" => @top_comment}

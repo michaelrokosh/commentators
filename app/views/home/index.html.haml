@@ -16,11 +16,17 @@
       - @top_comment = 'Комментариев пока нет'
     - if image.class.name == 'Image'
       = render "images/image", top_comment: @top_comment, image: image
+      .commentator-footer
+        %h4.share
+          .yashare-auto-init{"data-yasharel10n" => "ru", "data-yasharequickservices" => "vkontakte,facebook,twitter,odnoklassniki,moimir", "data-yasharetheme" => "counter", "data-yashareType" => "big", "data-yashareLink" => "http://commentators.to/images/#{image.id}", "data-yashareTitle" => @top_comment}
     - elsif image.class.name == 'News'
       = render "news/news", top_comment: @top_comment, image: image
-    .commentator-footer
-      %h4.share
-        .yashare-auto-init{"data-yasharel10n" => "ru", "data-yasharequickservices" => "vkontakte,facebook,twitter,odnoklassniki,moimir", "data-yasharetheme" => "counter", "data-yashareType" => "big", "data-yashareLink" => "http://commentators.to/images/#{image.id}", "data-yashareTitle" => @top_comment}
+      .commentator-footer
+        %h4.share
+          = render 'layouts/share', shareable: image
+        .news-content-wrapper
+          .news-content
+            = image.content
     .comments
       - if image.comments.size > 1
         .single-comment

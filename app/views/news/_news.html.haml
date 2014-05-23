@@ -1,18 +1,8 @@
 .image
-  .news-title
-    %h1
-      = link_to(image.title, news_path(image))
   = link_to(image_tag(image.image.url(:medium), alt: "#{top_comment}", class: "resize"), news_path(image))
-  - if image.comments.any?
-    .top-comment
-      %h1
-        = top_comment
-      %h4
-        = link_to(image.comments.order("rating DESC, created_at ASC").first.user.username, user_path(image.comments.order("rating DESC, created_at ASC").first.user), rel: 'author')
-  - else
-    .top-comment
-      %h1
-        Комментариев пока нет
+  .top-comment.news-title
+    %h1
+      = image.title
   .copyright
     %h6
       commentators.to

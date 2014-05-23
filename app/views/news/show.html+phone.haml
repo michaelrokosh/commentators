@@ -21,13 +21,6 @@
           %i.godnota.dniwe.fa.fa-thumbs-o-up{ data: {:image_id => @news.id}}
 .commentator
   = render 'news_mobile', image: @news
-  .commentator-footer
-    %h4.share
-      -if user_signed_in?
-        - if current_user.admin?
-          = link_to 'Редактировать', edit_news_path(@news)
-          = link_to 'Фтопку', news_path(@news), method: :delete
-    = render 'layouts/share', shareable: @news, top_comment: @top_comment
   .under-image-mobile
     - if user_signed_in?
       = form_for ([@news, @news.comments.build]), remote: true do |f|

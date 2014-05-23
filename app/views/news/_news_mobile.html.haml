@@ -5,7 +5,7 @@
 .image-mobile
   .image
     .news-title
-      %h4
+      %h1
         = link_to(image.title, news_path(image))
   = link_to(image_tag(image.image.url(:medium), class: "resize"), news_path(image))
   .top-comment
@@ -17,3 +17,13 @@
   .copyright
     %h6
       commentators.to
+.commentator-footer
+  %h4.share
+    -if user_signed_in?
+      - if current_user.admin?
+        = link_to 'Редактировать', edit_news_path(image)
+        = link_to 'Фтопку', news_path(image), method: :delete
+  = render 'layouts/share', shareable: image, top_comment: @top_comment
+  .news-content-wrapper
+    .news-content
+      = simple_format(image.content)

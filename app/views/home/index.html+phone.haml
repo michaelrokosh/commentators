@@ -3,10 +3,10 @@
   %article.commentator
     - if image.class.name == 'Image'
       = render "images/image_mobile", image: image
+      .commentator-footer
+        = render 'layouts/share', top_comment: @top_comment, shareable: image
     - if image.class.name == 'News'
       = render "news/news_mobile", image: image
-    .commentator-footer
-      = render 'layouts/share', top_comment: @top_comment, shareable: image
     %table.table.comments-mobile
       - if image.comments.size > 1
         = render 'comments/comment_mobile', comment: image.comments.order('rating DESC').second

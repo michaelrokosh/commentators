@@ -20,4 +20,4 @@
   = render 'layouts/share', top_comment: top_comment, shareable: image
   .news-content-wrapper
     .news-content
-      = image.content
+      = simple_format(image.content)

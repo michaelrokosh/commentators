@@ -1,4 +1,8 @@
 = content_for(:title, "Пользователь #{@user.username} | Комментаторы")
+- if user_signed_in?
+  - if current_user == @user
+    %li
+      = link_to 'Редактировать профиль', edit_user_registration_path
 .user-page
   #user-profile-info
     %table.table.user-show

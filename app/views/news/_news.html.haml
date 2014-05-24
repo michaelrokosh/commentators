@@ -1,6 +1,6 @@
 .image
   .category
-    = link_to "", news_index_path, class: "fa fa-info"
+    = link_to "", news_index_path, class: "fa fa-info-circle"
   = link_to(image_tag(image.image.url(:medium), alt: "#{top_comment}", class: "resize"), news_path(image))
   .top-comment.news-title
     %h1

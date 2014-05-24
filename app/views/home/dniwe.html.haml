@@ -7,7 +7,7 @@
     = image_tag(@yellow_lord.avatar_url, class: 'img-circle')
   .bubble-comment
     .content
-      Все картинки попадают в Днище. Отсюда админы выбирают лучшее. Не упусти шанс оставить первый комментарий!
+      Все новости и картинки попадают в Днище. Отсюда админы выбирают лучшее. Не упусти шанс оставить первый комментарий!
 - @recent_posts.each do |image|
   %article.commentator
     - if image.comments.any?

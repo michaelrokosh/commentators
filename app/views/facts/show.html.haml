@@ -1,8 +1,5 @@
 = content_for :metashare do
-  - if @fact.title.any?
-    %meta{content: "#{@fact.title}", property: "og:title"}/
-  - else  
-    %meta{content: "Факт ##{@fact.id}", property: "og:title"}/
+  %meta{content: "#{@fact.title}", property: "og:title"}/
   %meta{content: "#{@fact.image.url(:thumb)}", property: "og:image"}/
   %meta{content: "Комментаторы - это новый вид интерактивного развлечения, который заключается в комментировании картинок с целью попасть в топ лучших, размещенных непосредственно под изображением.", property: "og:description"}/
 = content_for(:title, "#{@fact.title} - факт | Комментаторы")
@@ -22,7 +19,7 @@
         = link_to 'Редактировать', edit_fact_path(@fact)
         = link_to 'Фтопку', fact_path(@fact), method: :delete
 .commentator
-  = render 'fact/fact', image: @fact, top_comment: @top_comment
+  = render 'facts/fact', fact: @fact, top_comment: @top_comment
   .under-image
     - if user_signed_in?
       = render 'comments/add_comment', commentable: @fact

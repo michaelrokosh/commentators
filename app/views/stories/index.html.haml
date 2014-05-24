@@ -7,14 +7,14 @@
     = image_tag(@yellow_lord.avatar_url, class: 'img-circle')
   .bubble-comment
     .content
-      Хочешь проверить, насколько ты остроумен? Оставь комментарий к картинке и следи за реакцией других людей.
+      Пришло время офигительных историй!
 - @recent_stories.each do |story|
   %article.commentator
     - if story.comments.any?
       - @top_comment = story.comments.order("rating DESC, created_at ASC").first.content
     - else
       - @top_comment = 'Комментариев пока нет'
-    = render "storys/story", top_comment: @top_comment, story: story
+    = render "stories/story", top_comment: @top_comment, story: story
     .comments
       - if story.comments.size > 1
         .single-comment

@@ -1,11 +1,8 @@
 = content_for :metashare do
-  - if @news.comments.any?
-    %meta{content: "#{@top_comment}", property: "og:title"}/
-  - else  
-    %meta{content: "Комментариев пока нет", property: "og:title"}/
+  %meta{content: "#{@news.title} - реальные новости | Комментаторы", property: "og:title"}/
   %meta{content: "#{@news.image.url(:thumb)}", property: "og:image"}/
-  %meta{content: "Комментаторы - это новый вид интерактивного развлечения, который заключается в комментировании картинок с целью попасть в топ лучших, размещенных непосредственно под изображением.", property: "og:description"}/
-= content_for(:title, "Комментатор ##{@news.id} - #{@top_comment} | Комментаторы")
+  %meta{content: "#{@news.content}"}/
+= content_for(:title, "#{@news.title} - реальные новости | Комментаторы")
 .img-header
   %h4.created_at_image
     = @news.created_at.strftime("%d/%m/%Y")

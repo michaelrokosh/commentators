@@ -314,15 +314,44 @@ article {
       left: 0;
       top: 0;
       font-size: 20px;
+      background-color: rgba(0,0,0,0.6);
+      &:hover {
+        background-color: rgba(0,0,0,0.7);
+      }
+      .icon {
+        height: 50px;
+        width: 50px;
+        svg {
+          width: 50px;
+          height: 50px;
+          position: absolute;
+          top: 0;
+          left: 0;
+          fill: #fff;
+        }
+      }
+      .ufo-icon svg, .news-icon svg {
+        width: 37px;
+        height: 40px;
+        top: 5px;
+        left: 5px;
+      }
+
+      .picture-icon svg {
+        width: 30px;
+        height: 32px;
+        top: 8px;
+        left: 8px;
+      }
       a {
-        color: #fff;
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 1;
         opacity: 0.8;
         padding: 15px;
-        background-color: rgba(0,0,0,0.6);
-        &:hover {
-          background-color: rgba(0,0,0,0.7);
-          text-decoration: none;
-        }
       }
     }
     .news-title {
@@ -879,3 +908,5 @@ font-weight: bold;
 .add-news-content {
   height: 100px !important;
 }
+
+/* icons */

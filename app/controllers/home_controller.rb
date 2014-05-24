@@ -5,7 +5,8 @@ class HomeController < ApplicationController
     @recent_news = News.where(godnota: true)
     @recent_facts = Fact.where(godnota: true)
     @recent_stories = Story.where(godnota: true)
-  	@recent_posts = (@recent_news+@recent_images+@recent_facts+@recent_stories).sort_by(&:created_at).reverse
+    @recent_fictions = Fact.where(godnota: true)
+  	@recent_posts = (@recent_news+@recent_images+@recent_facts+@recent_stories+@recent_fictions).sort_by(&:created_at).reverse
     @recent_posts = @recent_posts.paginate(:page => params[:page], :per_page => 3)
   end
 
@@ -14,7 +15,8 @@ class HomeController < ApplicationController
     @recent_news = News.where(godnota: false)
     @recent_facts = Fact.where(godnota: false)
     @recent_stories = Story.where(godnota: false)
-    @recent_posts = (@recent_images+@recent_news+@recent_facts+@recent_stories).sort_by(&:created_at).reverse
+    @recent_fictions = Fact.where(godnota: false)
+    @recent_posts = (@recent_images+@recent_news+@recent_facts+@recent_stories+@recent_fictions).sort_by(&:created_at).reverse
     @recent_posts = @recent_posts.paginate(:page => params[:page], :per_page => 3)
   end
 

@@ -1,0 +1,11 @@
+= content_for(:title, 'Добавить нереальную новость | Комментаторы')
+.single-comment.micro-blog
+  .comment-top
+    .username
+      = link_to @yellow_lord.username, user_path(@yellow_lord)
+  .avatar
+    = image_tag(@yellow_lord.avatar_url, class: 'img-circle')
+  .bubble-comment
+    .content
+      Загружать возможно только картинки или gif-анимацию до 2МБ. Желатьно горизонтальной ориентации.
+= render 'form'

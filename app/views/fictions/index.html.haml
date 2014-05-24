@@ -1,0 +1,63 @@
+= content_for(:title, "Занимательные факты | Комментаторы")
+.single-comment.micro-blog
+  .comment-top
+    .username
+      = link_to @yellow_lord.username, user_path(@yellow_lord)
+  .avatar
+    = image_tag(@yellow_lord.avatar_url, class: 'img-circle')
+  .bubble-comment
+    .content
+      Хочешь проверить, насколько ты остроумен? Оставь комментарий к картинке и следи за реакцией других людей.
+- @recent_fictions.each do |fiction|
+  %article.commentator
+    - if fiction.comments.any?
+      - @top_comment = fiction.comments.order("rating DESC, created_at ASC").first.content
+    - else
+      - @top_comment = 'Комментариев пока нет'
+    = render "fictions/fiction", top_comment: @top_comment, fiction: fiction
+    .comments
+      - if fiction.comments.size > 1
+        .single-comment
+          .comment-top
+            .username
+              = link_to fiction.comments.order("rating desc, created_at ASC").second.user.username, user_path(fiction.comments.order("rating desc, created_at ASC").second.user), rel: 'author'
+            .medal
+              .silver-medal
+          .avatar.img-circle
+            = image_tag(fiction.comments.order("rating desc, created_at ASC").second.user.avatar_url, class: 'img-circle')
+          .bubble-comment
+            .content
+              = fiction.comments.order("rating desc, created_at ASC").second.content
+          .rating-no-votes
+            = fiction.comments.order("rating desc, created_at ASC").second.rating
+        -if fiction.comments.size > 2
+          .single-comment
+            .comment-top
+              .username
+                = link_to fiction.comments.order("rating desc, created_at ASC").third.user.username, user_path(fiction.comments.order("rating ASC").third.user), rel: 'author'
+              .medal
+                .bronze-medal
+            .avatar.img-circle
+              = image_tag(fiction.comments.order("rating desc, created_at ASC").third.user.avatar_url, class: 'img-circle')
+            .bubble-comment
+              .content
+                = fiction.comments.order("rating desc, created_at ASC").third.content
+            .rating-no-votes
+              = fiction.comments.order("rating desc, created_at ASC").third.rating
+      - else
+        .single-comment
+          .comment-top
+            .username
+              %a
+                Местный тролль
+              /
+                .medal
+                  .gold-medal
+          .avatar.img-circle
+            = image_tag('/trollface.png', class: 'img-circle')
+          .bubble-comment
+            .content
+              = "Здесь мог бы быть твой комментарий! Хотя нет, вряд ли ты на это способен))00"
+          .rating-no-votes
+            = '-∞'
+= will_paginate(@recent_fictions, :previous_label => 'Туда', :next_label => 'Сюда', renderer: WillPaginate::ActionView::LinkRenderer)

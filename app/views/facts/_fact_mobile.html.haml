@@ -1,0 +1,19 @@
+- if fact.comments.any?
+  - @top_comment = fact.comments.order("rating DESC, created_at ASC").first.content
+- else
+  - @top_comment = 'Комментариев пока нет'
+.image-mobile
+  = link_to(image_tag(fact.image.url(:medium), class: "resize"), fact_path(fact))
+  .top-comment
+    %h1
+      = link_to(fact.title, fact_path(fact))
+.commentator-footer
+  %h4.share
+    -if user_signed_in?
+      - if current_user.admin?
+        = link_to 'Редактировать', edit_fact_path(fact)
+        = link_to 'Фтопку', fact_path(fact), method: :delete
+  = render 'layouts/share', shareable: fact, top_comment: @top_comment
+  .news-content-wrapper
+    .news-content
+      = simple_format(fact.content)

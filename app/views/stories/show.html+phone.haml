@@ -1,29 +1,26 @@
 = content_for :metashare do
-  - if @news.comments.any?
-    %meta{content: "#{@top_comment}", property: "og:title"}/
-  - else  
-    %meta{content: "Комментариев пока нет", property: "og:title"}/
-  %meta{content: "#{@news.image.url(:thumb)}", property: "og:image"}/
-  %meta{content: "Комментаторы - это новый вид интерактивного развлечения, который заключается в комментировании картинок с целью попасть в топ лучших, размещенных непосредственно под изображением.", property: "og:description"}/
-= content_for(:title, "Комментатор ##{@news.id} - #{@top_comment} | Комментаторы")
+  %meta{content: "#{@story.title} - время офигительных историй | Комментаторы", property: "og:title"}/
+  %meta{content: "#{@story.image.url(:thumb)}", property: "og:image"}/
+  %meta{content: "#{@story.content}", property: "og:description"}/
+= content_for(:title, "#{@story.title} - время офигительных историй | Комментаторы")
 .img-header
   %h4.created_at_image
-    = @news.created_at.strftime("%d/%m/%Y")
+    = @story.created_at.strftime("%d/%m/%Y")
   %h4.title
     Добавил: 
-    - if @news.user != nil
-      = link_to @news.user.username, user_path(@news.user), rel: 'author'
+    - if @story.user != nil
+      = link_to @story.user.username, user_path(@story.user), rel: 'author'
     - else
       Повелитель удаленных душ
     - if user_signed_in?
       - if current_user.admin?
-        - unless @news.godnota?
-          %i.godnota.dniwe.fa.fa-thumbs-o-up{ data: {:image_id => @news.id}}
+        - unless @story.godnota?
+          %i.godnota.dniwe.fa.fa-thumbs-o-up{ data: {:image_id => @story.id}}
 .commentator
-  = render 'news_mobile', news: @news
+  = render 'story_mobile', story: @story
   .under-image-mobile
     - if user_signed_in?
-      = form_for ([@news, @news.comments.build]), remote: true do |f|
+      = form_for ([@story, @story.comments.build]), remote: true do |f|
         %p.add-comment
           = f.hidden_field :commentable_id
           .row

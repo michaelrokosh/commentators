@@ -1,0 +1,15 @@
+.image-mobile
+  = link_to(image_tag(story.image.url(:medium), class: "resize"), story_path(story))
+  .top-comment
+    %h1
+      = link_to(story.title, news_path(story))
+.commentator-footer
+  %h4.share
+    -if user_signed_in?
+      - if current_user.admin?
+        = link_to 'Редактировать', edit_story_path(story)
+        = link_to 'Фтопку', story_path(story), method: :delete
+  = render 'layouts/share', shareable: story, top_comment: @top_comment
+  .news-content-wrapper
+    .news-content
+      = simple_format(story.content)

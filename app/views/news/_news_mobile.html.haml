@@ -1,26 +1,19 @@
-- if image.comments.any?
-  - @top_comment = image.comments.order("rating DESC, created_at ASC").first.content
+- if news.comments.any?
+  - @top_comment = news.comments.order("rating DESC, created_at ASC").first.content
 - else
   - @top_comment = 'Комментариев пока нет'
 .image-mobile
-  .image
-    .news-title
-      %h1
-        = link_to(image.title, news_path(image))
-  = link_to(image_tag(image.image.url(:medium), class: "resize"), news_path(image))
+  = link_to(image_tag(news.image.url(:medium), class: "resize"), news_path(news))
   .top-comment
     %h1
-      = @top_comment
-    - if image.comments.any?
-      %h4
-        = link_to(image.comments.order("rating DESC, created_at ASC").first.user.username, user_path(image.comments.order("rating DESC, created_at ASC").first.user), rel: 'author')
+      = link_to(news.title, news_path(news))
 .commentator-footer
   %h4.share
     -if user_signed_in?
       - if current_user.admin?
-        = link_to 'Редактировать', edit_news_path(image)
-        = link_to 'Фтопку', news_path(image), method: :delete
-  = render 'layouts/share', shareable: image, top_comment: @top_comment
+        = link_to 'Редактировать', edit_news_path(news)
+        = link_to 'Фтопку', news_path(news), method: :delete
+  = render 'layouts/share', shareable: news, top_comment: @top_comment
   .news-content-wrapper
     .news-content
-      = simple_format(image.content)
+      = simple_format(news.content)

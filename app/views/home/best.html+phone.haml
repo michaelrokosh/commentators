@@ -3,8 +3,14 @@
   %article.commentator
     - if comment.commentable.class.name == 'Image'
       = render "images/image_mobile", image: comment.commentable
-    - if comment.commentable.class.name == 'News'
-      = render "news/news_mobile", image: comment.commentable
+    - elsif image.class.name == 'News'
+      = render "news/news_mobile", news: image
+    - elsif image.class.name == 'Story'
+      = render "stories/story_mobile", story: image
+    - elsif image.class.name == 'Fiction'
+      = render "fictions/fiction_mobile", fiction: image
+    - elsif image.class.name == 'Fact'
+      = render "facts/fact_mobile", fact: image
     .commentator-footer
       = render 'layouts/share', top_comment: @top_comment, shareable: comment.commentable
 = will_paginate(@comments, :previous_label => 'Туда', :next_label => 'Сюда', renderer: WillPaginate::ActionView::LinkRenderer)

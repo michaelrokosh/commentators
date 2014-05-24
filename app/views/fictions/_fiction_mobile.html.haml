@@ -1,0 +1,19 @@
+- if fiction.comments.any?
+  - @top_comment = fiction.comments.order("rating DESC, created_at ASC").first.content
+- else
+  - @top_comment = 'Комментариев пока нет'
+.image-mobile
+  = link_to(image_tag(fiction.image.url(:medium), class: "resize"), fiction_path(fiction))
+  .top-comment
+    %h1
+      = link_to(fiction.title, fiction_path(fiction))
+.commentator-footer
+  %h4.share
+    -if user_signed_in?
+      - if current_user.admin?
+        = link_to 'Редактировать', edit_fiction_path(fiction)
+        = link_to 'Фтопку', fiction_path(fiction), method: :delete
+  = render 'layouts/share', shareable: fiction, top_comment: @top_comment
+  .news-content-wrapper
+    .news-content
+      = simple_format(fiction.content)

@@ -5,8 +5,14 @@
       = render "images/image_mobile", image: image
       .commentator-footer
         = render 'layouts/share', top_comment: @top_comment, shareable: image
-    - if image.class.name == 'News'
-      = render "news/news_mobile", image: image
+    - elsif image.class.name == 'News'
+      = render "news/news_mobile", news: image
+    - elsif image.class.name == 'Story'
+      = render "stories/story_mobile", story: image
+    - elsif image.class.name == 'Fiction'
+      = render "fictions/fiction_mobile", fiction: image
+    - elsif image.class.name == 'Fact'
+      = render "facts/fact_mobile", fact: image
     %table.table.comments-mobile
       - if image.comments.size > 0
         = render 'comments/comment_mobile', comment: image.comments.order('rating DESC').first

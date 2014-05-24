@@ -45,6 +45,10 @@ class NewsController < ApplicationController
     end
   end
 
+  def index
+    @recent_news = News.order('created_at DESC').all.paginate(:page => params[:page], :per_page => 3)
+  end
+
   def show
     @news = News.find(params[:id])
 

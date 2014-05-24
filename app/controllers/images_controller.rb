@@ -45,6 +45,10 @@ class ImagesController < ApplicationController
     end
   end
 
+  def index
+    @recent_images = Image.order('created_at DESC').all.paginate(:page => params[:page], :per_page => 3)
+  end
+
   def show
     @image = Image.find(params[:id])
 

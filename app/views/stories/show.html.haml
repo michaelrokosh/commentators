@@ -15,7 +15,7 @@
     - if user_signed_in?
       - if current_user.admin?
         - unless @story.godnota?
-          %i.godnota.dniwe.fa.fa-thumbs-o-up{ data: {:post_id => @story.id, type: "storys"}}
+          %i.godnota.dniwe.fa.fa-thumbs-o-up{ data: {:post_id => @story.id, type: "stories"}}
         = link_to 'Редактировать', edit_story_path(@story)
         = link_to 'Фтопку', story_path(@story), method: :delete
 .commentator

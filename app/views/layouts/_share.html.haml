@@ -1,11 +1,9 @@
 %h4.share
-  - if shareable.comments.any?
-    - if shareable.class.name == "Image"
+  - if shareable.class.name == "Image"
+    - if shareable.comments.any?
       .yashare-auto-init{"data-yasharel10n" => "ru", "data-yasharequickservices" => "vkontakte,facebook,twitter,odnoklassniki,moimir", "data-yasharetheme" => "counter", "data-yashareType" => "big", "data-yashareLink" => "http://commentators.to/images/#{shareable.id}", "data-yashareTitle" => top_comment}
-    - elsif shareable.class.name == "News"
-      .yashare-auto-init{"data-yasharel10n" => "ru", "data-yasharequickservices" => "vkontakte,facebook,twitter,odnoklassniki,moimir", "data-yasharetheme" => "counter", "data-yashareType" => "big", "data-yashareLink" => "http://commentators.to/news/#{shareable.id}", "data-yashareTitle" => top_comment}
-  - else
-    - if shareable.class.name == "Image"
+    - else 
       .yashare-auto-init{"data-yasharel10n" => "ru", "data-yasharequickservices" => "vkontakte,facebook,twitter,odnoklassniki,moimir", "data-yasharetheme" => "counter", "data-yashareType" => "big", "data-yashareLink" => "http://commentators.to/images/#{shareable.id}", "data-yashareTitle" => "Комментариев пока нет"}
-    - elsif shareable.class.name == "News"
-      .yashare-auto-init{"data-yasharel10n" => "ru", "data-yasharequickservices" => "vkontakte,facebook,twitter,odnoklassniki,moimir", "data-yasharetheme" => "counter", "data-yashareType" => "big", "data-yashareLink" => "http://commentators.to/news/#{shareable.id}", "data-yashareTitle" => "Комментариев пока нет"}
+  - else
+    - if shareable.class.name == "News"
+      .yashare-auto-init{"data-yasharel10n" => "ru", "data-yasharequickservices" => "vkontakte,facebook,twitter,odnoklassniki,moimir", "data-yasharetheme" => "counter", "data-yashareType" => "big", "data-yashareLink" => "http://commentators.to/news/#{shareable.id}", "data-yashareTitle" => shareable.title}

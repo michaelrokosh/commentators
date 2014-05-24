@@ -14,9 +14,6 @@
     - if image.comments.any?
       %h4
         = link_to(image.comments.order("rating DESC, created_at ASC").first.user.username, user_path(image.comments.order("rating DESC, created_at ASC").first.user), rel: 'author')
-  .copyright
-    %h6
-      commentators.to
 .commentator-footer
   %h4.share
     -if user_signed_in?

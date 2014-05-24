@@ -6,4 +6,4 @@
       .yashare-auto-init{"data-yasharel10n" => "ru", "data-yasharequickservices" => "vkontakte,facebook,twitter,odnoklassniki,moimir", "data-yasharetheme" => "counter", "data-yashareType" => "big", "data-yashareLink" => "http://commentators.to/images/#{shareable.id}", "data-yashareTitle" => "Комментариев пока нет"}
   - else
     - if shareable.class.name == "News"
-      .yashare-auto-init{"data-yasharel10n" => "ru", "data-yasharequickservices" => "vkontakte,facebook,twitter,odnoklassniki,moimir", "data-yasharetheme" => "counter", "data-yashareType" => "big", "data-yashareLink" => "http://commentators.to/news/#{shareable.id}", "data-yashareTitle" => shareable.title}
+      .yashare-auto-init{"data-yasharel10n" => "ru", "data-yasharequickservices" => "vkontakte,facebook,twitter,odnoklassniki,moimir", "data-yasharetheme" => "counter", "data-yashareType" => "big", "data-yashareLink" => "http://commentators.to/news/#{shareable.id}", "data-yashareTitle" => shareable.title, "data-yashareDescription" => shareable.content}

@@ -1,0 +1,12 @@
+.image
+  .category
+    = link_to "", facts_path, class: "fa fa-info-circle"
+  = link_to(image_tag(fact.image.url(:medium), alt: "#{top_comment}", class: "resize"), fact_path(fact))
+  .top-comment.news-title
+    %h1
+      = fact.title
+.commentator-footer
+  = render 'layouts/share', top_comment: top_comment, shareable: fact
+  .news-content-wrapper
+    .news-content
+      = simple_format(fact.content)

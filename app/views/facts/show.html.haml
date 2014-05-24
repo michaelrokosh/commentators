@@ -1,0 +1,45 @@
+= content_for :metashare do
+  - if @fact.title.any?
+    %meta{content: "#{@fact.title}", property: "og:title"}/
+  - else  
+    %meta{content: "Факт ##{@fact.id}", property: "og:title"}/
+  %meta{content: "#{@fact.image.url(:thumb)}", property: "og:image"}/
+  %meta{content: "Комментаторы - это новый вид интерактивного развлечения, который заключается в комментировании картинок с целью попасть в топ лучших, размещенных непосредственно под изображением.", property: "og:description"}/
+= content_for(:title, "#{@fact.title} - факт | Комментаторы")
+.img-header
+  %h4.created_at_image
+    = @fact.created_at.strftime("%d/%m/%Y")
+  %h4.title
+    Добавил: 
+    - if @fact.user != nil
+      = link_to @fact.user.username, user_path(@fact.user), rel: 'author'
+    - else
+      Повелитель удаленных душ
+    - if user_signed_in?
+      - if current_user.admin?
+        - unless @fact.godnota?
+          %i.godnota.dniwe.fa.fa-thumbs-o-up{ data: {:post_id => @fact.id, type: "facts"}}
+        = link_to 'Редактировать', edit_fact_path(@fact)
+        = link_to 'Фтопку', fact_path(@fact), method: :delete
+.commentator
+  = render 'fact/fact', image: @fact, top_comment: @top_comment
+  .under-image
+    - if user_signed_in?
+      = render 'comments/add_comment', commentable: @fact
+    - else
+      #not-signed-in
+        %h3 Для голосования и комментирования необходимо войти.
+    .sort_comments
+      = 'Сортировать по'
+      - if params[:sort_by] == 'popular'
+        = link_to "новизне", :sort_by => "recent"
+      - else
+        = link_to "популярности", :sort_by => "popular"
+    #comments
+      = render @comments
+    #with-button
+      = will_paginate(@comments)
+    - if @comments.next_page
+      #load_more_comments.btn.btn-lg.btn-custom.load-more Еще
+    #comments
+%h1

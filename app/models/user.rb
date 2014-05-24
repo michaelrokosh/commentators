@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   has_many :comments, dependent: :destroy
   has_many :images
   has_many :news
+  has_many :facts
   has_many :votes, as: :voter
   before_destroy :clear_comments
   VALID_USERNAME_REGEX = /\A[a-zA-Zа-яА-ЯЁёІіЇїҐґ0-9 ]+\Z/ 

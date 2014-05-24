@@ -8,8 +8,10 @@
     - if image.class.name == 'News'
       = render "news/news_mobile", image: image
     %table.table.comments-mobile
-      - if image.comments.size > 1
-        = render 'comments/comment_mobile', comment: image.comments.order('rating DESC').second
-        -if image.comments.size > 2
-          = render 'comments/comment_mobile', comment: image.comments.order('rating DESC').third
+      - if image.comments.size > 0
+        = render 'comments/comment_mobile', comment: image.comments.order('rating DESC').first
+        - if image.comments.size > 1
+          = render 'comments/comment_mobile', comment: image.comments.order('rating DESC').second
+          -if image.comments.size > 2
+            = render 'comments/comment_mobile', comment: image.comments.order('rating DESC').third
 = will_paginate(@recent_posts, :previous_label => 'Туда', :next_label => 'Сюда', renderer: WillPaginate::ActionView::LinkRenderer)

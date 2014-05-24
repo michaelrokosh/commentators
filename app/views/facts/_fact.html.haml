@@ -1,6 +1,8 @@
 .image
   .category
-    = link_to "", facts_path, class: "fa fa-eye"
+    = link_to "", facts_path, title: "Занимательные факты"
+    .icon.fact-icon
+      = render "icons/question.svg"
   = link_to(image_tag(fact.image.url(:medium), alt: "#{fact.title}", class: "resize"), fact_path(fact))
   .top-comment.news-title
     %h1

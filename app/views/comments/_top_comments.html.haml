@@ -1,0 +1,59 @@
+.comments
+  - if post.comments.size > 0
+    .single-comment
+      .comment-top
+        .username
+          = link_to post.comments.order("rating desc, created_at ASC").first.user.username, user_path(post.comments.order("rating desc, created_at ASC").first.user), rel: 'author'
+        .medal
+          .gold-medal
+      .avatar.img-circle
+        = image_tag(post.comments.order("rating desc, created_at ASC").first.user.avatar_url, class: 'img-circle')
+      .bubble-comment
+        .content
+          = post.comments.order("rating desc, created_at ASC").first.content
+      .rating-no-votes
+        = post.comments.order("rating desc, created_at ASC").first.rating
+    - if post.comments.size > 1
+      .single-comment
+        .comment-top
+          .username
+            = link_to post.comments.order("rating desc, created_at ASC").second.user.username, user_path(post.comments.order("rating desc, created_at ASC").second.user), rel: 'author'
+          .medal
+            .silver-medal
+        .avatar.img-circle
+          = image_tag(post.comments.order("rating desc, created_at ASC").second.user.avatar_url, class: 'img-circle')
+        .bubble-comment
+          .content
+            = post.comments.order("rating desc, created_at ASC").second.content
+        .rating-no-votes
+          = post.comments.order("rating desc, created_at ASC").second.rating
+      -if post.comments.size > 2
+        .single-comment
+          .comment-top
+            .username
+              = link_to post.comments.order("rating desc, created_at ASC").third.user.username, user_path(post.comments.order("rating ASC").third.user), rel: 'author'
+            .medal
+              .bronze-medal
+          .avatar.img-circle
+            = image_tag(post.comments.order("rating desc, created_at ASC").third.user.avatar_url, class: 'img-circle')
+          .bubble-comment
+            .content
+              = post.comments.order("rating desc, created_at ASC").third.content
+          .rating-no-votes
+            = post.comments.order("rating desc, created_at ASC").third.rating
+  - else
+    .single-comment
+      .comment-top
+        .username
+          %a
+            Местный тролль
+          /
+            .medal
+              .gold-medal
+      .avatar.img-circle
+        = image_tag('/trollface.png', class: 'img-circle')
+      .bubble-comment
+        .content
+          = "Здесь мог бы быть твой комментарий! Хотя нет, вряд ли ты на это способен))00"
+      .rating-no-votes
+        = '-∞'

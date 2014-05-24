@@ -1,0 +1,12 @@
+.image
+  .category
+    = link_to "", stories_path, class: "fa fa-coffee"
+  = link_to(image_tag(story.image.url(:medium), alt: "#{story.title}", class: "resize"), story_path(story))
+  .top-comment.news-title
+    %h1
+      = story.title
+.commentator-footer
+  = render 'layouts/share', top_comment: top_comment, shareable: story
+  .news-content-wrapper
+    .news-content
+      = simple_format(story.content)

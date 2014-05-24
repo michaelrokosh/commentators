@@ -22,5 +22,7 @@
       = render "news/news", top_comment: @top_comment, image: image
     - elsif image.class.name == 'Fact'
       = render "facts/fact", top_comment: @top_comment, fact: image
+    - elsif image.class.name == 'Story'
+      = render "stories/story", top_comment: @top_comment, story: image
     = render "comments/top_comments", post: image
 = will_paginate(@recent_posts, :previous_label => 'Туда', :next_label => 'Сюда', renderer: WillPaginate::ActionView::LinkRenderer)

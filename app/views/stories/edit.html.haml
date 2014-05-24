@@ -1,0 +1,12 @@
+= content_for(:title, 'Редактировать офигительную историю | Комментаторы')
+.single-comment.micro-blog
+  .comment-top
+    .username
+      = link_to @yellow_lord.username, user_path(@yellow_lord)
+  .avatar
+    = image_tag(@yellow_lord.avatar_url, class: 'img-circle')
+  .bubble-comment
+    .content
+      Редактировать посты может только администратор!
+- if user_signed_in? && current_user.admin?
+  = render 'form'

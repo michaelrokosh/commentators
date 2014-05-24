@@ -1,0 +1,18 @@
+#upload-form
+  - if user_signed_in?
+    -if @story.errors.any? 
+      %h2.center
+        = @story.errors[:image].join(" ")
+    = form_for @story do |f|
+      .upload-image
+        %p
+          = f.file_field :image
+        .add-content
+          %p
+            = f.text_field :title, class: 'form-control'
+          %p
+            = f.text_area :content, class: 'form-control add-news-content'
+          %p
+            = f.submit 'Добавить', class: 'btn btn-custom btn-sm btn-wide'
+  - else
+    %h1.center Сначала нужно войти

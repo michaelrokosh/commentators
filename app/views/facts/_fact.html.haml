@@ -1,7 +1,7 @@
 .image
   .category
     = link_to "", facts_path, class: "fa fa-eye"
-  = link_to(image_tag(fact.image.url(:medium), alt: "#{top_comment}", class: "resize"), fact_path(fact))
+  = link_to(image_tag(fact.image.url(:medium), alt: "#{fact.title}", class: "resize"), fact_path(fact))
   .top-comment.news-title
     %h1
       = fact.title

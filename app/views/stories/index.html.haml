@@ -14,7 +14,7 @@
       - @top_comment = story.comments.order("rating DESC, created_at ASC").first.content
     - else
       - @top_comment = 'Комментариев пока нет'
-    = render "stories/story", top_comment: @top_comment, story: story
+    = render "stories/story", story: story
     .comments
       - if story.comments.size > 1
         .single-comment

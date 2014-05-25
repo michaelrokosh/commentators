@@ -14,7 +14,7 @@
       - @top_comment = fact.comments.order("rating DESC, created_at ASC").first.content
     - else
       - @top_comment = 'Комментариев пока нет'
-    = render "facts/fact", top_comment: @top_comment, fact: fact
+    = render "facts/fact", fact: fact
     .comments
       - if fact.comments.size > 1
         .single-comment

@@ -14,7 +14,7 @@
       - @top_comment = fiction.comments.order("rating DESC, created_at ASC").first.content
     - else
       - @top_comment = 'Комментариев пока нет'
-    = render "fictions/fiction", top_comment: @top_comment, fiction: fiction
+    = render "fictions/fiction", fiction: fiction
     .comments
       - if fiction.comments.size > 1
         .single-comment

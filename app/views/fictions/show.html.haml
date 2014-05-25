@@ -1,8 +1,8 @@
 = content_for :metashare do
   %meta{content: "#{@fiction.title}", property: "og:title"}/
   %meta{content: "#{@fiction.image.url(:thumb)}", property: "og:image"}/
-  %meta{content: "Комментаторы - это новый вид интерактивного развлечения, который заключается в комментировании картинок с целью попасть в топ лучших, размещенных непосредственно под изображением.", property: "og:description"}/
-= content_for(:title, "#{@fiction.title} - факт | Комментаторы")
+  %meta{content: "#{@fiction.content}", property: "og:description"}/
+= content_for(:title, "#{@fiction.title} - нереальные новости | Комментаторы")
 .img-header
   %h4.created_at_image
     = @fiction.created_at.strftime("%d/%m/%Y")

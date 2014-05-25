@@ -2,7 +2,7 @@
   %meta{content: "#{@fact.title}", property: "og:title"}/
   %meta{content: "#{@fact.image.url(:thumb)}", property: "og:image"}/
   %meta{content: "Комментаторы - это новый вид интерактивного развлечения, который заключается в комментировании картинок с целью попасть в топ лучших, размещенных непосредственно под изображением.", property: "og:description"}/
-= content_for(:title, "#{@fact.title} - факт | Комментаторы")
+= content_for(:title, "#{@fact.title} - занимательные факты | Комментаторы")
 .img-header
   %h4.created_at_image
     = @fact.created_at.strftime("%d/%m/%Y")

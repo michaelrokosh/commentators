@@ -1,13 +1,4 @@
 = content_for(:title, "Занимательные факты | Комментаторы")
-.single-comment.micro-blog
-  .comment-top
-    .username
-      = link_to @yellow_lord.username, user_path(@yellow_lord)
-  .avatar
-    = image_tag(@yellow_lord.avatar_url, class: 'img-circle')
-  .bubble-comment
-    .content
-      Пришло время офигительных историй!
 - @recent_stories.each do |story|
   %article.commentator
     - if story.comments.any?

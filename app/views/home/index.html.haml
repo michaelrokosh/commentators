@@ -1,14 +1,4 @@
 = content_for(:title, "Комментаторы - развлекательный сайт нового формата")
-/
-  .single-comment.micro-blog
-    .comment-top
-      .username
-        = link_to @yellow_lord.username, user_path(@yellow_lord)
-    .avatar
-      = image_tag(@yellow_lord.avatar_url, class: 'img-circle')
-    .bubble-comment
-      .content
-        Никакого негатива, только самые интересные новости и картинки с вашими комментариями.
 - @recent_posts.each do |image|
   %article.commentator
     - if image.comments.any?

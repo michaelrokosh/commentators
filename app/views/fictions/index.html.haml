@@ -1,13 +1,4 @@
 = content_for(:title, "Нереальные новости | Комментаторы")
-.single-comment.micro-blog
-  .comment-top
-    .username
-      = link_to @yellow_lord.username, user_path(@yellow_lord)
-  .avatar
-    = image_tag(@yellow_lord.avatar_url, class: 'img-circle')
-  .bubble-comment
-    .content
-      Хочешь проверить, насколько ты остроумен? Оставь комментарий к картинке и следи за реакцией других людей.
 - @recent_fictions.each do |fiction|
   %article.commentator
     - if fiction.comments.any?

@@ -12,10 +12,23 @@
           = @user.username
         %td
           = @user.karma
-  #user-comments
-    = render partial: 'comments/user_comments', collection: @comments, as: :comment
-  #with-button
-    = will_paginate(@comments)
-  - if @comments.next_page
-    #load-more-btn
-      #load_more_comments.btn.btn-custom.btn-lg.load-more Еще
+- @recent_posts.each do |image|
+  %article.commentator
+    - if image.comments.any?
+      - @top_comment = image.comments.order("rating DESC, created_at ASC").first.content
+    - else
+      - @top_comment = 'Комментариев пока нет'
+    - if image.class.name == 'Image'
+      = render "images/image", top_comment: @top_comment, image: image
+      .commentator-footer
+        = render 'layouts/share', top_comment: @top_comment, shareable: image
+    - elsif image.class.name == 'News'
+      = render "news/news", news: image
+    - elsif image.class.name == 'Fact'
+      = render "facts/fact", fact: image
+    - elsif image.class.name == 'Story'
+      = render "stories/story", story: image
+    - elsif image.class.name == 'Fiction'
+      = render "fictions/fiction", fiction: image
+    = render "comments/top_comments", post: image
+= will_paginate(@recent_posts, :previous_label => 'Туда', :next_label => 'Сюда', renderer: WillPaginate::ActionView::LinkRenderer)

@@ -2,6 +2,13 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @recent_images = @user.images
+    @recent_news = @user.news
+    @recent_facts = @user.facts
+    @recent_stories = @user.stories
+    @recent_fictions = @user.fictions
+    @recent_posts = (@recent_images+@recent_news+@recent_facts+@recent_stories+@recent_fictions).sort_by(&:created_at).reverse
+    @recent_posts = @recent_posts.paginate(:page => params[:page], :per_page => 3)
     if params[:sort_by] == 'popular'
       @comments = @user.comments.paginate(page: params[:page], per_page: 5).order('rating DESC, created_at ASC')
     else

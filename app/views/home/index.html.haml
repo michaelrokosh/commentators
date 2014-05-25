@@ -19,12 +19,12 @@
       .commentator-footer
         = render 'layouts/share', top_comment: @top_comment, shareable: image
     - elsif image.class.name == 'News'
-      = render "news/news", top_comment: @top_comment, image: image
+      = render "news/news", news: image
     - elsif image.class.name == 'Fact'
-      = render "facts/fact", top_comment: @top_comment, fact: image
+      = render "facts/fact", fact: image
     - elsif image.class.name == 'Story'
-      = render "stories/story", top_comment: @top_comment, story: image
+      = render "stories/story", story: image
     - elsif image.class.name == 'Fiction'
-      = render "fictions/fiction", top_comment: @top_comment, fiction: image
+      = render "fictions/fiction", fiction: image
     = render "comments/top_comments", post: image
 = will_paginate(@recent_posts, :previous_label => 'Туда', :next_label => 'Сюда', renderer: WillPaginate::ActionView::LinkRenderer)

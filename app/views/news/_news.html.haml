@@ -3,12 +3,12 @@
     = link_to "", news_index_path, title: "Реальные новости"
     .icon.news-icon
       = render "icons/realnews1.svg"
-  = link_to(image_tag(image.image.url(:medium), alt: "#{image.title}", class: "resize"), news_path(image))
+  = link_to(image_tag(news.image.url(:medium), alt: "#{news.title}", class: "resize"), news_path(news))
   .top-comment.news-title
     %h1
-      = image.title
+      = news.title
 .commentator-footer
-  = render 'layouts/share', top_comment: top_comment, shareable: image
+  = render 'layouts/share', shareable: news, shareable_type: 'news'
   .news-content-wrapper
     .news-content
-      = simple_format(image.content)
+      = simple_format(news.content)

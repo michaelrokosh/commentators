@@ -19,7 +19,7 @@
         = link_to 'Редактировать', edit_story_path(@story)
         = link_to 'Фтопку', story_path(@story), method: :delete
 .commentator
-  = render 'stories/story', story: @story, top_comment: @top_comment
+  = render 'stories/story', story: @story, shareable_type: 'stories'
   .under-image
     - if user_signed_in?
       = render 'comments/add_comment', commentable: @story

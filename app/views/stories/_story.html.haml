@@ -8,7 +8,7 @@
     %h1
       = story.title
 .commentator-footer
-  = render 'layouts/share', top_comment: top_comment, shareable: story
+  = render 'layouts/share', shareable_type: 'stories', shareable: story
   .news-content-wrapper
     .news-content
       = simple_format(story.content)

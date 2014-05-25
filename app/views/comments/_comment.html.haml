@@ -40,8 +40,8 @@
             .rating
               = comment.rating
             .votes
-              %i.vote-for.fa.fa-thumbs-o-up{ data: {post_id: comment.commentable.id, comment_id: comment.id, comment_rating: comment.rating, type: "images"} }
-              %i.vote-against.fa.fa-thumbs-o-down{ data: {post_id: comment.commentable.id, comment_id: comment.id, comment_rating: comment.rating, type: "images"} }
+              %i.vote-for.fa.fa-thumbs-o-up{ data: {post_id: comment.commentable.id, comment_id: comment.id, comment_rating: comment.rating, type: controller_name} }
+              %i.vote-against.fa.fa-thumbs-o-down{ data: {post_id: comment.commentable.id, comment_id: comment.id, comment_rating: comment.rating, type: controller_name} }
     - else
       .vote-block
         .rating

@@ -13,7 +13,7 @@
       - if current_user.admin?
         = link_to 'Редактировать', edit_fiction_path(fiction)
         = link_to 'Фтопку', fiction_path(fiction), method: :delete
-  = render 'layouts/share', shareable: fiction, top_comment: @top_comment
+  = render 'layouts/share', shareable: fiction, shareable_type: 'fiction'
   .news-content-wrapper
     .news-content
       = simple_format(fiction.content)

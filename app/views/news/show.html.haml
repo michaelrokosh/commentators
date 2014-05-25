@@ -19,7 +19,7 @@
         = link_to 'Редактировать', edit_news_path(@news)
         = link_to 'Фтопку', news_path(@news), method: :delete
 .commentator
-  = render 'news/news', image: @news, top_comment: @top_comment
+  = render 'news/news', image: @news, shareable_type: 'news'
   .under-image
     - if user_signed_in?
       = render 'comments/add_comment', commentable: @news

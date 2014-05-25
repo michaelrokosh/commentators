@@ -9,7 +9,7 @@
       - if current_user.admin?
         = link_to 'Редактировать', edit_story_path(story)
         = link_to 'Фтопку', story_path(story), method: :delete
-  = render 'layouts/share', shareable: story, top_comment: @top_comment
+  = render 'layouts/share', shareable: story, shareable_type: 'stories'
   .news-content-wrapper
     .news-content
       = simple_format(story.content)

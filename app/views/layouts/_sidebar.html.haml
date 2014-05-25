@@ -18,7 +18,7 @@
                 %h6
                   Мой профиль
           .category.exit
-            = link_to '', user_path(current_user)
+            = link_to '', destroy_user_session_path, method: :delete
             .big-icon
               = render 'icons/fire_exit.svg'         
               .description

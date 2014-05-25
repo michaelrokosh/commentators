@@ -2,23 +2,47 @@
   #profile
     - if user_signed_in?
       #side-menu
-        %ul
-          %li
-            = link_to 'Добавить реальную новость', new_news_path
-          %li
-            = link_to 'Добавить нереальную новость', new_fiction_path
-          %li
-            = link_to 'Добавить офигительную историю', new_story_path
-          %li
-            = link_to 'Добавить факт', new_fact_path
-          %li
-            = link_to 'Добавить изображение', new_image_path
-      .navigation
-        = link_to image_tag(current_user.avatar_url, class: 'img-circle'), user_path(current_user), title: "Профиль"
-        %h6#profile-karma
-          = current_user.karma
-        %h6#profile-sign-out
-          = link_to 'Выйти', destroy_user_session_path, method: :delete
+        .icons-navigation
+          .category.add
+            =link_to '', stories_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#add-modal'}
+            .big-icon
+              = render 'icons/add.svg'
+            .description
+              %h6
+                Создать пост
+          .category.profile
+            = link_to '', user_path(current_user)
+            .big-icon
+              =image_tag(current_user.avatar_url, class: 'img-circle')            
+              .description
+                %h6
+                  Мой профиль
+          .category.exit
+            = link_to '', user_path(current_user)
+            .big-icon
+              = render 'icons/fire_exit.svg'         
+              .description
+                %h6
+                  Выход
+        /
+          %ul
+            %li
+              = link_to 'Добавить реальную новость', new_news_path
+            %li
+              = link_to 'Добавить нереальную новость', new_fiction_path
+            %li
+              = link_to 'Добавить офигительную историю', new_story_path
+            %li
+              = link_to 'Добавить факт', new_fact_path
+            %li
+              = link_to 'Добавить изображение', new_image_path
+      /
+        .navigation
+          = link_to image_tag(current_user.avatar_url, class: 'img-circle'), user_path(current_user), title: "Профиль"
+          %h6#profile-karma
+            = current_user.karma
+          %h6#profile-sign-out
+            = link_to 'Выйти', destroy_user_session_path, method: :delete
     - else
       #profile-sign-in
         = button_to 'ВХОД', user_omniauth_authorize_path(:vkontakte), :id => "sign-in-btn",
@@ -36,3 +60,4 @@
       #vk_comments
       :javascript
         VK.Widgets.Comments("vk_comments", {limit: 10, width: "352", attach: "graffiti,photo,video,audio"}, 33);
+  = render 'modals/add'

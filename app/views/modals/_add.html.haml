@@ -1,0 +1,45 @@
+#add-modal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
+  .modal-dialog.add-modal
+    .modal-content
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+        %h4#myModalLabel.modal-title Создать пост
+      .modal-body
+        .icons-navigation
+          .category.first
+            = link_to '', new_news_path
+            .big-icon
+              = render 'icons/realnews1.svg'
+            .description
+              %h6
+                Интересные новости
+          .category.second
+            = link_to '', new_fiction_path
+            .big-icon
+              = render 'icons/ufo.svg'
+            .description
+              %h6
+                Необъяснимо, не факт
+          .category.third
+            = link_to '', new_story_path
+            .big-icon
+              = render 'icons/tea.svg'
+            .description
+              %h6
+                Офигительные истории
+          .category.fourth
+            = link_to '', new_fact_path
+            .big-icon  
+              = render 'icons/question.svg'
+            .description
+              %h6
+                Занимательные факты
+          .category.fifth
+            = link_to '', new_image_path
+            .big-icon  
+              = render 'icons/picture.svg'
+            .description
+              %h6
+                Игра Комментаторы
+      .modal-footer
+        %button.btn.btn-default{"data-dismiss" => "modal", type: "button"} Закрыть

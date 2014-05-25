@@ -14,6 +14,10 @@
 //= require jquery_ujs
 //= require application
 //= require pagination
+//= require bootstrap/modal
+//= require bootstrap/transition
+
+$("#modal-window").html("<%= escape_javascript(render 'modals/add') %>");
 
 $(function() {
   $('.godnota').click(function() {

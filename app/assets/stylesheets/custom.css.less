@@ -130,12 +130,9 @@ img {
   overflow: hidden;
   margin-bottom: 20px;
   #side-menu {
-    background-color: #fff;
-    border-radius: 10px;
     float: left;
-    padding: 10px;
     width: 275px;
-    height: 130px;
+    height: 113px;
     ul {
       list-style: none;
       text-align: center;
@@ -183,14 +180,15 @@ img {
   }
   .navigation {
     background-color: #fff;
-    border-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
     position: relative;
     padding: 10px;
     font-size: 20px;
     letter-spacing: 2px;
     line-height: 80px;
     /* new */
-    height: 130px;
+    height: 113px;
     width: 70px;
     float: right;
     #profile-karma {
@@ -207,7 +205,7 @@ img {
         left: 0;
         color: #fff;
         opacity: 0.8;
-        padding: 10px 0;
+        padding: 5px 0;
         background-color: rgba(0,0,0,0.6);
         border-bottom-left-radius: 10px;
         border-bottom-right-radius: 10px;
@@ -977,6 +975,55 @@ font-weight: bold;
       }
     }
   }
+
+  .category.add {
+    left: 0;
+    width: 115px;
+    svg {
+      width: 45px;
+      height: 45px;
+      top: 25px;
+      left: 34px;
+    }
+    .description {
+      margin-top: 86px;
+    }
+  }
+  .category.profile {
+    left: 120px;
+    width: 115px;
+    svg, img {
+      width: 45px;
+      height: 45px;
+      top: 25px;
+      left: 34px;
+    }
+    img {
+      position: absolute;
+      opacity: 0.8;
+      width: 47px;
+      height: 47px;
+    }
+    .description {
+      margin-top: 86px;
+    }
+  }
+  .category.exit {
+    width: 115px;
+    left: 240px;
+    svg {
+      width: 70px;
+      height: 70px;
+      top: 12px;
+      left: 22px;
+      .fil0 {
+        fill: #fff;
+      }
+    }
+    .description {
+      margin-top: 86px;
+    }
+  }
   .category.first {
     left: 0;
     svg {
@@ -1021,5 +1068,13 @@ font-weight: bold;
       left: 25px;
       top: 18px;
     }
+  }
+}
+
+.add-modal {
+  width: 650px;
+  .modal-content {
+    background-color: rgba(255,255,255,0.95);
+    border-radius: 0;
   }
 }

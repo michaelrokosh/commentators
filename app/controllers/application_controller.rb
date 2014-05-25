@@ -6,6 +6,12 @@ class ApplicationController < ActionController::Base
   before_filter :set_yellow_lord
   before_action :detect_device_type
 
+  def new_post
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
 
   private
     def detect_device_type

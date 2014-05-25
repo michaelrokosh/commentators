@@ -19,7 +19,7 @@
         = link_to 'Редактировать', edit_fact_path(@fact)
         = link_to 'Фтопку', fact_path(@fact), method: :delete
 .commentator
-  = render 'facts/fact', fact: @fact, top_comment: @top_comment
+  = render 'facts/fact', fact: @fact
   .under-image
     - if user_signed_in?
       = render 'comments/add_comment', commentable: @fact

@@ -19,7 +19,7 @@
         = link_to 'Редактировать', edit_fiction_path(@fiction)
         = link_to 'Фтопку', fiction_path(@fiction), method: :delete
 .commentator
-  = render 'fictions/fiction', fiction: @fiction, top_comment: @top_comment
+  = render 'fictions/fiction', fiction: @fiction
   .under-image
     - if user_signed_in?
       = render 'comments/add_comment', commentable: @fiction

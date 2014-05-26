@@ -16,7 +16,8 @@
               =image_tag(current_user.avatar_url, class: 'img-circle')            
               .description
                 %h6
-                  Мой профиль
+                  = current_user.karma
+                  %br Мой профиль
           .category.exit
             = link_to '', destroy_user_session_path, method: :delete
             .big-icon

@@ -7,7 +7,7 @@
     = image_tag(@yellow_lord.avatar_url, class: 'img-circle')
   .bubble-comment
     .content
-      Все добавленные материалы попадают в Днище. Отсюда админы выбирают лучшее. Не упусти шанс оставить первый комментарий!
+      Отсюда админы выбирают лучшее. Не упусти шанс оставить первый комментарий!
 - @recent_posts.each do |image|
   %article.commentator
     - if image.comments.any?
@@ -15,13 +15,9 @@
     - else
       - @top_comment = 'Комментариев пока нет'
     - if image.class.name == 'Image'
-      - if image.comments.any?
-        - @top_comment = image.comments.order("rating DESC, created_at ASC").first.content
-      - else
-        - @top_comment = 'Комментариев пока нет'
       = render "images/image", top_comment: @top_comment, image: image
       .commentator-footer
-        = render 'layouts/share', shareable: image
+        = render 'layouts/share', top_comment: @top_comment, shareable: image
     - elsif image.class.name == 'News'
       = render "news/news", news: image
     - elsif image.class.name == 'Fact'

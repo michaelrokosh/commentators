@@ -15,7 +15,7 @@
     - else
       - @top_comment = 'Комментариев пока нет'
     - if image.class.name == 'Image'
-      - if @image.comments.any?
+      - if image.comments.any?
         - @top_comment = image.comments.order("rating DESC, created_at ASC").first.content
       - else
         - @top_comment = 'Комментариев пока нет'

@@ -15,6 +15,10 @@
     - else
       - @top_comment = 'Комментариев пока нет'
     - if image.class.name == 'Image'
+      - if @image.comments.any?
+        - @top_comment = image.comments.order("rating DESC, created_at ASC").first.content
+      - else
+        - @top_comment = 'Комментариев пока нет'
       = render "images/image", top_comment: @top_comment, image: image
       .commentator-footer
         = render 'layouts/share', shareable: image

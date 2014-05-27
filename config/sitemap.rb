@@ -6,19 +6,19 @@ SitemapGenerator::Sitemap.create do
   add '/dniwe', changefreq: 'weekly'
   add '/best', changefreq: 'weekly'
   add '/users', changefreq: 'weekly'
-  News.find_each do |post|
+  News.all.each do |post|
     add news_path(post)
   end
-  Fiction.find_each do |post|
+  Fiction.all.each do |post|
     add fiction_path(post)
   end
-  Story.find_each do |post|
+  Story.all.each do |post|
     add story_path(post)
   end
   Fact.find_each do |post|
     add fact_path(post)
   end
-  Image.find_each do |post|
+  Image.all.each do |post|
     add image_path(post)
   end
 end

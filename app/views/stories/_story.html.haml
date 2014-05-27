@@ -7,6 +7,7 @@
   .top-comment.news-title
     %h1
       = story.title
+  = render 'layouts/image_footer', post: story
 .commentator-footer
   = render 'layouts/share', shareable_type: 'stories', shareable: story
   .news-content-wrapper

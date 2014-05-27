@@ -1,0 +1,8 @@
+.image-footer
+  .date
+    %h6
+      = post.created_at.strftime("%d.%m.%y")
+  .copyright
+    %h6
+      Автор:
+      = link_to post.user.username, user_path(post.user)

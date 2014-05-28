@@ -4,9 +4,10 @@
 @green: #92F68E;
 
 body#desktop {
-  width: 1000px;
+  width: 625px;
   margin: 0 auto;
   background: #dedede url(/triangular-bg.png);
+  position: relative;
 }
 
 a {
@@ -663,6 +664,7 @@ div.pagination {
 }
 
 .sidebar {
+  display: none;
   width: 375px;
   float: right;
   margin-right: 0;
@@ -671,6 +673,30 @@ div.pagination {
     margin-bottom: 20px;
   }
 }
+#separator {
+  line-height: 30px;
+  padding: 0 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: rgba(255, 255, 255, 0.8);
+  position: absolute;
+  right: -147px;
+  top: 170px;
+  cursor: pointer;  
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
+.use-sidebar {
+  width: 1000px !important;
+}
+.use-sidebar .wrapper .sidebar {
+    display: block;
+    width: 375px;
+}
+
 
 .img-circle {
   border-radius: 50%;
@@ -824,7 +850,7 @@ table {
 #footer-wrapper {
   position: relative;
   float: left;
-  padding: 24px 0 24px 0;
+  padding: 24px 44px 24px 0;
   height: auto;
   width: 100%;
   text-align: left;
@@ -845,7 +871,6 @@ table {
   margin-right: auto;
   margin-left: auto;
   position: relative;
-  width: 980px;
 }
 
 #functions {
@@ -876,7 +901,6 @@ font-weight: bold;
 #footer p {
   margin-left: 225px;
   margin-bottom: 0px;
-  width: 700px;
   color: white;
 }
 
@@ -892,7 +916,7 @@ font-weight: bold;
 }
 
 #legal {
-  margin-top: 10px;
+  margin-top: 25px;
 }
 
 #not-signed-in {

@@ -17,6 +17,35 @@
 //= require bootstrap/modal
 //= require bootstrap/transition
 
+$(document).ready(function(){
+    // Variables
+    var objMain = $('#desktop');
+ 
+    // Show sidebar
+    function showSidebar(){
+        objMain.addClass('use-sidebar');
+    }
+ 
+    // Hide sidebar
+    function hideSidebar(){
+        objMain.removeClass('use-sidebar');
+    }
+ 
+    // Sidebar separator
+    var objSeparator = $('#separator');
+ 
+    objSeparator.click(function(e){
+        e.preventDefault();
+        if ( objMain.hasClass('use-sidebar') ){
+            hideSidebar();
+        }
+        else {
+            showSidebar();
+        }
+    });
+ 
+});
+
 $("#modal-window").html("<%= escape_javascript(render 'modals/add') %>");
 
 $(function() {

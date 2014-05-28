@@ -3,21 +3,6 @@
   %meta{content: "#{@story.image.url(:thumb)}", property: "og:image"}/
   %meta{content: "#{truncate(@story.content, length: 300, separator: ' ')}", property: "og:description"}/
 = content_for(:title, "#{@story.title} - время офигительных историй | Комментаторы")
-.img-header
-  %h4.created_at_image
-    = @story.created_at.strftime("%d/%m/%Y")
-  %h4.title
-    Добавил: 
-    - if @story.user != nil
-      = link_to @story.user.username, user_path(@story.user), rel: 'author'
-    - else
-      Повелитель удаленных душ
-    - if user_signed_in?
-      - if current_user.admin?
-        - unless @story.godnota?
-          %i.godnota.dniwe.fa.fa-thumbs-o-up{ data: {:post_id => @story.id, type: "stories"}}
-        = link_to 'Редактировать', edit_story_path(@story)
-        = link_to 'Фтопку', story_path(@story), method: :delete
 .commentator
   = render 'stories/story', story: @story
   .under-image

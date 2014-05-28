@@ -3,21 +3,6 @@
   %meta{content: "#{@fact.image.url(:thumb)}", property: "og:image"}/
   %meta{content: "truncate(@fact.content, length: 300, separator: ' ')", property: "og:description"}/
 = content_for(:title, "#{@fact.title} - занимательные факты | Комментаторы")
-.img-header
-  %h4.created_at_image
-    = @fact.created_at.strftime("%d/%m/%Y")
-  %h4.title
-    Добавил: 
-    - if @fact.user != nil
-      = link_to @fact.user.username, user_path(@fact.user), rel: 'author'
-    - else
-      Повелитель удаленных душ
-    - if user_signed_in?
-      - if current_user.admin?
-        - unless @fact.godnota?
-          %i.godnota.dniwe.fa.fa-thumbs-o-up{ data: {:post_id => @fact.id, type: "facts"}}
-        = link_to 'Редактировать', edit_fact_path(@fact)
-        = link_to 'Фтопку', fact_path(@fact), method: :delete
 .commentator
   = render 'facts/fact', fact: @fact
   .under-image

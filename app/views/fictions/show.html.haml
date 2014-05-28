@@ -3,21 +3,6 @@
   %meta{content: "#{@fiction.image.url(:thumb)}", property: "og:image"}/
   %meta{content: "#{truncate(@fiction.content, length: 300, separator: ' ')}", property: "og:description"}/
 = content_for(:title, "#{@fiction.title} - нереальные новости | Комментаторы")
-.img-header
-  %h4.created_at_image
-    = @fiction.created_at.strftime("%d/%m/%Y")
-  %h4.title
-    Добавил: 
-    - if @fiction.user != nil
-      = link_to @fiction.user.username, user_path(@fiction.user), rel: 'author'
-    - else
-      Повелитель удаленных душ
-    - if user_signed_in?
-      - if current_user.admin?
-        - unless @fiction.godnota?
-          %i.godnota.dniwe.fa.fa-thumbs-o-up{ data: {:post_id => @fiction.id, type: "fictions"}}
-        = link_to 'Редактировать', edit_fiction_path(@fiction)
-        = link_to 'Фтопку', fiction_path(@fiction), method: :delete
 .commentator
   = render 'fictions/fiction', fiction: @fiction
   .under-image

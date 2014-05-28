@@ -6,21 +6,6 @@
   %meta{content: "#{@image.image.url(:thumb)}", property: "og:image"}/
   %meta{content: "Комментаторы - это новый вид интерактивного развлечения, который заключается в комментировании картинок с целью попасть в топ лучших, размещенных непосредственно под изображением.", property: "og:description"}/
 = content_for(:title, "Комментатор ##{@image.id} - #{@top_comment} | Комментаторы")
-.img-header
-  %h4.created_at_image
-    = @image.created_at.strftime("%d/%m/%Y")
-  %h4.title
-    Добавил: 
-    - if @image.user != nil
-      = link_to @image.user.username, user_path(@image.user), rel: 'author'
-    - else
-      Повелитель удаленных душ
-    - if user_signed_in?
-      - if current_user.admin?
-        - unless @image.godnota?
-          %i.godnota.dniwe.fa.fa-thumbs-o-up{ data: {post_id: @image.id, type: "images"}}
-        = link_to 'Редактировать', edit_image_path(@image)
-        = link_to 'Фтопку', image_path(@image), method: :delete
 .commentator
   = render 'images/image', image: @image, top_comment: @top_comment
   .commentator-footer

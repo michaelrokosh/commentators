@@ -1131,15 +1131,26 @@ font-weight: bold;
     font-size: 20px;
     background-color: rgba(0, 0, 0, 0.6);
     display: inline-block;
+    a {
+      line-height: 50px;
+      width: 40px;
+      text-decoration: none;
+    }
   }
   .post-vote-for, .post-voted-for {
     float: right;
     color: #C9FFC2;
     border-right: 1px solid rgba(0, 0, 0, 0.2);
   }
+  .post-vote-for a {
+    color: #C9FFC2;
+  }
+  .post-vote-against a {
+    color: #FFC2C2;
+  }
   .post-vote-against, .post-voted-against {
     float: right;
-    color: #FFC2C2
+    color: #FFC2C2;
   }
   .post-rating {
     float: right;

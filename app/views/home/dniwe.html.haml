@@ -1,13 +1,4 @@
-= content_for(:title, "DNIWE | Комментаторы")
-.single-comment.micro-blog
-  .comment-top
-    .username
-      = link_to @yellow_lord.username, user_path(@yellow_lord)
-  .avatar
-    = image_tag(@yellow_lord.avatar_url, class: 'img-circle')
-  .bubble-comment
-    .content
-      Отсюда админы выбирают лучшее. Не упусти шанс оставить первый комментарий!
+= content_for(:title, "Бездна | Комментаторы")
 - @recent_posts.each do |image|
   %article.commentator
     - if image.comments.any?

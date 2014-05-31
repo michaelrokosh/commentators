@@ -48,7 +48,7 @@
             = image_tag('/trollface.png', class: 'img-circle')
           .bubble-comment
             .content
-              = "Здесь мог бы быть твой комментарий! Хотя нет, вряд ли ты на это способен))00"
+              = "Здесь может быть твой комментарий!"
           .rating-no-votes
             = '-∞'
 = will_paginate(@recent_stories, :previous_label => 'Туда', :next_label => 'Сюда', renderer: WillPaginate::ActionView::LinkRenderer)

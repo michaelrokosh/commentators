@@ -1,13 +1,4 @@
-= content_for(:title, "Перлы | Комментаторы")
-.single-comment.micro-blog
-  .comment-top
-    .username
-      = link_to @yellow_lord.username, user_path(@yellow_lord)
-  .avatar
-    = image_tag(@yellow_lord.avatar_url, class: 'img-circle')
-  .bubble-comment
-    .content
-      Если ты видишь свое имя на первых страницах топа - делай скриншот и вешай на стену. Ты многого добился в этой жизни!
+= content_for(:title, "Лучшее | Комментаторы")
 - @recent_posts.each do |image|
   %article.commentator
     - if image.comments.any?

@@ -1,13 +1,4 @@
-= content_for(:title, "Занимательные новости | Комментаторы")
-.single-comment.micro-blog
-  .comment-top
-    .username
-      = link_to @yellow_lord.username, user_path(@yellow_lord)
-  .avatar
-    = image_tag(@yellow_lord.avatar_url, class: 'img-circle')
-  .bubble-comment
-    .content
-      Хочешь проверить, насколько ты остроумен? Оставь комментарий к картинке и следи за реакцией других людей.
+= content_for(:title, "Картинки | Комментаторы")
 - @recent_images.each do |image|
   %article.commentator
     - if image.comments.any?
@@ -59,7 +50,7 @@
             = image_tag('/trollface.png', class: 'img-circle')
           .bubble-comment
             .content
-              = "Здесь мог бы быть твой комментарий! Хотя нет, вряд ли ты на это способен))00"
+              = "Здесь может быть твой комментарий!"
           .rating-no-votes
             = '-∞'
 = will_paginate(@recent_images, :previous_label => 'Туда', :next_label => 'Сюда', renderer: WillPaginate::ActionView::LinkRenderer)

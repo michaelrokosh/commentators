@@ -25,7 +25,7 @@ class Vote < ActiveRecord::Base
 
 	def change_karma
     if voteable.class.name == "Comment"
-		  voteable.user.karma += rate.to_f/10.0
+		  voteable.user.karma += rate.to_f/2.0
     else
       voteable.user.karma += rate.to_f
     end

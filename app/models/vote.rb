@@ -9,6 +9,9 @@ class Vote < ActiveRecord::Base
 		new_vote.voteable_id = voteable.id
 		new_vote.voter_type = voter_type
 		new_vote.voteable_type = voteable_type
+    if voter.admin?
+      rate *= 3
+    end
 		new_vote.rate = rate
 		voteable.rating += rate
 		if new_vote.save

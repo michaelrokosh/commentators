@@ -205,7 +205,7 @@ $(function() {
         type: "POST",
         url: '/' + $button.attr('data-type') + '/' + $button.attr('data-post-id') + '/vote_down',
         success: function() {
-          var rating = parseInt($("#post-rating-admin-block-" + $button.attr('data-post-id')).text()) - 1
+          var rating = parseInt($("#post-rating-admin-block-" + $button.attr('data-post-id')).text()) - 3
           $("#post-rating-admin-block-" + $button.attr('data-post-id')).html(rating); ;
         }
       })
@@ -219,7 +219,7 @@ $(function() {
         type: "POST",
         url: '/' + $button.attr('data-type') + '/' + $button.attr('data-post-id') + '/vote_up',
         success: function() {
-          var rating = parseInt($("#post-rating-admin-block-" + $button.attr('data-post-id')).text()) + 1
+          var rating = parseInt($("#post-rating-admin-block-" + $button.attr('data-post-id')).text()) + 3
           $("#post-rating-admin-block-" + $button.attr('data-post-id')).html(rating); ; 
         }
       })

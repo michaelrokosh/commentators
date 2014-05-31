@@ -45,6 +45,18 @@ class FictionsController < ApplicationController
     end
   end
 
+  def vote_up
+    @fiction = Fiction.find(params[:id])
+    Vote.record_vote(current_user, @fiction, 1, 'User', 'Fiction')
+    redirect_to :back
+  end
+
+  def vote_down
+    @fiction = Fiction.find(params[:id])
+    Vote.record_vote(current_user, @fiction, -1, 'User', 'Fiction')
+    redirect_to :back
+  end
+
   def index
     @recent_fictions = Fiction.where(godnota: true).order('created_at DESC').all.paginate(:page => params[:page], :per_page => 3)
   end

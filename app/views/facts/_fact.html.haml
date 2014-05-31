@@ -3,6 +3,7 @@
     = link_to "", facts_path, title: "Занимательные факты"
     .icon.fact-icon
       = render "icons/question.svg"
+  = render 'layouts/post_vote_block', post: fact
   = link_to(image_tag(fact.image.url(:medium), alt: "#{fact.title}", class: "resize"), fact_path(fact))
   .top-comment.news-title
     %h1

@@ -45,6 +45,18 @@ class FactsController < ApplicationController
     end
   end
 
+  def vote_up
+    @fact = Fact.find(params[:id])
+    Vote.record_vote(current_user, @fact, 1, 'User', 'Fact')
+    redirect_to :back
+  end
+
+  def vote_down
+    @fact = Fact.find(params[:id])
+    Vote.record_vote(current_user, @fact, -1, 'User', 'Fact')
+    redirect_to :back
+  end
+
   def index
     @recent_facts = Fact.where(godnota: true).order('created_at DESC').all.paginate(:page => params[:page], :per_page => 3)
   end

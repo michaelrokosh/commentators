@@ -45,6 +45,18 @@ class ImagesController < ApplicationController
     end
   end
 
+  def vote_up
+    @image = Image.find(params[:id])
+    Vote.record_vote(current_user, @image, 1, 'User', 'Image')
+    redirect_to :back
+  end
+
+  def vote_down
+    @image = Image.find(params[:id])
+    Vote.record_vote(current_user, @image, -1, 'User', 'Image')
+    redirect_to :back
+  end
+
   def index
     @recent_images = Image.where(godnota: true).order('created_at DESC').all.paginate(:page => params[:page], :per_page => 3)
   end

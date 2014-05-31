@@ -73,7 +73,7 @@ $(function() {
         url: '/' + $button.attr('data-type') + '/' + $button.attr('data-post-id') + '/vote_down',
         success: function() {
           var rating = parseInt($button.attr('data-post-rating')) - 1
-          $("#post-vote-block-" + $button.attr('data-post-id')).removeClass('make-vote').addClass('vote-made').html('<div class="post-vote-block"><div class="rating">' + rating + '</div><div class="voted"><i class="voted-against fa fa-thumbs-down red"></i></div></div>'); ;
+          $("#post-vote-block-" + $button.attr('data-post-id')).removeClass('make-vote').addClass('vote-made').html('<div class="post-vote-block"><div class="post-voted-against">-</div><div class="post-rating">' + rating + '</div></div>'); ;
         }
       })
     }
@@ -88,8 +88,8 @@ $(function() {
         type: "POST",
         url: '/' + $button.attr('data-type') + '/' + $button.attr('data-post-id') + '/vote_up',
         success: function() {
-          var rating = parseInt($button.attr('data-cpost-rating')) + 1
-          $("#post-vote-block-" + $button.attr('data-post-id')).removeClass('make-vote').addClass('vote-made').html('<div class="post-vote-block"><div class="rating">' + rating + '</div><div class="voted"><i class="voted-against fa fa-thumbs-up green"></i></div></div>'); ; 
+          var rating = parseInt($button.attr('data-post-rating')) + 1
+          $("#post-vote-block-" + $button.attr('data-post-id')).removeClass('make-vote').addClass('vote-made').html('<div class="post-vote-block"><div class="post-voted-for">+</div><div class="post-rating">' + rating + '</div></div>'); ; 
         }
       })
     }

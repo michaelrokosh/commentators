@@ -3,6 +3,7 @@
     = link_to "", stories_path, title: "Офигительные истории"
     .icon.story-icon
       = render "icons/tea.svg"
+  = render 'layouts/post_vote_block', post: story
   = link_to(image_tag(story.image.url(:medium), alt: "#{story.title}", class: "resize"), story_path(story))
   .top-comment.news-title
     %h1

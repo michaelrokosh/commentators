@@ -1,0 +1,27 @@
+- if user_signed_in?
+  - if current_user.voted_for?(post)
+    .post-votes.vote-made
+      - if current_user.positive_vote?(post)
+        .post-voted-for
+          = '+'
+      - else
+        .post-voted-against
+          = '-'
+      .post-rating
+        = post.rating
+  - else
+    .post-votes.make-vote{ id: "post-vote-block-#{post.id}" }
+      .post-vote-against{ data: {post_id: post.id, post_rating: post.rating, type: post.class.name.pluralize.downcase} }
+        = '-'
+      .post-rating
+        = post.rating
+      .post-vote-for{ data: {post_id: post.id, post_rating: post.rating, type: post.class.name.pluralize.downcase} }
+        = '+'
+- else
+  .post-votes.make-vote{ id: "post-vote-block-#{post.id}" }
+    .post-vote-against
+      = link_to '-', user_omniauth_authorize_path(:vkontakte)
+    .post-rating
+      = post.rating
+    .post-vote-for
+      = link_to '+', user_omniauth_authorize_path(:vkontakte)

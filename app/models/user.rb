@@ -27,11 +27,11 @@ class User < ActiveRecord::Base
   end
 
   def voted_for?(voteable)
-    votes.where(voteable_id: voteable).first.present?
+    votes.where(voteable_id: voteable, voteable_type: voteable.class.name).first.present?
   end
 
   def positive_vote?(voteable)
-    votes.where(voteable_id: voteable).first.rate == 1
+    votes.where(voteable_id: voteable, voteable_type: voteable.class.name).first.rate == 1
   end
 
   protected

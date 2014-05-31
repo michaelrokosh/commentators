@@ -3,11 +3,7 @@
     = link_to "", images_path
     .icon.picture-icon
       = render "icons/picture.svg"
-  .post-votes.make-vote{ id: "post-vote-block-#{image.id}" }
-    .post-vote-for{ data: {post_id: image.id, post_rating: image.rating, type: image.class.name.pluralize.downcase} }
-      = '+'
-    .post-vote-against
-      = '-'
+  = render 'layouts/post_vote_block', post: image
   = link_to(image_tag(image.image.url(:medium), alt: "#{top_comment}", class: "resize"), image_path(image))
   - if image.comments.any?
     .top-comment

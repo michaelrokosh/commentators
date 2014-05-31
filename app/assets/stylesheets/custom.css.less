@@ -1118,27 +1118,37 @@ font-weight: bold;
   position: absolute;
   top: 0;
   right: 0;
-  width: 50px;
+  width: 150px;
   .post-vote-for, .post-vote-against {
     &:hover {
       background-color: rgba(0, 0, 0, 0.8);
       cursor: pointer;
     }
   }
-  .post-vote-for, .post-vote-against {
+  .post-vote-for, .post-vote-against, .post-voted-for, .post-voted-against {
     line-height: 50px;
-    width: 25px;
+    width: 40px;
     font-size: 20px;
     background-color: rgba(0, 0, 0, 0.6);
     display: inline-block;
   }
-  .post-vote-for {
-    float: left;
+  .post-vote-for, .post-voted-for {
+    float: right;
     color: #C9FFC2;
     border-right: 1px solid rgba(0, 0, 0, 0.2);
   }
-  .post-vote-against {
+  .post-vote-against, .post-voted-against {
     float: right;
     color: #FFC2C2
+  }
+  .post-rating {
+    float: right;
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
+    line-height: 50px;
+    font-size: 15px;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: inline-block;
+    color: #fff;
+    padding: 0 10px;
   }
 }

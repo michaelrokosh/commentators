@@ -37,6 +37,18 @@ class StoriesController < ApplicationController
     end
   end
 
+  def vote_up
+    @story = Story.find(params[:id])
+    Vote.record_vote(current_user, @story, 1, 'User', 'Story')
+    redirect_to :back
+  end
+
+  def vote_down
+    @story = Story.find(params[:id])
+    Vote.record_vote(current_user, @story, -1, 'User', 'Story')
+    redirect_to :back
+  end
+
   def godnota
     @story = Story.find(params[:id])
     if current_user.admin?

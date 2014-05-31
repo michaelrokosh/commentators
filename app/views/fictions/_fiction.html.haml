@@ -3,6 +3,7 @@
     = link_to '', fictions_path
     .icon.ufo-icon
       = render "icons/ufo.svg"
+  = render 'layouts/post_vote_block', post: fiction
   = link_to(image_tag(fiction.image.url(:medium), alt: "#{fiction.title}", class: "resize"), fiction_path(fiction))
   .top-comment.news-title
     %h1

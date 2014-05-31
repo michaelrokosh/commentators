@@ -13,6 +13,9 @@ class Vote < ActiveRecord::Base
 		voteable.rating += rate
 		if new_vote.save
 			voteable.save
+      puts "Fuck yeah!"
+    else
+      puts "Fuck no! :("
 		end
 	end
 

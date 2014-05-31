@@ -1118,29 +1118,27 @@ font-weight: bold;
   position: absolute;
   top: 0;
   right: 0;
-  width: 100px;
+  width: 50px;
   .post-vote-for, .post-vote-against {
     &:hover {
       background-color: rgba(0, 0, 0, 0.8);
       cursor: pointer;
     }
   }
-  .post-vote-for {
+  .post-vote-for, .post-vote-against {
     line-height: 50px;
-    width: 50px;
-    font-size: 25px;
+    width: 25px;
+    font-size: 20px;
     background-color: rgba(0, 0, 0, 0.6);
-    color: #C9FFC2;
     display: inline-block;
+  }
+  .post-vote-for {
     float: left;
+    color: #C9FFC2;
+    border-right: 1px solid #949494;
   }
   .post-vote-against {
-    line-height: 50px;
-    width: 50px;
-    font-size: 25px;
-    background-color: rgba(0, 0, 0, 0.6);
-    color: #FFC2C2;
-    display: inline-block;
     float: right;
+    color: #FFC2C2
   }
 }

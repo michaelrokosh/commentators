@@ -3,6 +3,7 @@ class Fiction < ActiveRecord::Base
   has_many :comments, as: :commentable, dependent: :destroy
   belongs_to :user
   before_destroy :clear_comments
+  has_many :votes, as: :voteable
 
   has_attached_file :image, styles: {
       thumb: '100x100>',

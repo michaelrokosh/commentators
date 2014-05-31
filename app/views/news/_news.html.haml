@@ -3,6 +3,11 @@
     = link_to "", news_index_path, title: "Реальные новости"
     .icon.news-icon
       = render "icons/realnews1.svg"
+  .post-votes.make-vote{ id: "post-vote-block-#{news.id}" }
+    .post-vote-for{ data: {post_id: news.id, post_rating: news.rating, type: news.class.name.pluralize.downcase} }
+      = '+'
+    .post-vote-against{ data: {post_id: news.id, post_rating: news.rating, type: news.class.name.pluralize.downcase} }
+      = '-'
   = link_to(image_tag(news.image.url(:medium), alt: "#{news.title}", class: "resize"), news_path(news))
   .top-comment.news-title
     %h1

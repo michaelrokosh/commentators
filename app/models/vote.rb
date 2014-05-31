@@ -2,7 +2,7 @@ class Vote < ActiveRecord::Base
 	belongs_to :voter, polymorphic: true
 	belongs_to :voteable, polymorphic: true
 	before_save :change_karma
-	
+
 	def self.record_vote(voter, voteable, rate, voter_type, voteable_type)
 		new_vote = Vote.new
 		new_vote.voter_id = voter.id
@@ -17,12 +17,21 @@ class Vote < ActiveRecord::Base
 	end
 
 	validates :voter_id,
-  			uniqueness: { scope: :voteable_id, message: "Вы уже голосовали" }
+  			uniqueness: { scope: [:voteable_type, :voteable_id], message: "Вы уже голосовали" }
 
   	private
 
   	def change_karma
-  		voteable.user.karma += rate.to_f/10.0
-  		voteable.user.save
+      if voteable.class.name == "Comment"
+  		  voteable.user.karma += rate.to_f/10.0
+      else
+        voteable.user.karma += rate.to_f
+      end
+      if voteable.user.save
+        puts "Yeah bitch!"
+      else
+        puts "Fuck bitch! :("
+        puts voteable.user.errors.messages
+      end
   	end
 end

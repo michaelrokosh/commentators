@@ -63,7 +63,40 @@ $(function() {
   });
 });
 
+//post votes
+$(function() {
+  $(document).on( "click", ".post-vote-against", function() {
+    $button = $(this)
+    if ( $( "#post-vote-block-" + $button.attr('data-post-id')).hasClass( "make-vote" ) ) {
+      $.ajax({
+        type: "POST",
+        url: '/' + $button.attr('data-type') + '/' + $button.attr('data-post-id') + '/vote_down',
+        success: function() {
+          var rating = parseInt($button.attr('data-post-rating')) - 1
+          $("#post-vote-block-" + $button.attr('data-post-id')).removeClass('make-vote').addClass('vote-made').html('<div class="post-vote-block"><div class="rating">' + rating + '</div><div class="voted"><i class="voted-against fa fa-thumbs-down red"></i></div></div>'); ;
+        }
+      })
+    }
+  });
+});
 
+$(function() {
+  $(document).on( "click", ".post-vote-for", function() {
+    $button = $(this)
+    if ( $( "#post-vote-block-" + $button.attr('data-post-id')).hasClass( "make-vote" ) ) {
+      $.ajax({
+        type: "POST",
+        url: '/' + $button.attr('data-type') + '/' + $button.attr('data-post-id') + '/vote_up',
+        success: function() {
+          var rating = parseInt($button.attr('data-cpost-rating')) + 1
+          $("#post-vote-block-" + $button.attr('data-post-id')).removeClass('make-vote').addClass('vote-made').html('<div class="post-vote-block"><div class="rating">' + rating + '</div><div class="voted"><i class="voted-against fa fa-thumbs-up green"></i></div></div>'); ; 
+        }
+      })
+    }
+  });
+});
+
+// comment votes
 $(function() {
   $(document).on( "click", ".vote-against", function() {
     $button = $(this)
@@ -130,6 +163,7 @@ $(function() {
     }
   });
 });
+
 //mobile v end
 
 //counter

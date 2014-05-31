@@ -37,6 +37,18 @@ class NewsController < ApplicationController
     end
   end
 
+  def vote_up
+    @news = News.find(params[:id])
+    Vote.record_vote(current_user, @news, 1, 'User', 'News')
+    redirect_to :back
+  end
+
+  def vote_down
+    @news = News.find(params[:id])
+    Vote.record_vote(current_user, @news, -1, 'User', 'News')
+    redirect_to :back
+  end
+
   def godnota
     @news = News.find(params[:id])
     if current_user.admin?

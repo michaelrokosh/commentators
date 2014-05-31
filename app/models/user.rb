@@ -15,8 +15,7 @@ class User < ActiveRecord::Base
   validates :username, presence: true, 
                       format: { with: VALID_USERNAME_REGEX, message: "должно состоять только из символов и цифр" },
                       uniqueness: { case_sensitive: false, message: "занято" },
-                      exclusion: { in: %w(admin Admin Михаил админ Админ Модератор), message: "занято" },
-                      length: { minimum: 3, maximum: 22, message: "должно быть в пределе 3-15 символов" }
+                      length: { minimum: 3, maximum: 15, message: "должно быть в пределе 3-15 символов" }
   # Validate the attached image is image/jpg, image/png, etc
 
   def self.find_for_vkontakte_oauth access_token

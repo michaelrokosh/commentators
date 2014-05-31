@@ -1113,3 +1113,34 @@ font-weight: bold;
     border-radius: 0;
   }
 }
+
+.post-votes {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100px;
+  .post-vote-for, .post-vote-against {
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+      cursor: pointer;
+    }
+  }
+  .post-vote-for {
+    line-height: 50px;
+    width: 50px;
+    font-size: 25px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #C9FFC2;
+    display: inline-block;
+    float: left;
+  }
+  .post-vote-against {
+    line-height: 50px;
+    width: 50px;
+    font-size: 25px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #FFC2C2;
+    display: inline-block;
+    float: right;
+  }
+}

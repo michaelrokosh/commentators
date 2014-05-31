@@ -4,6 +4,8 @@ Commentators::Application.routes.draw do
   resources :images do
     member do
       post :godnota
+      post :vote_up
+      post :vote_down
     end
   	resources :comments do
   		member do
@@ -16,6 +18,8 @@ Commentators::Application.routes.draw do
   resources :news do
     member do
       post :godnota
+      post :vote_up
+      post :vote_down
     end
     resources :comments do
       member do
@@ -28,6 +32,8 @@ Commentators::Application.routes.draw do
   resources :facts do
     member do
       post :godnota
+      post :vote_up
+      post :vote_down
     end
     resources :comments do
       member do
@@ -40,6 +46,8 @@ Commentators::Application.routes.draw do
   resources :fictions do
     member do
       post :godnota
+      post :vote_up
+      post :vote_down
     end
     resources :comments do
       member do
@@ -52,6 +60,8 @@ Commentators::Application.routes.draw do
   resources :stories do
     member do
       post :godnota
+      post :vote_up
+      post :vote_down
     end
     resources :comments do
       member do

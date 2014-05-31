@@ -8,19 +8,23 @@
   .bubble-comment
     .content
       Если ты видишь свое имя на первых страницах топа - делай скриншот и вешай на стену. Ты многого добился в этой жизни!
-- @comments.each do |comment|
+- @recent_posts.each do |image|
   %article.commentator
-    - @top_comment = comment.content
-    - if comment.commentable.class.name == 'Image'
-      = render "images/image", top_comment: @top_comment, image: comment.commentable
+    - if image.comments.any?
+      - @top_comment = image.comments.order("rating DESC, created_at ASC").first.content
+    - else
+      - @top_comment = 'Комментариев пока нет'
+    - if image.class.name == 'Image'
+      = render "images/image", top_comment: @top_comment, image: image
       .commentator-footer
-        = render 'layouts/share', top_comment: @top_comment, shareable: comment.commentable
-    - elsif comment.commentable.class.name == 'News'
-      = render "news/news", news: comment.commentable 
-    - elsif comment.commentable.class.name == 'Fact'
-      = render "facts/fact", fact: comment.commentable
-    - elsif comment.commentable.class.name == 'Story'
-      = render "stories/story", story: comment.commentable
-    - elsif comment.commentable.class.name == 'Fiction'
-      = render "fictions/fiction", fiction: comment.commentable
-= will_paginate(@comments, :previous_label => 'Туда', :next_label => 'Сюда', renderer: WillPaginate::ActionView::LinkRenderer)
+        = render 'layouts/share', top_comment: @top_comment, shareable: image
+    - elsif image.class.name == 'News'
+      = render "news/news", news: image
+    - elsif image.class.name == 'Fact'
+      = render "facts/fact", fact: image
+    - elsif image.class.name == 'Story'
+      = render "stories/story", story: image
+    - elsif image.class.name == 'Fiction'
+      = render "fictions/fiction", fiction: image
+    = render "comments/top_comments", post: image
+= will_paginate(@recent_posts, :previous_label => 'Туда', :next_label => 'Сюда', renderer: WillPaginate::ActionView::LinkRenderer)

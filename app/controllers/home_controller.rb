@@ -21,6 +21,12 @@ class HomeController < ApplicationController
   end
 
   def best
-    @comments = Comment.order('rating DESC').all.paginate(:page => params[:page], :per_page => 3)
+    @recent_images = Image.where(godnota: true)
+    @recent_news = News.where(godnota: true)
+    @recent_facts = Fact.where(godnota: true)
+    @recent_stories = Story.where(godnota: true)
+    @recent_fictions = Fiction.where(godnota: true)
+    @recent_posts = (@recent_news+@recent_images+@recent_facts+@recent_stories+@recent_fictions).sort_by(&:rating).reverse
+    @recent_posts = @recent_posts.paginate(:page => params[:page], :per_page => 3)
   end
 end

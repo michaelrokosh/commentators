@@ -20,21 +20,20 @@ class Vote < ActiveRecord::Base
 	end
 
 	validates :voter_id,
-  			uniqueness: { scope: [:voteable_type, :voteable_id], message: "Вы уже голосовали" }
+  			uniqueness: { scope: [:voteable_type, :voteable_id] }, unless: 'voter.admin?'
+	private
 
-  	private
-
-  	def change_karma
-      if voteable.class.name == "Comment"
-  		  voteable.user.karma += rate.to_f/10.0
-      else
-        voteable.user.karma += rate.to_f
-      end
-      if voteable.user.save
-        puts "Yeah bitch!"
-      else
-        puts "Fuck bitch! :("
-        puts voteable.user.errors.messages
-      end
-  	end
+	def change_karma
+    if voteable.class.name == "Comment"
+		  voteable.user.karma += rate.to_f/10.0
+    else
+      voteable.user.karma += rate.to_f
+    end
+    if voteable.user.save
+      puts "Yeah bitch!"
+    else
+      puts "No bitch! :("
+      puts voteable.user.errors.messages
+    end
+	end
 end

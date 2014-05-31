@@ -196,3 +196,32 @@ $(document).ready(function(){
     limiting($(this), limitnum);
   });
 });
+
+//post votes admin
+$(function() {
+  $(document).on( "click", ".post-vote-against-admin", function() {
+    $button = $(this)
+      $.ajax({
+        type: "POST",
+        url: '/' + $button.attr('data-type') + '/' + $button.attr('data-post-id') + '/vote_down',
+        success: function() {
+          var rating = parseInt($("#post-rating-admin-block-" + $button.attr('data-post-id')).text()) - 1
+          $("#post-rating-admin-block-" + $button.attr('data-post-id')).html(rating); ;
+        }
+      })
+  });
+});
+
+$(function() {
+  $(document).on( "click", ".post-vote-for-admin", function() {
+    $button = $(this)
+      $.ajax({
+        type: "POST",
+        url: '/' + $button.attr('data-type') + '/' + $button.attr('data-post-id') + '/vote_up',
+        success: function() {
+          var rating = parseInt($("#post-rating-admin-block-" + $button.attr('data-post-id')).text()) + 1
+          $("#post-rating-admin-block-" + $button.attr('data-post-id')).html(rating); ; 
+        }
+      })
+  });
+});

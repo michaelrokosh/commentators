@@ -17,6 +17,14 @@
         = post.rating
       .post-vote-for{ data: {post_id: post.id, post_rating: post.rating, type: post.class.name.pluralize.downcase} }
         = '+'
+  - if current_user.admin?
+    .post-votes-admin.make-vote-admin{ id: "post-vote-admin-block-#{post.id}" }
+      .post-vote-against-admin{ data: {post_id: post.id, post_rating: post.rating, type: post.class.name.pluralize.downcase} }
+        = '-'
+      .post-rating{ id: "post-rating-admin-block-#{post.id}" }
+        = post.rating
+      .post-vote-for-admin{ data: {post_id: post.id, post_rating: post.rating, type: post.class.name.pluralize.downcase} }
+        = '+'
 - else
   .post-votes.make-vote{ id: "post-vote-block-#{post.id}" }
     .post-vote-against

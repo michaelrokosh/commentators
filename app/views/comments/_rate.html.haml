@@ -3,8 +3,8 @@
     .rating-no-votes
       = comment.rating
   - else
-    - if current_user.voted_for?(comment.id)
-      - if current_user.positive_vote?(comment.id)
+    - if current_user.voted_for?(comment)
+      - if current_user.positive_vote?(comment)
         .vote-block
           .rating
             = comment.rating

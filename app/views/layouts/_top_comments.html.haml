@@ -24,8 +24,8 @@
             .rating
               = comment.rating
         - else
-          - if current_user.voted_for?(comment.id)
-            - if current_user.positive_vote?(comment.id)
+          - if current_user.voted_for?(comment)
+            - if current_user.positive_vote?(comment)
               .voted
                 %i.voted-for.fa.fa-thumbs-up.green
                 .rating

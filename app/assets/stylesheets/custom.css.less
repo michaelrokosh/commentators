@@ -846,7 +846,6 @@ table {
 }
 
 
-
 #footer-wrapper {
   position: relative;
   float: left;
@@ -1075,6 +1074,14 @@ font-weight: bold;
       width: 85px;
       height: 85px;
       left: 14px;
+      g {
+        path:hover {
+          fill: yellow !important;
+        }
+        path {
+          pointer-events:all;
+        }
+      }
     }
   }
   .category.third {

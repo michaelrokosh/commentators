@@ -1,0 +1,32 @@
+- if user_signed_in?
+  - if comment.user.id == current_user.id
+    .rating-no-votes
+      = comment.rating
+  - else
+    - if current_user.voted_for?(comment.id)
+      - if current_user.positive_vote?(comment.id)
+        .vote-block
+          .rating
+            = comment.rating
+          .voted
+            %i.voted-for.fa.fa-thumbs-up.green
+      - else 
+        .vote-block
+          .rating
+            = comment.rating
+          .voted
+            %i.voted-against.fa.fa-thumbs-down.red
+    - else
+      .vote-block.make-vote{ id: "vote-block-#{comment.id}" }
+        .rating
+          = comment.rating
+        .votes
+          %i.vote-for.fa.fa-thumbs-o-up{ data: {post_id: comment.commentable.id, comment_id: comment.id, comment_rating: comment.rating, type: controller_name} }
+          %i.vote-against.fa.fa-thumbs-o-down{ data: {post_id: comment.commentable.id, comment_id: comment.id, comment_rating: comment.rating, type: controller_name} }
+- else
+  .vote-block
+    .rating
+      = comment.rating
+    .votes
+      = link_to '', user_omniauth_authorize_path(:vkontakte), class: 'vote-for fa fa-thumbs-o-up'
+      = link_to '', user_omniauth_authorize_path(:vkontakte), class: 'vote-against fa fa-thumbs-o-down'

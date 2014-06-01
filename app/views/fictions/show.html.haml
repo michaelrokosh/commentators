@@ -2,7 +2,7 @@
   %meta{content: "#{@fiction.title}", property: "og:title"}/
   %meta{content: "#{@fiction.image.url(:thumb)}", property: "og:image"}/
   %meta{content: "#{truncate(@fiction.content, length: 300, separator: ' ')}", property: "og:description"}/
-= content_for(:title, "#{@fiction.title} - нереальные новости | Комментаторы")
+= content_for(:title, "#{@fiction.title} - сверхжелтая пресса | Комментаторы")
 .commentator
   = render 'fictions/fiction', fiction: @fiction
   .under-image

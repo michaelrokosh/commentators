@@ -14,5 +14,5 @@
           - if current_user.admin?
             - unless post.godnota?
               %i.godnota.dniwe.fa.fa-thumbs-o-up{ data: {:post_id => post.id, type: controller_name}}
-            = link_to 'Редактировать', edit_news_path(post)
-            = link_to 'Фтопку', news_path(post), method: :delete
+            = link_to 'Редактировать', [:edit, post]
+            = link_to 'Фтопку', post, method: :delete

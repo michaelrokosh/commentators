@@ -1,7 +1,7 @@
 .news-content-wrapper
   .news-content
     - unless action_name == 'show'
-      - if simple_format(post.content).length > 300
+      - if simple_format(post.content).length > 350
         .spoiler-wrapper
           .spoiler.folded.fa.fa-chevron-circle-down
           .teaser

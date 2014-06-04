@@ -11,6 +11,4 @@
   = render 'layouts/image_footer', post: fiction
 .commentator-footer
   = render 'layouts/share', shareable: fiction, shareable_type: 'fictions'
-  .news-content-wrapper
-    .news-content
-      = simple_format(fiction.content)
+  = render 'layouts/text_content', post: fiction

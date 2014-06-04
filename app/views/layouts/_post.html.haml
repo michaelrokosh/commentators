@@ -1,0 +1,22 @@
+.image
+  .category
+    = link_to "", news_index_path, title: "Реальные новости"
+    .icon.news-icon
+      = render "icons/realnews1.svg"
+  = render 'layouts/post_vote_block', post: post
+  = link_to(image_tag(post.image.url(:medium), alt: "#{post.title}", class: "resize"), post_path(post))
+  .top-comment.news-title
+    %h1
+      = post.title
+  = render 'layouts/image_footer', post: post
+.commentator-footer
+  = render 'layouts/share', shareable: post
+  .news-content-wrapper
+    .news-content
+      - if post.content.length > 300
+        .spoiler-wrapper
+          .spoiler.folded.fa.fa-chevron-circle-down
+          .teaser
+            = simple_format(post.content)
+      - else 
+        = simple_format(post.content)

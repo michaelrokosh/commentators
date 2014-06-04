@@ -16,6 +16,12 @@
 //= require pagination
 //= require bootstrap/modal
 //= require bootstrap/transition
+$(document).ready(function(){
+    $('.spoiler-text').hide()
+    $('.spoiler').click(function(){
+      $(this).toggleClass("folded").toggleClass("unfolded").next().toggleClass("teaser").toggleClass("complete")
+    })
+  })
 
 $(document).ready(function(){
     // Variables

@@ -19,7 +19,7 @@
 $(document).ready(function(){
     $('.spoiler-text').hide()
     $('.spoiler').click(function(){
-      $(this).toggleClass("folded").toggleClass("unfolded").next().toggleClass("teaser").toggleClass("complete")
+      $(this).toggleClass("folded").toggleClass("unfolded").toggleClass("fa-chevron-circle-down").toggleClass("fa-chevron-circle-up").next().toggleClass("teaser").toggleClass("complete")
     })
   })
 

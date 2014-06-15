@@ -16,6 +16,8 @@
 //= require pagination
 //= require bootstrap/modal
 //= require bootstrap/transition
+
+// spoiler
 $(document).ready(function(){
     $('.spoiler-text').hide()
     $('.spoiler').click(function(){
@@ -23,21 +25,21 @@ $(document).ready(function(){
     })
   })
 
+// sidebar
 $(document).ready(function(){
-    // Variables
     var objMain = $('#desktop');
  
-    // Show sidebar
+    // show sidebar
     function showSidebar(){
         objMain.addClass('use-sidebar');
     }
  
-    // Hide sidebar
+    // hide sidebar
     function hideSidebar(){
         objMain.removeClass('use-sidebar');
     }
  
-    // Sidebar separator
+    // separator
     var objSeparator = $('#separator');
  
     objSeparator.click(function(e){
@@ -52,8 +54,7 @@ $(document).ready(function(){
  
 });
 
-$("#modal-window").html("<%= escape_javascript(render 'modals/add') %>");
-
+// godnota btn
 $(function() {
   $('.godnota').click(function() {
     $button = $(this)
@@ -69,7 +70,7 @@ $(function() {
   });
 });
 
-//post votes
+// post votes
 $(function() {
   $(document).on( "click", ".post-vote-against", function() {
     $button = $(this)
@@ -136,7 +137,7 @@ $(function() {
   });
 });
 
-// mobile version
+// mobile version comment votes
 $(function() {
   $(document).on( "click tap touchstart", ".vote-down", function() {
     $button = $(this)
@@ -169,11 +170,9 @@ $(function() {
     }
   });
 });
+// mobile v end
 
-//mobile v end
-
-//counter
-
+// counter
 $(document).ready(function(){
   var limitnum = 99; // set your int limit for max number of characters
   
